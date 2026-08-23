@@ -126,6 +126,32 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .lesson .gpill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--tint);color:var(--br-dk);white-space:nowrap}
 .lesson .new{font-size:10px;font-weight:700;color:#fff;background:var(--br);border-radius:4px;padding:2px 6px;margin-left:8px;vertical-align:2px}
 .gcount{font-size:12px;color:var(--tx-mu);margin-bottom:14px}
+.props{border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin:20px 0}
+.prow{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 16px;border-bottom:1px solid var(--bd);font-size:14px;line-height:1.9}
+.prow:last-child{border-bottom:0}
+.prow dt{font-size:12px;font-weight:700;color:var(--tx-mu);padding-top:3px}
+.prow dd{margin:0}
+.ptag{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:4px;margin:0 5px 5px 0}
+.ptag.cat{background:#EAF2FF;color:#2C5FA8}
+.ptag.tool{background:var(--tint);color:var(--br-dk)}
+.ptag.field{background:var(--tint2);color:var(--br-dk)}
+.vidbox{aspect-ratio:16/9;max-width:720px;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;border-radius:var(--r);overflow:hidden;margin:20px 0 8px}
+.vidbox .in{position:relative}
+.vidbox .play{width:52px;height:52px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:16px}
+.vidbox b{display:block;font-size:15px;font-weight:700;max-width:420px;line-height:1.5}
+.ph{font-size:11px;color:var(--tx-mu);margin-bottom:24px}
+.h3{font-size:17px;font-weight:700;margin:28px 0 10px}
+.bullets{margin:0;padding-left:20px;font-size:14px;line-height:2}
+.bullets li{margin-bottom:4px}
+.caselist{border:1px solid var(--bd);border-radius:var(--r);background:#fff;box-shadow:var(--sh);overflow:hidden}
+.caserow{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;padding:16px;border-bottom:1px solid var(--bd);cursor:pointer;transition:var(--t);width:100%;background:#fff;border-left:0;border-right:0;border-top:0;text-align:left}
+.caserow:last-child{border-bottom:0}
+.caserow:hover{background:var(--tint)}
+.caserow .pl{width:34px;height:34px;border-radius:var(--r-sm);background:var(--gray);display:flex;align-items:center;justify-content:center;color:var(--tx-mu2);transition:var(--t)}
+.caserow:hover .pl{background:var(--br);color:#fff}
+.caserow .ti{display:block;font-size:14px;font-weight:700;line-height:1.55}
+.caserow .m{display:block;font-size:11px;color:var(--tx-mu);margin-top:5px}
+.pending{padding:40px;text-align:center;color:var(--tx-mu);font-size:13px;line-height:1.9;border:1px dashed var(--bd2);border-radius:var(--r)}
 
 /* ============ タブ・チップ ============ */
 .tabs{display:flex;gap:22px;border-bottom:1px solid var(--bd);margin-bottom:20px}
@@ -334,13 +360,14 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div class="sec">
     <div class="sec-hd">
       <h2>はじめての方へ</h2>
+      <button class="more" data-go="orient">オリエンテーションを見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
-    <div class="cgrid" id="home-orient"></div>
+    <div id="home-orient"></div>
   </div>
 
   <div class="sec">
     <div class="sec-hd">
-      <h2>動画ジャンル</h2>
+      <h2>分野から探す</h2>
       <button class="more" data-go="courses">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
     <div class="cgrid" id="home-courses"></div>
@@ -350,14 +377,14 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 <!-- ---------- コース一覧 ---------- -->
 <section class="view" id="v-courses" hidden>
   <div class="tabs">
-    <button data-tab="find" class="on">ジャンルから探す</button>
-    <button data-tab="new">新着動画</button>
+    <button data-tab="find" class="on">分野から探す</button>
+    <button data-tab="new">事例をまとめて見る</button>
   </div>
   <div class="toolbar">
     <div></div>
     <div class="minisearch">
       <span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
-      <input type="search" id="c-search" placeholder="ジャンルを絞り込む">
+      <input type="search" id="c-search" placeholder="分野を絞り込む">
     </div>
   </div>
   <div class="chips" id="c-chips"></div>
@@ -366,7 +393,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div class="empty" id="c-empty" hidden>該当する動画が見つかりませんでした。</div>
 </section>
 
-<!-- ---------- コース詳細 ---------- -->
+<!-- ---------- 分野の事例一覧 ---------- -->
 <section class="view" id="v-course" hidden>
   <div class="crumbs">
     <a data-go="home">ホーム</a><span class="sep">›</span>
@@ -375,18 +402,34 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   </div>
   <div class="ctitle">
     <h1 id="cd-title"></h1>
-    <button class="howto" data-toast="このジャンルの見る順番ガイドは準備中です">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5" stroke-linecap="round"/><path d="M12 7.6v.01" stroke-linecap="round"/></svg>
-      見る順番
-    </button>
   </div>
   <div class="cmeta">
     <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg><span id="cd-sets"></span></span>
     <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="18.5" cy="6" r="1.6"/><circle cx="14.5" cy="18" r="1.6"/></svg><span id="cd-lessons"></span></span>
-    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg><span id="cd-time"></span></span>
   </div>
   <p class="cintro" id="cd-intro"></p>
-  <div class="setlist" id="cd-sets-list"></div>
+  <div id="cd-list" style="margin-top:26px"></div>
+</section>
+
+<!-- ---------- 事例詳細 ---------- -->
+<section class="view" id="v-case" hidden>
+  <div class="crumbs">
+    <a data-go="home">ホーム</a><span class="sep">›</span>
+    <a data-go="courses">動画</a><span class="sep">›</span>
+    <a id="cs-crumb-genre"></a><span class="sep">›</span>
+    <span class="cur" id="cs-crumb"></span>
+  </div>
+  <div class="ctitle"><h1 id="cs-title"></h1></div>
+  <dl class="props">
+    <div class="prow"><dt>事例カテゴリ</dt><dd id="cs-cats"></dd></div>
+    <div class="prow"><dt>分野</dt><dd id="cs-field"></dd></div>
+    <div class="prow"><dt>使用ツール</dt><dd id="cs-tools"></dd></div>
+    <div class="prow"><dt>事例概要</dt><dd id="cs-sum"></dd></div>
+  </dl>
+  <div class="vidbox" id="cs-vid"><div class="in"><div class="play">▶</div><b id="cs-vidlabel"></b></div></div>
+  <p class="ph">※ 動画URLはNotionから移行後に埋め込みます。</p>
+  <div class="h3">動画の解説</div>
+  <ul class="bullets" id="cs-notes"></ul>
 </section>
 
 <!-- ---------- イベント ---------- -->
@@ -490,6 +533,24 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div class="cgrid" id="services"></div>
 </section>
 
+<!-- ---------- オリエンテーション ---------- -->
+<section class="view" id="v-orient" hidden>
+  <div class="crumbs"><a data-go="home">ホーム</a><span class="sep">›</span><span class="cur">オリエンテーション</span></div>
+  <div class="ctitle"><h1>オリエンテーション</h1>
+    <button class="howto" data-toast="進め方ガイドは準備中です">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5" stroke-linecap="round"/><path d="M12 7.6v.01" stroke-linecap="round"/></svg>
+      進め方
+    </button>
+  </div>
+  <div class="cmeta">
+    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg><span id="or-sets"></span></span>
+    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="18.5" cy="6" r="1.6"/><circle cx="14.5" cy="18" r="1.6"/></svg><span id="or-lessons"></span></span>
+    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg><span id="or-time"></span></span>
+  </div>
+  <p class="cintro" id="or-intro"></p>
+  <div class="setlist" id="or-list"></div>
+</section>
+
 <!-- ---------- メニュー ---------- -->
 <section class="view" id="v-menu" hidden>
   <div class="sec-hd"><h2>メニュー</h2></div>
@@ -551,131 +612,134 @@ var GRADS=[
 var g=function(i){return GRADS[i%GRADS.length]};
 
 /* ====== データ（すべてサンプル。実データ確定後に差し替え） ====== */
+/* 動画ジャンル＝Notion「建築業界特化のAI事例プラットフォーム」の分野。
+   total は Notion 上の件数、items は当サイトへ取り込み済みの事例。 */
 var GENRES=[
- {id:"orient",t:"オリエンテーション",gr:"オリエンテーション",gi:0,
-  d:"研究会の歩き方と会員サイトの使い方。入会後にまずご覧ください。",
-  intro:"AI経営研究会にご入会いただきありがとうございます。まずはこのジャンルの動画で、研究会の進み方と会員サイトの使い方をご確認ください。",
+ {id:"eigyo",t:"営業",gr:"営業",gi:0,total:14,
+  d:"提案資料、商談フィードバック、資金計画、顧客対応の返信まで。",
+  items:[
+   {id:"e1",t:"換気1種vs3種の比較スライドをChatGPT×Gensparkで数十分作成",
+    tools:["ChatGPT","Genspark"],cats:["個人の生産性向上","業務プロセス改善"],
+    sum:"住宅営業・設計の提案資料作成において、第1種換気と第3種換気のように施主が判断に迷う設備の比較スライドを、AIで数十分に短縮する事例。仕様の違い・コスト・メンテナンス性を施主目線の言葉に落とし込む。",
+    notes:["比較軸を先に決めてからAIに投げると、抜けのないスライドになる","数値は必ず自社の実績値で上書きする","Gensparkでスライド化まで一気通貫にする"]},
+   {id:"e2",t:"【商談フィードバックAI】トップ営業の思考を再現し若手育成を即時化（拘束時間90%削減）",
+    tools:["ChatGPT"],cats:["個人の生産性向上","業務プロセス改善"],
+    sum:"若手への商談フィードバックは上司やトップ営業の時間を大きく奪う。商談の録音・議事録をAIに読ませ、トップ営業の観点でフィードバックを返す仕組みをつくることで、上司の拘束時間を9割減らしながら育成のスピードを上げる事例。",
+    notes:["トップ営業の商談ログを事前に学習させておく","「良かった点」より「次にどう言うか」を出させる","本人が読んで動けるレベルまで具体化させる"]},
+   {id:"e3",t:"借入可能額を銀行別に一括算出（35年/40年・カーローン分岐）をChatGPTで秒速化",
+    tools:["ChatGPT"],cats:["個人の生産性向上","顧客体験向上"],
+    sum:"銀行ごとに審査金利・返済比率などの基準が異なるため、借入可能額の試算は手間がかかる。各行の基準をAIに持たせ、35年/40年やカーローンの有無で分岐した試算を商談中に即座に出す事例。",
+    notes:["各行の審査金利・返済比率を表にして先に学習させる","カーローン等の既存借入を必ず入力項目に入れる","試算はあくまで概算であることを施主に明示する"]},
+   {id:"e4",t:"ChatGPTでLINE返信を爆速化（テンプレート活用で温度感を落とさない）",
+    tools:["ChatGPT"],cats:["個人の生産性向上"],
+    sum:"施主とのLINEでのやりとりは件数が多く、返信の質にばらつきが出やすい。よくある質問と自社の言い回しをAIに学習させ、テンプレートから状況に合わせた返信文を生成する事例。",
+    notes:["自社らしい言い回しを10例ほど学習させる","事務的にならないよう一言添える枠を残す","金額・工期に関わる回答は必ず人が確認する"]}
+  ]},
+
+ {id:"sekkei",t:"設計",gr:"設計",gi:1,total:8,
+  d:"CADパースのフォトリアル化、法令検索、図面まわりの実務。",
+  items:[
+   {id:"s1",t:"ChatGPTでCADパースをフォトリアル化&部分修正（選択範囲編集で外構・車・素材を対話編集）",
+    tools:["ChatGPT"],cats:["顧客体験向上","業務プロセス改善"],
+    sum:"CADで作成したパースは提案に必須だが、質感や外構まで作り込むと工数がかかる。生成AIの選択範囲編集を使い、外構・車・素材だけを対話的に差し替えてフォトリアルに仕上げる事例。",
+    notes:["建物本体は触らず、周辺要素だけ選択範囲で編集する","「実写のように」より素材名で指示すると安定する","施主提示前に必ず寸法・仕様との矛盾を確認する"]},
+   {id:"s2",t:"【建築AI検証】CADパースを実写化！GPTs vs Gemini 徹底比較｜成約率爆上げのプレゼン術",
+    tools:["ChatGPT","Gemini"],cats:["顧客体験向上"],
+    sum:"CADで作成したパースをどこまで実写のように仕上げられるか、GPTsとGeminiで同条件比較した検証事例。得意・不得意の傾向と、提案の場面ごとの使い分けを整理する。",
+    notes:["同じ入力画像・同じ指示で比較する","外観と内観で得意なモデルが分かれる","提案の場面ごとに使い分けを決めておく"]},
+   {id:"s3",t:"【建築実務×AI】分厚い法令集はもう不要！NotebookLMで自社専用の「建築基準法AIアシスタント」を作る方法",
+    tools:["NotebookLM","Gemini"],cats:["業務プロセス改善","個人の生産性向上"],
+    sum:"建築基準法などの膨大な法令や、複雑なCAD操作マニュアルを都度引くのは負担が大きい。NotebookLMに法令・社内基準を読み込ませ、根拠の条文つきで答える自社専用アシスタントをつくる事例。",
+    notes:["必ず出典の条文を併記させる","自社の運用ルールも同じノートに入れる","最終判断は有資格者が行う前提で運用する"]}
+  ]},
+
+ {id:"genba",t:"現場",gr:"現場",gi:2,total:0,
+  d:"現場写真の整理、報告書、職人さんとのやりとり。",
+  items:[]},
+
+ {id:"marke",t:"マーケ",gr:"マーケ",gi:3,total:8,
+  d:"施工事例の文章化、競合調査、写真素材づくり。",
+  items:[
+   {id:"m1",t:"ChatGPTで施工事例の文章作成を自動化！半日の作業が10分に短縮",
+    tools:["ChatGPT"],cats:["個人の生産性向上","業務プロセス改善"],
+    sum:"工務店のマーケ業務における施工事例の紹介文づくりは、1件あたり半日かかることもある。物件情報と写真から紹介文の下書きを生成し、10分で仕上げる事例。",
+    notes:["物件の基本情報をフォーマット化して渡す","施主のこだわりを1つ必ず入れる","そのまま出さず担当者が温度感を足す"]},
+   {id:"m2",t:"Web上の膨大な情報を5分で収集・分析！「Enhancer 4 Google」× NotebookLM 活用術",
+    tools:["NotebookLM","ChatGPT","Webスクレイピング"],cats:["業務プロセス改善"],
+    sum:"競合他社やポータルサイトの情報を人手で集めると時間がかかる。Web上の情報を一括収集し、NotebookLMで横断的に分析して自社の打ち手を出す事例。",
+    notes:["収集対象のURLを先に絞る","公開情報のみを扱う","分析結果は必ず一次情報で裏取りする"]},
+   {id:"m3",t:"AIで施工事例に人物を合成！マーケティングを加速させる最新ツール活用術",
+    tools:["Gemini","画像編集AI"],cats:["顧客体験向上"],
+    sum:"生活感のある施工事例写真を撮影するにはモデルの手配が必要でコストがかかる。完成写真にAIで人物を自然に合成し、暮らしのイメージが伝わる素材をつくる事例。",
+    notes:["合成であることを明示する運用ルールを決める","実在する施主と誤認される表現は避ける","建物側は一切加工しない"]}
+  ]},
+
+ {id:"kyotsu",t:"共通",gr:"共通",gi:4,total:8,
+  d:"社内の情報検索、ニュース収集、画像編集など職種を問わない事例。",
+  items:[
+   {id:"k1",t:"NotebookLMで仕様書・FAQを横断検索し属人化を解消（検索時間80%削減）",
+    tools:["NotebookLM","ChatGPT","Google Workspace"],cats:["業務プロセス改善","コスト削減"],
+    sum:"工法・部材・社内ルールなどがベテランに属人化し、若手が都度聞きに行く状態になっている。仕様書やFAQをNotebookLMに集約し、横断検索できるようにして検索時間を8割削減する事例。",
+    notes:["元資料の置き場をGoogleドライブに一本化する","回答には必ず出典ファイル名を出させる","更新のたびにノートを差し替える運用を決める"]},
+   {id:"k2",t:"Geminiで情報収集を自動化！建築・不動産実務に役立つ最新ニュース定期配信設定術",
+    tools:["Gemini"],cats:["個人の生産性向上"],
+    sum:"建築・不動産業界の法改正、AI・新技術、市場動向を追い続けるのは負担が大きい。条件を決めて定期的にニュースを収集・要約し、自動で配信する仕組みをつくる事例。",
+    notes:["拾いたいキーワードを業務単位で決める","要約は3行までに制限する","法改正は必ず一次情報を確認する"]},
+   {id:"k3",t:"【神アップデート】ChatGPTで建築パースを直接編集！Adobe提携でPhotoshop機能が無料開放",
+    tools:["ChatGPT","画像編集AI"],cats:["個人の生産性向上"],
+    sum:"AIで建築パースは作れるようになったが、細部の修正には画像編集ソフトが必要だった。ChatGPT上でPhotoshop相当の編集ができるようになり、生成から修正までを1か所で完結させる事例。",
+    notes:["修正指示は部位を限定して出す","元画像は必ず別で保管する","提案用と社内検討用でファイルを分ける"]}
+  ]},
+
+ {id:"reform",t:"リフォーム",gr:"リフォーム",gi:5,total:3,
+  d:"間取り図の3D化、リノベ提案のビジュアライズ。",
+  items:[
+   {id:"r1",t:"間取り図を瞬時に3D化！Geminiで実現する店舗リノベ・マンション提案の最速ビジュアライズ術",
+    tools:["Gemini"],cats:["顧客体験向上","業務プロセス改善"],
+    sum:"初期提案での3Dパース作成はモデリングに時間がかかり、提案までのリードタイムが長くなる。間取り図から直接3Dイメージを生成し、初回提案のスピードを上げる事例。",
+    notes:["初期提案用と実施設計用を明確に分ける","寸法の正確性は担保されないと施主に伝える","雰囲気の合意形成に用途を限定する"]},
+   {id:"r2",t:"Geminiで変わる！建築・リノベ提案の未来：AI画像生成で理想の空間を即座に可視化",
+    tools:["Gemini"],cats:["顧客体験向上"],
+    sum:"従来のリノベ提案では3DCGパース作成に時間がかかり、施主のイメージとのズレが後工程で発覚しやすい。その場で複数案を可視化し、方向性のすり合わせを前倒しする事例。",
+    notes:["1案ではなく3案出して選んでもらう","好みの写真を先にもらうと精度が上がる","確定図面ではないことを毎回明示する"]},
+   {id:"r3",t:"【店舗リノベ】Geminiで即日提案！スマホ1台で完結する画像生成術",
+    tools:["Gemini"],cats:["顧客体験向上","個人の生産性向上"],
+    sum:"店舗リノベのイメージ共有は従来パース作成を外注する必要があり、提案までに日数がかかっていた。現地でスマホ撮影した写真から即日提案のイメージをつくる事例。",
+    notes:["現地写真は明るい時間に正対して撮る","什器・サインの入れ替えに絞ると精度が高い","見積根拠には使わない"]}
+  ]},
+
+ {id:"fudosan",t:"不動産",gr:"不動産",gi:0,total:2,
+  d:"契約書・重要事項説明のチェック、土地仕入れの実務。",
+  items:[
+   {id:"f1",t:"契約書・重説チェックをAIに任せる！見落としゼロの最強実務術",
+    tools:["Gemini","ChatGPT"],cats:["業務プロセス改善","コスト削減"],
+    sum:"モデルハウス建設用の土地購入では、契約書や重要事項説明書の確認に専門知識と時間を要する。AIに条項を読み込ませてリスク箇所を洗い出し、確認漏れを防ぐ事例。",
+    notes:["確認したい観点をチェックリスト化して渡す","指摘は必ず条項番号つきで出させる","最終判断は宅建士・弁護士が行う"]},
+   {id:"f2",t:"換気1種vs3種の比較スライドをChatGPT×Gensparkで数十分作成",
+    tools:["ChatGPT","Genspark"],cats:["個人の生産性向上"],
+    sum:"営業分野と共通の事例。設備仕様の比較を施主目線の資料に落とし込む。",
+    notes:["営業ジャンルにも同じ事例を掲載している"]}
+  ]}
+];
+
+/* オリエンテーションは動画ジャンルとは別建て */
+var ORIENT={
+  intro:"AI経営研究会にご入会いただきありがとうございます。研究会の進み方と、この会員サイトの使い方をまとめています。まずはこちらからご覧ください。",
   groups:[
    {t:"入会してまずやること",items:[
     {t:"会員サイトの初期設定",k:"動画",m:2,sp:"事務局"},
     {t:"会員限定チャットへの参加方法",k:"動画",m:3,sp:"事務局"},
     {t:"研究会の年間スケジュールを確認する",k:"動画",m:2,sp:"事務局"},
-    {t:"無料壁打ち会の予約のしかた",k:"動画",m:3,sp:"事務局",nw:1}]},
+    {t:"無料壁打ち会の予約のしかた",k:"動画",m:3,sp:"事務局"}]},
    {t:"研究会の歩き方",items:[
     {t:"研究会はこう進みます（1日の流れ）",k:"動画",m:5,sp:"事務局"},
-    {t:"ワークショップの初級・上級について",k:"動画",m:4,sp:"事務局",nw:1},
-    {t:"会員名簿の使い方と掲載範囲の決め方",k:"動画",m:3,sp:"事務局",nw:1}]}
-  ]},
-
- {id:"archive",t:"研究会アーカイブ",gr:"研究会アーカイブ",gi:1,
-  d:"過去の研究会の講座・パネルディスカッションを、回ごとに見返せます。",
-  intro:"これまでに開催した研究会のアーカイブです。当日参加できなかった回も、復習したい回もここから見返せます。",
-  groups:[
-   {t:"VOL.04 AIで見積・積算をどこまで巻き取れるか（2026.08）",items:[
-    {t:"第一講座：見積作成の時間を1/4にした社内フローの話",k:"動画",m:42,sp:"森大建 森社長",nw:1},
-    {t:"第二講座：積算データをAIに読ませるための下ごしらえ",k:"動画",m:38,sp:"LIFEFUND",nw:1},
-    {t:"パネルディスカッション：使い続けられた仕組みの共通点",k:"動画",m:52,sp:"経営者3名",nw:1},
-    {t:"当日の登壇資料・ワークショップ課題",k:"資料",m:0,sp:""}]},
-   {t:"VOL.03 現場写真と報告書をAIで片づける（2026.07）",items:[
-    {t:"第一講座：現場写真の整理を週3時間から15分にした話",k:"動画",m:45,sp:"バド設計事務所 深川さん"},
-    {t:"第二講座：報告書の自動生成、実際どこまでできるか",k:"動画",m:35,sp:"LIFEFUND"},
-    {t:"パネルディスカッション：現場に定着させるときに詰まったところ",k:"動画",m:48,sp:"経営者3名"},
-    {t:"当日の登壇資料",k:"資料",m:0,sp:""}]},
-   {t:"VOL.02 集客とSNSをAIで回す（2026.06）",items:[
-    {t:"第一講座：パース画像生成を営業の現場で使う",k:"動画",m:40,sp:"エクシードホーム 戸樫さん"},
-    {t:"第二講座：SNS投稿を月80本つくる仕組み",k:"動画",m:33,sp:"LIFEFUND"},
-    {t:"ワークショップ：自社の集客導線を書き出す",k:"課題",m:0,sp:""}]},
-   {t:"VOL.01 はじめてのAI経営 ─ 何から手をつけるか（2026.05）",items:[
-    {t:"第一講座：建築業でAIが効くところ、効かないところ",k:"動画",m:50,sp:"LIFEFUND 白都社長"},
-    {t:"第二講座：まず社内の情報を1か所に集める",k:"動画",m:36,sp:"LIFEFUND"},
-    {t:"パネルディスカッション：経営者が最初の一歩で迷ったこと",k:"動画",m:44,sp:"経営者3名"}]}
-  ]},
-
- {id:"kiso",t:"AI基礎",gr:"AI基礎",gi:2,
-  d:"何から手をつけるか。ツールの選び方と、最初の1ヶ月の進め方。",
-  intro:"AIをこれから使い始める方向けのジャンルです。難しい仕組みの話は省いて、明日から動かせるところだけを扱います。",
-  groups:[
-   {t:"まず知っておくこと",items:[
-    {t:"建築業でAIが効くところ、効かないところ",k:"動画",m:9,sp:"LIFEFUND"},
-    {t:"ツールの選び方（有料版はいつから必要か）",k:"動画",m:7,sp:"LIFEFUND"},
-    {t:"最初の1ヶ月で何をやるか",k:"動画",m:6,sp:"LIFEFUND"}]},
-   {t:"つまずきやすいところ",items:[
-    {t:"思った答えが返ってこないときの直し方",k:"動画",m:8,sp:"LIFEFUND",nw:1},
-    {t:"社内で使ってもらえないときに見直す3点",k:"動画",m:7,sp:"LIFEFUND"},
-    {t:"よくある質問",k:"資料",m:0,sp:""}]}
-  ]},
-
- {id:"eigyo",t:"営業・見積",gr:"営業 × 見積",gi:3,
-  d:"見積書のたたき台づくり、提案資料、営業メールの改善。",
-  intro:"見積と提案まわりの工数を落とすジャンルです。過去データの整え方から、たたき台を出すところまで扱います。",
-  groups:[
-   {t:"見積をAIに任せる",items:[
-    {t:"過去の見積データを揃える",k:"動画",m:8,sp:"LIFEFUND"},
-    {t:"項目名のゆれをそろえる",k:"動画",m:6,sp:"LIFEFUND"},
-    {t:"たたき台を出させるプロンプト",k:"動画",m:11,sp:"LIFEFUND",nw:1},
-    {t:"金額の妥当性をどう確認するか",k:"動画",m:9,sp:"LIFEFUND"},
-    {t:"プロンプト集",k:"資料",m:0,sp:""}]},
-   {t:"提案・営業文",items:[
-    {t:"提案資料のたたき台を30分でつくる",k:"動画",m:12,sp:"LIFEFUND"},
-    {t:"営業メールの返信率を上げる書き換え",k:"動画",m:8,sp:"LIFEFUND"}]}
-  ]},
-
- {id:"genba",t:"現場・施工",gr:"現場 × 施工",gi:4,
-  d:"現場写真の整理、報告書づくり、職人さんとのやりとり。",
-  intro:"現場まわりの事務作業を減らすジャンルです。スマホでの運用まで含めて扱います。",
-  groups:[
-   {t:"写真と報告書",items:[
-    {t:"写真の保存ルールを決める",k:"動画",m:7,sp:"LIFEFUND"},
-    {t:"現場ごとの自動振り分け",k:"動画",m:12,sp:"LIFEFUND"},
-    {t:"報告書テンプレートの作り方",k:"動画",m:9,sp:"LIFEFUND"},
-    {t:"写真から所見を自動生成する",k:"動画",m:10,sp:"LIFEFUND",nw:1}]},
-   {t:"工程・段取り",items:[
-    {t:"工程表のたたき台をつくる",k:"動画",m:11,sp:"LIFEFUND"},
-    {t:"変更連絡の抜け漏れを減らす",k:"動画",m:8,sp:"LIFEFUND"}]}
-  ]},
-
- {id:"sekkei",t:"設計・プラン",gr:"設計 × プラン",gi:5,
-  d:"プラン初期案、パース、図面チェック。案の数を増やす使い方。",
-  intro:"設計初期の検討にAIを使うジャンルです。答えを出させるのではなく、たたき台の数を増やす使い方を扱います。",
-  groups:[
-   {t:"プランを出す",items:[
-    {t:"AIに任せる部分、任せない部分",k:"動画",m:8,sp:"LIFEFUND"},
-    {t:"要望ヒアリングから初期案を出す",k:"動画",m:14,sp:"LIFEFUND"},
-    {t:"出てきた案を絞り込む",k:"動画",m:10,sp:"LIFEFUND"}]},
-   {t:"パース・図面",items:[
-    {t:"パース画像生成の基本",k:"動画",m:12,sp:"エクシードホーム 戸樫さん"},
-    {t:"図面チェックにAIを使えるか試す",k:"動画",m:9,sp:"LIFEFUND",nw:1}]}
-  ]},
-
- {id:"shukyaku",t:"集客・広報",gr:"集客 × 広報",gi:0,
-  d:"SNS投稿、ブログ、広告文、採用広報までの発信まわり。",
-  intro:"発信まわりの手を止めないためのジャンルです。ネタ出しから投稿文の作成、改善までを扱います。",
-  groups:[
-   {t:"SNS・ブログ",items:[
-    {t:"SNS投稿を月80本つくる仕組み",k:"動画",m:15,sp:"LIFEFUND"},
-    {t:"施工事例をブログ記事にする",k:"動画",m:11,sp:"LIFEFUND"},
-    {t:"写真の選定まで自動化する",k:"動画",m:9,sp:"サンプル建設 佐藤さん",nw:1}]},
-   {t:"採用広報",items:[
-    {t:"自社の強みを言語化する",k:"動画",m:9,sp:"LIFEFUND"},
-    {t:"求人票のたたき台を出す",k:"動画",m:8,sp:"LIFEFUND"},
-    {t:"応募データを見て文面を直す",k:"動画",m:11,sp:"LIFEFUND"}]}
-  ]},
-
- {id:"keiei",t:"経営・管理",gr:"経営 × 管理",gi:1,
-  d:"議事録、社内共有、数字の見える化、契約書のチェック。",
-  intro:"経営まわりの事務を軽くするジャンルです。会議の後処理と、数字の把握を中心に扱います。",
-  groups:[
-   {t:"会議と議事録",items:[
-    {t:"録音のとり方と機材",k:"動画",m:6,sp:"LIFEFUND"},
-    {t:"文字起こしの精度を上げる",k:"動画",m:7,sp:"LIFEFUND"},
-    {t:"決定事項とタスクを抽出する",k:"動画",m:9,sp:"LIFEFUND"},
-    {t:"社内チャットへ自動で流す",k:"動画",m:8,sp:"LIFEFUND",nw:1}]},
-   {t:"数字と契約",items:[
-    {t:"月次の数字を自動でまとめる",k:"動画",m:12,sp:"LIFEFUND"},
-    {t:"契約書レビューの下読みに使う",k:"動画",m:10,sp:"LIFEFUND"},
-    {t:"※ 契約・法務は必ず専門家の確認を",k:"資料",m:0,sp:""}]}
-  ]}
-];
+    {t:"ワークショップの初級・上級について",k:"動画",m:4,sp:"事務局"},
+    {t:"会員名簿の使い方と掲載範囲の決め方",k:"動画",m:3,sp:"事務局"}]},
+   {t:"事例動画の見方",items:[
+    {t:"分野から事例を探す",k:"動画",m:3,sp:"事務局"},
+    {t:"使用プロンプトを自社用に書き換える",k:"動画",m:5,sp:"事務局"}]}
+  ]
+};
 
 var EVENTS=[
  {d:"8/23",w:"（日）",today:true,items:[
@@ -725,47 +789,55 @@ var SERVICES=[
 ];
 
 /* ====== 補助 ====== */
-function stat(c){
-  var groups=c.groups.length, n=0, v=0, min=0;
-  c.groups.forEach(function(s){ n+=s.items.length; s.items.forEach(function(i){ min+=i.m; if(i.k==="動画") v++ }) });
-  return {groups:groups,items:n,videos:v,min:min};
-}
-function allVideos(){
-  var out=[];
-  GENRES.forEach(function(gn){ gn.groups.forEach(function(gp){ gp.items.forEach(function(it){
-    out.push({it:it,gn:gn,gp:gp});
-  })})});
-  return out;
-}
 function hhmm(min){
   if(min<60) return "約"+min+"分";
   return "約"+(Math.round(min/6)/10)+"時間";
 }
 var AVA=["#ED4903","#DA1D00","#ED6103","#FA863E","#C93D12","#232323"];
 function avatarColor(s){var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))%997}return AVA[h%AVA.length]}
-
-/* ====== 描画 ====== */
-function genreCard(c){
-  var st=stat(c);
-  return '<button class="ccard" data-genre="'+c.id+'">'
-   +'<div class="th" style="background:'+g(c.gi)+'"><b>'+esc(c.gr)+'</b></div>'
-   +'<div class="bd"><div class="cat">ジャンル</div>'
-   +'<div class="ti">'+esc(c.t)+'</div>'
-   +'<div class="ds">'+esc(c.d)+'</div>'
-   +'<div class="mt"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>'
-   +st.videos+'本 ・ '+hhmm(st.min)+'</div></div></button>';
+function stat(c){
+  return {items:c.items.length,total:c.total};
 }
-function videoRow(v,showGenre){
-  var it=v.it;
-  return '<button class="lesson" data-toast="'+esc(it.k)+'は移行作業中です">'
-   +'<span class="pl">'+(it.k==="動画"
-      ?'<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>'
-      :'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg>')
-   +'</span>'
-   +'<span><span class="ti">'+esc(it.t)+(it.nw?'<span class="new">NEW</span>':'')+'</span>'
-   +'<span class="m">'+esc(it.k)+(it.m?' ・ '+it.m+'分':'')+(it.sp?' ・ '+esc(it.sp):'')+'</span></span>'
+function findCase(id){
+  for(var i=0;i<GENRES.length;i++){
+    for(var j=0;j<GENRES[i].items.length;j++){
+      if(GENRES[i].items[j].id===id) return {c:GENRES[i].items[j],gn:GENRES[i]};
+    }
+  }
+  return null;
+}
+function allCases(){
+  var out=[];
+  GENRES.forEach(function(gn){ gn.items.forEach(function(c){ out.push({c:c,gn:gn}) }) });
+  return out;
+}
+function genreCard(gn){
+  var st=stat(gn);
+  return '<button class="ccard" data-genre="'+gn.id+'">'
+   +'<div class="th" style="background:'+g(gn.gi)+'"><b>'+esc(gn.gr)+'</b></div>'
+   +'<div class="bd"><div class="cat">分野</div>'
+   +'<div class="ti">'+esc(gn.t)+'</div>'
+   +'<div class="ds">'+esc(gn.d)+'</div>'
+   +'<div class="mt"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>'
+   +(st.items ? st.items+'本 掲載中' : '準備中')
+   +(st.total>st.items ? '<span style="color:var(--tx-mu)"> / Notion '+st.total+'本</span>' : '')
+   +'</div></div></button>';
+}
+function caseRow(v,showGenre){
+  var c=v.c;
+  return '<button class="caserow" data-case="'+c.id+'">'
+   +'<span class="pl"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>'
+   +'<span><span class="ti">'+esc(c.t)+'</span>'
+   +'<span class="m">'+(showGenre?esc(v.gn.t)+' ・ ':'')+c.tools.join(" / ")+'</span></span>'
    +(showGenre?'<span class="gpill">'+esc(v.gn.t)+'</span>':'<span></span>')
    +'</button>';
+}
+function lessonRow(it){
+  return '<button class="lesson" data-toast="'+esc(it.k)+'は準備中です">'
+   +'<span class="pl"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>'
+   +'<span><span class="ti">'+esc(it.t)+'</span>'
+   +'<span class="m">'+esc(it.k)+(it.m?' ・ '+it.m+'分':'')+(it.sp?' ・ '+esc(it.sp):'')+'</span></span>'
+   +'<span></span></button>';
 }
 
 function renderHome(){
@@ -777,8 +849,14 @@ function renderHome(){
      +'<div class="th" style="background:'+g(e.gi)+'"><b>'+esc(e.gr)+'</b></div>'
      +'<div class="bd"><div class="ti">'+esc(e.t)+'</div><span class="pill">'+esc(e.cat)+'</span></div></div>';
   }).join("");
-  $("#home-orient").innerHTML=genreCard(GENRES[0]);
-  $("#home-courses").innerHTML=GENRES.slice(1,7).map(genreCard).join("");
+  var on=0, om=0;
+  ORIENT.groups.forEach(function(gp){ gp.items.forEach(function(x){ on++; om+=x.m }) });
+  $("#home-orient").innerHTML='<div class="caselist"><button class="caserow" data-go="orient">'
+   +'<span class="pl"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>'
+   +'<span><span class="ti">オリエンテーション</span>'
+   +'<span class="m">研究会の歩き方と会員サイトの使い方 ・ '+on+'本 ・ '+hhmm(om)+'</span></span>'
+   +'<span class="gpill">まずはこちら</span></button></div>';
+  $("#home-courses").innerHTML=GENRES.map(genreCard).join("");
 }
 
 var actCat="すべて";
@@ -796,47 +874,72 @@ function renderCourses(){
   $("#c-chips").hidden = (actTab!=="new");
   if(actTab==="find"){
     $("#newlist").hidden=true; $("#courses").hidden=false;
-    var list=GENRES.filter(function(c){
+    var list=GENRES.filter(function(gn){
       if(!q) return true;
-      return (c.t+c.d+c.gr).toLowerCase().indexOf(q)>=0;
+      return (gn.t+gn.d).toLowerCase().indexOf(q)>=0
+        || gn.items.some(function(c){ return (c.t+c.sum+c.tools.join("")).toLowerCase().indexOf(q)>=0 });
     });
-    $("#c-empty").textContent="該当するジャンルが見つかりませんでした。";
+    $("#c-empty").textContent="該当する分野が見つかりませんでした。";
     $("#c-empty").hidden=list.length>0;
     $("#courses").innerHTML=list.map(genreCard).join("");
   } else {
     $("#courses").hidden=true; $("#newlist").hidden=false;
-    var vs=allVideos().filter(function(v){
-      if(!v.it.nw) return false;
+    var vs=allCases().filter(function(v){
       if(actCat!=="すべて" && v.gn.t!==actCat) return false;
       if(!q) return true;
-      return (v.it.t+(v.it.sp||"")+v.gn.t).toLowerCase().indexOf(q)>=0;
+      return (v.c.t+v.c.sum+v.c.tools.join("")+v.c.cats.join("")).toLowerCase().indexOf(q)>=0;
     });
-    $("#c-empty").textContent="該当する動画が見つかりませんでした。";
+    $("#c-empty").textContent="該当する事例が見つかりませんでした。";
     $("#c-empty").hidden=vs.length>0;
     $("#newlist").innerHTML = vs.length
-      ? '<div class="gcount">新着 '+vs.length+'本</div><div class="lessons">'+vs.map(function(v){return videoRow(v,true)}).join("")+'</div>'
+      ? '<div class="gcount">'+vs.length+'本</div><div class="caselist">'+vs.map(function(v){return caseRow(v,true)}).join("")+'</div>'
       : "";
   }
 }
 
 function renderCourse(id){
-  var c=GENRES.filter(function(x){return x.id===id})[0];
-  if(!c) return;
-  var st=stat(c);
-  $("#cd-crumb").textContent=c.t;
-  $("#cd-title").textContent=c.t;
-  $("#cd-sets").textContent="全"+st.groups+"グループ";
-  $("#cd-lessons").textContent=st.videos+"本の動画";
-  $("#cd-time").textContent=hhmm(st.min);
-  $("#cd-intro").textContent=c.intro;
-  $("#cd-sets-list").innerHTML=c.groups.map(function(gp,i){
-    var n=gp.items.length, m=0, v=0;
-    gp.items.forEach(function(x){ m+=x.m; if(x.k==="動画") v++ });
-    var rows=gp.items.map(function(it){ return videoRow({it:it,gn:c,gp:gp},false) }).join("");
-    return '<div class="set">'
-      +'<div class="setno en">'+(i+1)+'</div>'
-      +'<div><div class="set-hd"><h3>'+esc(gp.t)+'</h3><span class="m">'+v+'本'+(m?' ・ '+m+'分':'')+'</span></div>'
-      +'<div class="lessons">'+rows+'</div></div></div>';
+  var gn=GENRES.filter(function(x){return x.id===id})[0];
+  if(!gn) return;
+  var st=stat(gn);
+  $("#cd-crumb").textContent=gn.t;
+  $("#cd-title").textContent=gn.t;
+  $("#cd-sets").textContent="分野";
+  $("#cd-lessons").textContent = st.items+"本 掲載中"+(st.total>st.items?"（Notion上は"+st.total+"本）":"");
+  $("#cd-intro").textContent=gn.d;
+  $("#cd-list").innerHTML = st.items
+    ? '<div class="caselist">'+gn.items.map(function(c){return caseRow({c:c,gn:gn},false)}).join("")+'</div>'
+    : '<div class="pending">この分野の事例はまだ取り込めていません。<br>Notionの事例プラットフォームから移行後に掲載します。</div>';
+}
+
+function renderCase(id){
+  var v=findCase(id);
+  if(!v) return;
+  var c=v.c;
+  $("#cs-crumb-genre").textContent=v.gn.t;
+  $("#cs-crumb-genre").dataset.genre=v.gn.id;
+  $("#cs-crumb").textContent=c.t;
+  $("#cs-title").textContent=c.t;
+  $("#cs-cats").innerHTML=c.cats.map(function(x){return '<span class="ptag cat">'+esc(x)+'</span>'}).join("");
+  $("#cs-field").innerHTML='<span class="ptag field">'+esc(v.gn.t)+'</span>';
+  $("#cs-tools").innerHTML=c.tools.map(function(x){return '<span class="ptag tool">'+esc(x)+'</span>'}).join("");
+  $("#cs-sum").textContent=c.sum;
+  $("#cs-vid").style.background=g(v.gn.gi);
+  $("#cs-vidlabel").textContent=c.t;
+  $("#cs-notes").innerHTML=c.notes.map(function(x){return '<li>'+esc(x)+'</li>'}).join("");
+}
+
+function renderOrient(){
+  var n=0,m=0;
+  ORIENT.groups.forEach(function(gp){ gp.items.forEach(function(x){ n++; m+=x.m }) });
+  $("#or-sets").textContent="全"+ORIENT.groups.length+"セット";
+  $("#or-lessons").textContent=n+"本";
+  $("#or-time").textContent=hhmm(m);
+  $("#or-intro").textContent=ORIENT.intro;
+  $("#or-list").innerHTML=ORIENT.groups.map(function(gp,i){
+    var gn=gp.items.length, gm=0; gp.items.forEach(function(x){gm+=x.m});
+    return '<div class="set"><div class="setno en">'+(i+1)+'</div>'
+      +'<div><div class="set-hd"><h3>'+esc(gp.t)+'</h3><span class="m">'+gn+'本 ・ '+gm+'分</span></div>'
+      +'<div class="lessons">'+gp.items.map(lessonRow).join("")+'</div></div></div>';
   }).join("");
 }
 
@@ -903,6 +1006,7 @@ function renderServices(){
 }
 
 var MENU=[
+ {go:"orient",t:"オリエンテーション",d:"研究会の歩き方と会員サイトの使い方"},
  {go:"cases",t:"事例インタビュー",d:"会員のみなさんの、入会後に変わったこと"},
  {go:"talk",t:"無料壁打ち会",d:"AI活用の困りごとを一緒に整理します"},
  {go:"services",t:"サービス紹介",d:"研究会の学びを自社で形にするメニュー"},
@@ -920,20 +1024,24 @@ function renderMenu(){
 }
 
 /* ====== ルーティング ====== */
-var VIEWS=["home","courses","course","events","members","cases","talk","services","menu"];
-var NAVOF={home:"home",courses:"courses",course:"courses",events:"events",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu"};
+var VIEWS=["home","courses","course","case","orient","events","members","cases","talk","services","menu"];
+var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",events:"events",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu"};
 function go(v,arg){
   if(VIEWS.indexOf(v)<0) v="home";
   VIEWS.forEach(function(id){ $("#v-"+id).hidden = (id!==v) });
   $$("#bnav button").forEach(function(b){ b.classList.toggle("on", b.dataset.go===NAVOF[v]) });
   if(v==="course") renderCourse(arg);
-  var h = v==="course" ? "#course/"+arg : "#"+v;
+  if(v==="case") renderCase(arg);
+  if(v==="orient") renderOrient();
+  var h = (v==="course"||v==="case") ? "#"+v+"/"+arg : "#"+v;
   if(location.hash!==h) history.replaceState(null,"",h);
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function fromHash(){
   var h=(location.hash||"#home").slice(1);
-  if(h.indexOf("course/")===0) go("course",h.slice(7)); else go(h);
+  if(h.indexOf("course/")===0) go("course",h.slice(7));
+  else if(h.indexOf("case/")===0) go("case",h.slice(5));
+  else go(h);
 }
 
 function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove("on")},2200)}
@@ -942,6 +1050,9 @@ function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearT
 document.addEventListener("click",function(e){
   var lo=e.target.closest("[data-logout]");
   if(lo){ try{sessionStorage.removeItem("lf_member")}catch(x){} location.hash="#home"; location.reload(); return; }
+
+  var kc=e.target.closest("[data-case]");
+  if(kc){ go("case",kc.dataset.case); return; }
 
   var cc=e.target.closest("[data-genre]");
   if(cc){ go("course",cc.dataset.genre); return; }
@@ -965,7 +1076,7 @@ document.addEventListener("click",function(e){
   if(tab){
     $$("[data-tab]").forEach(function(b){b.classList.toggle("on",b===tab)});
     actTab=tab.dataset.tab;
-    $("#c-search").placeholder = actTab==="new" ? "新着動画を絞り込む" : "ジャンルを絞り込む";
+    $("#c-search").placeholder = actTab==="new" ? "事例を絞り込む" : "分野を絞り込む";
     renderCourses();
     return;
   }
@@ -1009,7 +1120,7 @@ function enter(mail){
   $("#app").hidden=false;
   $("#avatar").textContent=(mail||"会").charAt(0).toUpperCase();
   renderHome(); renderChips(); renderCourses(); renderEvents();
-  renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu();
+  renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu(); renderOrient();
   fromHash();
 }
 $("#gate-form").addEventListener("submit",function(e){
