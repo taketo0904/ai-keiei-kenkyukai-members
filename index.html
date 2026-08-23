@@ -427,7 +427,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     <div class="prow"><dt>事例概要</dt><dd id="cs-sum"></dd></div>
   </dl>
   <div class="vidbox" id="cs-vid"><div class="in"><div class="play">▶</div><b id="cs-vidlabel"></b></div></div>
-  <p class="ph">※ 動画URLはNotionから移行後に埋め込みます。</p>
+  <p class="ph" id="cs-vidnote"></p>
   <div class="h3">動画の解説</div>
   <ul class="bullets" id="cs-notes"></ul>
 </section>
@@ -592,6 +592,13 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   </div>
 </div>
 
+<div class="modal" id="vmodal" hidden>
+  <div class="modal-in" style="max-width:900px">
+    <div style="position:relative;aspect-ratio:16/9;background:#000" id="vframe"></div>
+    <div class="modal-ft"><button class="btn btn--gh" id="vm-close">閉じる</button></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -727,17 +734,17 @@ var ORIENT={
   intro:"AI経営研究会にご入会いただきありがとうございます。研究会の進み方と、この会員サイトの使い方をまとめています。まずはこちらからご覧ください。",
   groups:[
    {t:"入会してまずやること",items:[
-    {t:"会員サイトの初期設定",k:"動画",m:2,sp:"事務局"},
-    {t:"会員限定チャットへの参加方法",k:"動画",m:3,sp:"事務局"},
-    {t:"研究会の年間スケジュールを確認する",k:"動画",m:2,sp:"事務局"},
-    {t:"無料壁打ち会の予約のしかた",k:"動画",m:3,sp:"事務局"}]},
+    {id:"o2",t:"会員サイトの初期設定",k:"動画",m:2,sp:"事務局"},
+    {id:"o3",t:"会員限定チャットへの参加方法",k:"動画",m:3,sp:"事務局"},
+    {id:"o4",t:"研究会の年間スケジュールを確認する",k:"動画",m:2,sp:"事務局"},
+    {id:"o5",t:"無料壁打ち会の予約のしかた",k:"動画",m:3,sp:"事務局"}]},
    {t:"研究会の歩き方",items:[
-    {t:"研究会はこう進みます（1日の流れ）",k:"動画",m:5,sp:"事務局"},
-    {t:"ワークショップの初級・上級について",k:"動画",m:4,sp:"事務局"},
-    {t:"会員名簿の使い方と掲載範囲の決め方",k:"動画",m:3,sp:"事務局"}]},
+    {id:"o7",t:"研究会はこう進みます（1日の流れ）",k:"動画",m:5,sp:"事務局"},
+    {id:"o8",t:"ワークショップの初級・上級について",k:"動画",m:4,sp:"事務局"},
+    {id:"o9",t:"会員名簿の使い方と掲載範囲の決め方",k:"動画",m:3,sp:"事務局"}]},
    {t:"事例動画の見方",items:[
-    {t:"分野から事例を探す",k:"動画",m:3,sp:"事務局"},
-    {t:"使用プロンプトを自社用に書き換える",k:"動画",m:5,sp:"事務局"}]}
+    {id:"o11",t:"分野から事例を探す",k:"動画",m:3,sp:"事務局"},
+    {id:"o12",t:"使用プロンプトを自社用に書き換える",k:"動画",m:5,sp:"事務局"}]}
   ]
 };
 
@@ -789,6 +796,27 @@ var SERVICES=[
 ];
 
 /* ====== 補助 ====== */
+/* ---- Vimeo ----
+   VIDEOS は videos.json から読み込む。キーは事例ID（e1 / s2 …）または
+   オリエンテーションID（o1 …）。値は VimeoのURL または 数字ID。
+   {url:"...", min:12} の形でも書ける。 */
+var VIDEOS={};
+function vimeoSrc(v){
+  if(!v) return null;
+  var raw = (typeof v==="object") ? v.url : v;
+  if(!raw) return null;
+  var s=String(raw).trim();
+  var id=null, h=null;
+  var m=s.match(/vimeo\.com\/(?:[a-z]+\/)*(\d+)(?:\/([0-9a-zA-Z]+))?/);
+  if(m){ id=m[1]; h=m[2]||null; }
+  else if(/^\d{6,}$/.test(s)){ id=s; }
+  if(!id) return null;
+  var hm=s.match(/[?&]h=([0-9a-zA-Z]+)/); if(hm) h=hm[1];
+  return "https://player.vimeo.com/video/"+id+(h?"?h="+h:"");
+}
+function vimeoMin(v){ return (v && typeof v==="object" && v.min) ? v.min : 0 }
+function hasVideo(id){ return !!vimeoSrc(VIDEOS[id]) }
+
 function hhmm(min){
   if(min<60) return "約"+min+"分";
   return "約"+(Math.round(min/6)/10)+"時間";
@@ -828,16 +856,18 @@ function caseRow(v,showGenre){
   return '<button class="caserow" data-case="'+c.id+'">'
    +'<span class="pl"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>'
    +'<span><span class="ti">'+esc(c.t)+'</span>'
-   +'<span class="m">'+(showGenre?esc(v.gn.t)+' ・ ':'')+c.tools.join(" / ")+'</span></span>'
-   +(showGenre?'<span class="gpill">'+esc(v.gn.t)+'</span>':'<span></span>')
+   +'<span class="m">'+(showGenre?esc(v.gn.t)+' ・ ':'')+c.tools.join(" / ")
+   +(vimeoMin(VIDEOS[c.id])?' ・ '+vimeoMin(VIDEOS[c.id])+'分':'')+'</span></span>'
+   +(hasVideo(c.id)?'<span class="gpill">動画あり</span>':(showGenre?'<span class="gpill" style="background:var(--gray);color:var(--tx-mu)">'+esc(v.gn.t)+'</span>':'<span></span>'))
    +'</button>';
 }
 function lessonRow(it){
-  return '<button class="lesson" data-toast="'+esc(it.k)+'は準備中です">'
+  var on=hasVideo(it.id);
+  return '<button class="lesson"'+(on?' data-play="'+it.id+'"':' data-toast="動画は準備中です"')+'>'
    +'<span class="pl"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>'
    +'<span><span class="ti">'+esc(it.t)+'</span>'
    +'<span class="m">'+esc(it.k)+(it.m?' ・ '+it.m+'分':'')+(it.sp?' ・ '+esc(it.sp):'')+'</span></span>'
-   +'<span></span></button>';
+   +(on?'<span class="gpill">再生</span>':'<span></span>')+'</button>';
 }
 
 function renderHome(){
@@ -923,8 +953,19 @@ function renderCase(id){
   $("#cs-field").innerHTML='<span class="ptag field">'+esc(v.gn.t)+'</span>';
   $("#cs-tools").innerHTML=c.tools.map(function(x){return '<span class="ptag tool">'+esc(x)+'</span>'}).join("");
   $("#cs-sum").textContent=c.sum;
-  $("#cs-vid").style.background=g(v.gn.gi);
-  $("#cs-vidlabel").textContent=c.t;
+  var src=vimeoSrc(VIDEOS[c.id]);
+  if(src){
+    $("#cs-vid").outerHTML='<div class="vidbox" id="cs-vid" style="background:#000">'
+      +'<iframe src="'+src+'" title="'+esc(c.t)+'" frameborder="0" '
+      +'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen '
+      +'style="position:absolute;inset:0;width:100%;height:100%"></iframe></div>';
+    $("#cs-vidnote").textContent="";
+  } else {
+    $("#cs-vid").outerHTML='<div class="vidbox" id="cs-vid" style="background:'+g(v.gn.gi)+'">'
+      +'<div class="in"><div class="play">▶</div><b id="cs-vidlabel"></b></div></div>';
+    $("#cs-vidlabel").textContent=c.t;
+    $("#cs-vidnote").textContent="※ 動画は準備中です。Vimeoにアップ後、videos.json にURLを追記すると再生できます。";
+  }
   $("#cs-notes").innerHTML=c.notes.map(function(x){return '<li>'+esc(x)+'</li>'}).join("");
 }
 
@@ -1069,6 +1110,11 @@ document.addEventListener("click",function(e){
   var sk=e.target.closest("[data-skill]");
   if(sk){ actSkill=sk.dataset.skill; renderMChips(); renderMembers(); return; }
 
+  var pv=e.target.closest("[data-play]");
+  if(pv){ openVideo(pv.dataset.play, pv.querySelector(".ti").textContent); return; }
+
+  if(e.target.closest("#vm-close") || e.target.id==="vmodal"){ closeVideo(); return; }
+
   var tt=e.target.closest("[data-toast]");
   if(tt){ toast(tt.dataset.toast); return; }
 
@@ -1083,6 +1129,16 @@ document.addEventListener("click",function(e){
 
   if(e.target.closest("#md-close") || e.target.id==="modal"){ $("#modal").hidden=true; return; }
 });
+
+function openVideo(id,title){
+  var src=vimeoSrc(VIDEOS[id]);
+  if(!src){ toast("動画は準備中です"); return; }
+  $("#vframe").innerHTML='<iframe src="'+src+'" title="'+esc(title||"")+'" frameborder="0" '
+    +'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen '
+    +'style="position:absolute;inset:0;width:100%;height:100%"></iframe>';
+  $("#vmodal").hidden=false;
+}
+function closeVideo(){ $("#vframe").innerHTML=""; $("#vmodal").hidden=true; }
 
 function openMember(m){
   $("#md-ava").textContent=m.nm.charAt(0);
@@ -1099,7 +1155,7 @@ function openMember(m){
 }
 
 document.addEventListener("keydown",function(e){
-  if(e.key==="Escape"){ $("#modal").hidden=true; }
+  if(e.key==="Escape"){ $("#modal").hidden=true; closeVideo(); }
   if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==="k"){ e.preventDefault(); $("#globalsearch").focus(); }
 });
 $("#railnext").addEventListener("click",function(){ $("#rail").scrollBy({left:340,behavior:"smooth"}) });
@@ -1115,13 +1171,26 @@ window.addEventListener("hashchange",function(){ if(!$("#app").hidden) fromHash(
 
 /* ====== ログインゲート（デモ用・仮実装） ====== */
 var PASS="lifefund";
+function drawAll(){
+  renderHome(); renderChips(); renderCourses(); renderEvents();
+  renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu(); renderOrient();
+}
 function enter(mail){
   $("#gate").style.display="none";
   $("#app").hidden=false;
   $("#avatar").textContent=(mail||"会").charAt(0).toUpperCase();
-  renderHome(); renderChips(); renderCourses(); renderEvents();
-  renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu(); renderOrient();
+  drawAll();
   fromHash();
+  // videos.json（Vimeoの対応表）を読み込んで描き直す
+  fetch("videos.json", {cache:"no-cache"})
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(j){
+      if(!j) return;
+      Object.keys(j).forEach(function(k){ if(k.charAt(0)!=="_") VIDEOS[k]=j[k] });
+      drawAll();
+      fromHash();
+    })
+    .catch(function(){});
 }
 $("#gate-form").addEventListener("submit",function(e){
   e.preventDefault();
