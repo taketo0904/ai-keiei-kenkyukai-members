@@ -68,7 +68,7 @@ svg{display:block}
 @media(max-width:640px){.search{max-width:none}.search kbd{display:none}}
 
 /* ============ ボトムナビ ============ */
-.bottomnav{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--bd);height:var(--nav-h);display:grid;grid-template-columns:repeat(5,1fr)}
+.bottomnav{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--bd);height:var(--nav-h);display:grid;grid-template-columns:repeat(4,1fr)}
 .bottomnav button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:var(--tx-mu);transition:var(--t);font-size:10px;font-weight:700;padding:0}
 .bottomnav .bx{width:44px;height:26px;border-radius:13px;display:flex;align-items:center;justify-content:center;transition:var(--t)}
 .bottomnav button:hover{color:var(--tx)}
@@ -91,25 +91,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .sec:last-child{margin-bottom:0}
 
 /* ============ ホーム：イベントスケジュール ============ */
-.daybar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.daybar .d{font-family:var(--fe);font-weight:600;font-size:22px;color:var(--br);line-height:1}
-.daybar .w{font-size:13px;color:var(--br);font-weight:700}
-.daybar .today{font-size:10px;font-weight:700;color:#fff;background:var(--br);border-radius:10px;padding:3px 9px}
-.daybar .line{flex:1;height:1px;background:var(--tint2)}
-.railwrap{position:relative}
-.rail{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px;scroll-behavior:smooth;scrollbar-width:none}
-.rail::-webkit-scrollbar{display:none}
-.evcard{flex:0 0 216px;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:var(--sh);cursor:pointer;transition:var(--t)}
-.evcard:hover{border-color:var(--br);transform:translateY(-2px)}
-.evcard .tm{font-family:var(--fe);font-weight:600;font-size:14px;padding:11px 13px 9px;color:var(--tx-st)}
-.evcard .th{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;padding:10px;text-align:center;color:#fff;overflow:hidden}
-.evcard .th b{position:relative;font-size:15px;font-weight:900;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.3)}
-.evcard .bd{padding:11px 13px 13px}
-.evcard .ti{font-size:13px;font-weight:700;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:39px}
-.pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--gray);color:var(--tx-mu2);margin-top:9px}
-.pill.br{background:var(--tint);color:var(--br-dk)}
-.railbtn{position:absolute;top:50%;right:-8px;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--bd2);box-shadow:0 2px 8px rgba(35,35,35,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:var(--t)}
-.railbtn:hover{border-color:var(--br);color:var(--br)}
 
 /* ============ コースカード ============ */
 .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
@@ -342,23 +323,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 
   <div class="sec">
     <div class="sec-hd">
-      <h2>イベントスケジュール</h2>
-      <button class="more" data-go="events">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
-    </div>
-    <div class="daybar">
-      <span class="d en" id="today-d">8/23</span>
-      <span class="w" id="today-w">（日）</span>
-      <span class="today">今日</span>
-      <span class="line"></span>
-    </div>
-    <div class="railwrap">
-      <div class="rail" id="rail"></div>
-      <button class="railbtn" id="railnext" aria-label="次へ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
-    </div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-hd">
       <h2>はじめての方へ</h2>
       <button class="more" data-go="orient">オリエンテーションを見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
@@ -430,17 +394,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <p class="ph" id="cs-vidnote"></p>
   <div class="h3">動画の解説</div>
   <ul class="bullets" id="cs-notes"></ul>
-</section>
-
-<!-- ---------- イベント ---------- -->
-<section class="view" id="v-events" hidden>
-  <div class="crumbs"><a data-go="home">ホーム</a><span class="sep">›</span><span class="cur">イベント</span></div>
-  <div class="sec-hd"><h2>イベント</h2></div>
-  <div class="notice">
-    <b>次回研究会</b>
-    日程・会場は調整中です（最大126名）。登壇はハウスクラフト様。今回よりワークショップを初級・上級の2グループに分けて開催します。満足度を上げるためのグループ分けで、順位づけではありません。事前アンケートへのご回答をお願いします。
-  </div>
-  <div id="events"></div>
 </section>
 
 <!-- ---------- 会員名簿 ---------- -->
@@ -562,7 +515,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 <nav class="bottomnav" id="bnav">
   <button data-go="home" class="on"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg></span>ホーム</button>
   <button data-go="courses"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 4L2.5 8.5 12 13l9.5-4.5L12 4z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span>動画</button>
-  <button data-go="events"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></span>イベント</button>
   <button data-go="members"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8.5" r="3.3"/><path d="M2.8 19.5c0-3.2 2.8-5.2 6.2-5.2s6.2 2 6.2 5.2"/><path d="M16.5 6.2a3.3 3.3 0 0 1 0 6.4M17.5 14.6c2.3.5 3.8 2.2 3.8 4.9"/></svg></span>会員名簿</button>
   <button data-go="menu"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>メニュー</button>
 </nav>
@@ -748,24 +700,6 @@ var ORIENT={
   ]
 };
 
-var EVENTS=[
- {d:"8/23",w:"（日）",today:true,items:[
-  {tm:"11:00 - 13:00",t:"無料壁打ち会　11時の部",cat:"壁打ち会",gr:"わからなくてOK",gi:0},
-  {tm:"19:30 - 21:30",t:"【実演あり】見積のたたき台を30分でつくる",cat:"ウェビナー",gr:"見積 × AI 実演",gi:1},
-  {tm:"21:00 - 23:00",t:"無料壁打ち会　21時の部",cat:"壁打ち会",gr:"わからなくてOK",gi:2},
-  {tm:"21:00 - 22:00",t:"【AI集中月間 DAY1】まず社内の情報を1か所に集める",cat:"集中月間",gr:"DAY 1",gi:3}
- ]},
- {d:"8/24",w:"（月）",today:false,items:[
-  {tm:"11:00 - 13:00",t:"無料壁打ち会　11時の部",cat:"壁打ち会",gr:"わからなくてOK",gi:4},
-  {tm:"21:00 - 22:00",t:"【AI集中月間 DAY2】現場写真の整理を自動化する",cat:"集中月間",gr:"DAY 2",gi:5},
-  {tm:"21:00 - 23:00",t:"無料壁打ち会　21時の部",cat:"壁打ち会",gr:"わからなくてOK",gi:0}
- ]},
- {d:"8/26",w:"（水）",today:false,items:[
-  {tm:"19:00 - 21:30",t:"第◯回 AI経営研究会（登壇：ハウスクラフト様）",cat:"研究会",gr:"AI経営研究会",gi:1},
-  {tm:"21:30 - 22:00",t:"研究会のあとの交流タイム",cat:"研究会",gr:"交流タイム",gi:2}
- ]}
-];
-
 var SKILLS=["新築","リフォーム","設計","不動産","積算・見積","現場管理","集客・広報","採用"];
 var MEMBERS=[
  {co:"サンプル工務店",nm:"山田 太郎",area:"静岡県浜松市",skills:["新築","現場管理"],works:"注文住宅の新築を年間20棟。木造在来を中心に、平屋の設計も増えています。",msg:"見積作成にAIを使い始めて3ヶ月です。同じことをやっている方と情報交換したいです。",mail:"sample@example.co.jp",tel:"053-000-0000"},
@@ -871,14 +805,6 @@ function lessonRow(it){
 }
 
 function renderHome(){
-  var day=EVENTS[0];
-  $("#today-d").textContent=day.d; $("#today-w").textContent=day.w;
-  $("#rail").innerHTML=day.items.map(function(e){
-    return '<div class="evcard" data-toast="イベント詳細ページは準備中です">'
-     +'<div class="tm">'+esc(e.tm)+'</div>'
-     +'<div class="th" style="background:'+g(e.gi)+'"><b>'+esc(e.gr)+'</b></div>'
-     +'<div class="bd"><div class="ti">'+esc(e.t)+'</div><span class="pill">'+esc(e.cat)+'</span></div></div>';
-  }).join("");
   var on=0, om=0;
   ORIENT.groups.forEach(function(gp){ gp.items.forEach(function(x){ on++; om+=x.m }) });
   $("#home-orient").innerHTML='<div class="caselist"><button class="caserow" data-go="orient">'
@@ -984,21 +910,6 @@ function renderOrient(){
   }).join("");
 }
 
-function renderEvents(){
-  $("#events").innerHTML=EVENTS.map(function(day){
-    return '<div class="sec"><div class="daybar"><span class="d en">'+esc(day.d)+'</span>'
-      +'<span class="w">'+esc(day.w)+'</span>'
-      +(day.today?'<span class="today">今日</span>':'')
-      +'<span class="line"></span></div>'
-      +'<div class="rail">'+day.items.map(function(e){
-        return '<div class="evcard" data-toast="イベント詳細ページは準備中です">'
-         +'<div class="tm">'+esc(e.tm)+'</div>'
-         +'<div class="th" style="background:'+g(e.gi)+'"><b>'+esc(e.gr)+'</b></div>'
-         +'<div class="bd"><div class="ti">'+esc(e.t)+'</div><span class="pill">'+esc(e.cat)+'</span></div></div>';
-      }).join("")+'</div></div>';
-  }).join("");
-}
-
 var actSkill="";
 function renderMChips(){
   $("#m-chips").innerHTML=['<button class="chip'+(actSkill===""?" on":"")+'" data-skill="">すべて</button>']
@@ -1065,8 +976,8 @@ function renderMenu(){
 }
 
 /* ====== ルーティング ====== */
-var VIEWS=["home","courses","course","case","orient","events","members","cases","talk","services","menu"];
-var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",events:"events",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu"};
+var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","menu"];
+var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu"};
 function go(v,arg){
   if(VIEWS.indexOf(v)<0) v="home";
   VIEWS.forEach(function(id){ $("#v-"+id).hidden = (id!==v) });
@@ -1158,7 +1069,6 @@ document.addEventListener("keydown",function(e){
   if(e.key==="Escape"){ $("#modal").hidden=true; closeVideo(); }
   if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==="k"){ e.preventDefault(); $("#globalsearch").focus(); }
 });
-$("#railnext").addEventListener("click",function(){ $("#rail").scrollBy({left:340,behavior:"smooth"}) });
 $("#c-search").addEventListener("input",renderCourses);
 $("#m-search").addEventListener("input",renderMembers);
 $("#globalsearch").addEventListener("keydown",function(e){
@@ -1172,7 +1082,7 @@ window.addEventListener("hashchange",function(){ if(!$("#app").hidden) fromHash(
 /* ====== ログインゲート（デモ用・仮実装） ====== */
 var PASS="lifefund";
 function drawAll(){
-  renderHome(); renderChips(); renderCourses(); renderEvents();
+  renderHome(); renderChips(); renderCourses();
   renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu(); renderOrient();
 }
 function enter(mail){
