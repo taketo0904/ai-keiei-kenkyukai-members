@@ -40,6 +40,9 @@ svg{display:block}
 .gate-box .jp{font-size:16px;font-weight:700;margin-top:3px}
 .gate-box .lead{font-size:13px;color:var(--tx-mu);margin-top:12px;line-height:1.9}
 .gate-box label{display:block;font-size:12px;font-weight:700;margin:18px 0 6px}
+.gate-box .opt{margin:0}
+.gate-box .opt label{margin:0}
+.gate-box .opts label{margin:0}
 .gate-box input{width:100%;padding:11px 13px;border:1px solid var(--bd2);border-radius:var(--r-sm);font-family:var(--fj);font-size:14px;transition:var(--t)}
 .gate-box input:focus{outline:0;border-color:var(--br);box-shadow:0 0 0 3px var(--tint)}
 .gate-err{font-size:12px;color:var(--br-dk);margin-top:8px;display:none}
@@ -69,6 +72,8 @@ svg{display:block}
 
 /* ============ ボトムナビ ============ */
 .bottomnav{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--bd);height:var(--nav-h);display:grid;grid-template-columns:repeat(4,1fr)}
+.bottomnav.admin{grid-template-columns:repeat(5,1fr)}
+.bottomnav button[hidden]{display:none}
 .bottomnav button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:var(--tx-mu);transition:var(--t);font-size:10px;font-weight:700;padding:0}
 .bottomnav .bx{width:44px;height:26px;border-radius:13px;display:flex;align-items:center;justify-content:center;transition:var(--t)}
 .bottomnav button:hover{color:var(--tx)}
@@ -132,6 +137,39 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .caserow:hover .pl{background:var(--br);color:#fff}
 .caserow .ti{display:block;font-size:14px;font-weight:700;line-height:1.55}
 .caserow .m{display:block;font-size:11px;color:var(--tx-mu);margin-top:5px}
+/* ---- プロダクト切替 ---- */
+.psel{position:relative;flex-shrink:0}
+.psel button{display:flex;align-items:center;gap:7px;height:36px;padding:0 12px;border:1px solid var(--bd2);border-radius:var(--r-sm);background:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:var(--t);white-space:nowrap}
+.psel button:hover{border-color:var(--br);color:var(--br)}
+.psel .dot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.psel ul{position:absolute;top:42px;left:0;min-width:260px;background:#fff;border:1px solid var(--bd2);border-radius:var(--r);box-shadow:0 6px 24px rgba(35,35,35,.14);padding:6px;z-index:90;list-style:none}
+.psel ul[hidden]{display:none}
+.psel li button{width:100%;height:auto;padding:10px 12px;border:0;text-align:left;display:block;border-radius:var(--r-sm)}
+.psel li button:hover{background:var(--tint);color:inherit}
+.psel li b{display:block;font-size:13px}
+.psel li small{display:block;font-size:11px;color:var(--tx-mu);margin-top:2px;font-weight:400;line-height:1.6}
+.psel li .now{color:var(--br)}
+
+/* ---- 管理 ---- */
+.rolebadge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:var(--tx-st);color:#fff;letter-spacing:.04em}
+.rolebadge.admin{background:var(--br)}
+.adminbar{border-left:3px solid var(--br);background:var(--tint);border-radius:var(--r-sm);padding:13px 16px;font-size:13px;line-height:1.9;margin-bottom:24px}
+.adminbar b{display:block;font-size:11px;color:var(--br-dk);margin-bottom:3px}
+.atable{width:100%;border-collapse:collapse;font-size:13px}
+.atable th{text-align:left;font-size:11px;color:var(--tx-mu);font-weight:700;padding:8px 10px;background:var(--gray);border-bottom:1px solid var(--bd2)}
+.atable td{padding:8px 10px;border-bottom:1px solid var(--bd);vertical-align:top}
+.atable input,.atable textarea{width:100%;padding:8px 10px;border:1px solid var(--bd2);border-radius:6px;font-family:var(--fj);font-size:13px;transition:var(--t)}
+.atable input:focus,.atable textarea:focus{outline:0;border-color:var(--br);box-shadow:0 0 0 3px var(--tint)}
+.atable textarea{min-height:56px;resize:vertical}
+.atable .ok{color:var(--ok);font-size:11px;font-weight:700;white-space:nowrap}
+.atable .ng{color:var(--br-dk);font-size:11px;font-weight:700;white-space:nowrap}
+.atable .idcell{font-family:var(--fe);font-size:11px;color:var(--tx-mu);white-space:nowrap}
+.awrap{border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);overflow:auto;margin-bottom:18px}
+.arow-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.out{width:100%;min-height:180px;font-family:var(--fe);font-size:12px;padding:14px;border:1px solid var(--bd2);border-radius:var(--r-sm);background:var(--gray);line-height:1.7;resize:vertical}
+.mini-del{font-size:11px;font-weight:700;color:var(--br-dk);background:transparent;border:1px solid var(--bd2);border-radius:6px;padding:6px 10px;cursor:pointer;transition:var(--t);white-space:nowrap}
+.mini-del:hover{border-color:var(--br-dk)}
+
 .pending{padding:40px;text-align:center;color:var(--tx-mu);font-size:13px;line-height:1.9;border:1px dashed var(--bd2);border-radius:var(--r)}
 
 /* ============ タブ・チップ ============ */
@@ -274,6 +312,11 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     <div class="jp">AI経営研究会 会員サイト</div>
     <p class="lead">会員限定サイトです。ご入会時にお伝えしたメールアドレスと合言葉でログインしてください。</p>
     <form id="gate-form">
+      <label>ログインする種別</label>
+      <div class="opts two" style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <label class="opt" style="padding:9px 11px"><input type="radio" name="role" value="member" checked><span><span class="t" style="font-size:13px">会員</span><span class="d">閲覧のみ</span></span></label>
+        <label class="opt" style="padding:9px 11px"><input type="radio" name="role" value="admin"><span><span class="t" style="font-size:13px">管理者</span><span class="d">動画・名簿の更新</span></span></label>
+      </div>
       <label for="g-mail">メールアドレス</label>
       <input type="email" id="g-mail" autocomplete="username" placeholder="you@example.co.jp" required>
       <label for="g-pass">合言葉</label>
@@ -281,7 +324,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       <p class="gate-err" id="gate-err">合言葉が違います。ご不明な場合は事務局までご連絡ください。</p>
       <button class="btn btn--pri btn--w" type="submit" style="margin-top:18px">ログイン</button>
     </form>
-    <p class="gate-note"><b>※ 開発中のデモ用ゲートです。</b>現時点の認証はフロントエンドのみの仮実装で、セキュリティ要件は満たしていません。本番のログイン認証は杉山さんと設計のうえ実装します。<br>デモ用合言葉：<b>lifefund</b></p>
+    <p class="gate-note"><b>※ 開発中のデモ用ゲートです。</b>現時点の認証も管理者と会員の切り分けもフロントエンドのみの仮実装で、セキュリティ要件は満たしていません（合言葉はソースを見れば読めます）。本番のログイン認証と権限管理は杉山さんと設計のうえ実装します。<br>デモ用合言葉 — 会員：<b>lifefund</b> ／ 管理者：<b>lifefund-admin</b></p>
   </div>
 </div>
 
@@ -292,6 +335,12 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div class="logo" data-go="home">
     <i class="en">L</i>
     <span class="tt"><b>LIFEFUND</b><small>AI経営研究会</small></span>
+  </div>
+  <div class="psel">
+    <button id="psel-btn"><span class="dot" id="psel-dot"></span><span id="psel-name"></span>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <ul id="psel-list" hidden></ul>
   </div>
   <div class="search">
     <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
@@ -306,6 +355,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     <button class="icbtn" data-toast="ヘルプは準備中です" aria-label="ヘルプ">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.2a2.8 2.8 0 1 1 3.8 2.6c-.7.3-1 .9-1 1.6v.4"/><path d="M12 17.2v.01"/></svg>
     </button>
+    <span class="rolebadge" id="rolebadge">会員</span>
     <button class="me" data-go="menu"><span class="avatar" id="avatar">中</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878787" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
     </button>
@@ -504,6 +554,48 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div class="setlist" id="or-list"></div>
 </section>
 
+<!-- ---------- 管理 ---------- -->
+<section class="view" id="v-admin" hidden>
+  <div class="sec-hd"><h2>管理</h2></div>
+  <div class="adminbar">
+    <b>この画面での編集はブラウザの中だけです</b>
+    静的サイトのため、この画面から直接サーバーへ保存はできません。編集したら下の「出力」ボタンでJSONを取り出し、リポジトリの <code>videos.json</code> / <code>members.json</code> を差し替えてpushすると反映されます。
+  </div>
+  <div class="tabs">
+    <button data-atab="video" class="on">動画の登録</button>
+    <button data-atab="member">会員名簿の編集</button>
+  </div>
+
+  <div id="a-video">
+    <p class="cintro" style="margin-top:0;margin-bottom:18px">Vimeoにアップした動画のURLを貼り付けてください。全プロダクトの事例をまとめて表示しています。URLの形式は通常URL・限定公開のハッシュ付き・管理画面のURL・数字IDのどれでも構いません。</p>
+    <div class="awrap"><table class="atable">
+      <thead><tr><th style="width:70px">ID</th><th style="width:110px">プロダクト</th><th style="width:90px">分野</th><th>事例</th><th style="width:280px">Vimeo URL</th><th style="width:70px">判定</th></tr></thead>
+      <tbody id="a-video-rows"></tbody>
+    </table></div>
+    <div class="arow-actions">
+      <button class="btn btn--pri" id="a-video-out">videos.json を出力</button>
+      <button class="btn btn--gh" id="a-video-copy">コピー</button>
+      <button class="btn btn--gh" id="a-video-dl">ダウンロード</button>
+    </div>
+    <textarea class="out" id="a-video-json" readonly placeholder="「videos.json を出力」を押すとここに出ます"></textarea>
+  </div>
+
+  <div id="a-member" hidden>
+    <p class="cintro" style="margin-top:0;margin-bottom:18px">選択中のプロダクトの会員名簿を編集します。掲載可否は会員ご本人に確認のうえ反映してください。</p>
+    <div class="awrap"><table class="atable">
+      <thead><tr><th style="width:150px">会社名</th><th style="width:110px">氏名</th><th style="width:130px">エリア</th><th style="width:150px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>手がけた工事 / ひとこと</th><th style="width:160px">連絡先</th><th style="width:60px"></th></tr></thead>
+      <tbody id="a-member-rows"></tbody>
+    </table></div>
+    <div class="arow-actions">
+      <button class="btn btn--gh" id="a-member-add">＋ 会員を追加</button>
+      <button class="btn btn--pri" id="a-member-out">members.json を出力</button>
+      <button class="btn btn--gh" id="a-member-copy">コピー</button>
+      <button class="btn btn--gh" id="a-member-dl">ダウンロード</button>
+    </div>
+    <textarea class="out" id="a-member-json" readonly placeholder="「members.json を出力」を押すとここに出ます"></textarea>
+  </div>
+</section>
+
 <!-- ---------- メニュー ---------- -->
 <section class="view" id="v-menu" hidden>
   <div class="sec-hd"><h2>メニュー</h2></div>
@@ -516,6 +608,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <button data-go="home" class="on"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg></span>ホーム</button>
   <button data-go="courses"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 4L2.5 8.5 12 13l9.5-4.5L12 4z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span>動画</button>
   <button data-go="members"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8.5" r="3.3"/><path d="M2.8 19.5c0-3.2 2.8-5.2 6.2-5.2s6.2 2 6.2 5.2"/><path d="M16.5 6.2a3.3 3.3 0 0 1 0 6.4M17.5 14.6c2.3.5 3.8 2.2 3.8 4.9"/></svg></span>会員名簿</button>
+  <button data-go="admin" id="nav-admin" hidden><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l7.5 3.2v5c0 4.4-3 7.6-7.5 8.8-4.5-1.2-7.5-4.4-7.5-8.8v-5L12 3.5z"/><path d="M9.2 12.2l2 2 3.6-3.8"/></svg></span>管理</button>
   <button data-go="menu"><span class="bx"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>メニュー</button>
 </nav>
 </div>
@@ -571,10 +664,21 @@ var GRADS=[
 var g=function(i){return GRADS[i%GRADS.length]};
 
 /* ====== データ（すべてサンプル。実データ確定後に差し替え） ====== */
+/* ===== プロダクト ===== */
+var PRODUCTS=[
+ {id:"ai-keiei",name:"AI経営研究会",c:"#ED4903",d:"建築業の経営者向け。月1回の研究会と、分野別のAI活用事例動画。"},
+ {id:"startup", name:"スタートアップ支援",c:"#DA1D00",d:"Google Workspaceを基盤に、社内の情報を1か所へ集約する導入支援。"},
+ {id:"komon",   name:"AI顧問",c:"#ED6103",d:"自社業務へのAI導入を継続して伴走するプログラム。"},
+ {id:"kenshu",  name:"AI研修",c:"#232323",d:"職種別カリキュラムで社員向けに実施する研修プログラム。"}
+];
+var PID="ai-keiei";
+function prod(){ return PRODUCTS.filter(function(x){return x.id===PID})[0] || PRODUCTS[0] }
+function inProd(a){ return a.filter(function(x){ return (x.pid||"ai-keiei")===PID }) }
+
 /* 動画ジャンル＝Notion「建築業界特化のAI事例プラットフォーム」の分野。
    total は Notion 上の件数、items は当サイトへ取り込み済みの事例。 */
 var GENRES=[
- {id:"eigyo",t:"営業",gr:"営業",gi:0,total:14,
+ {id:"eigyo",pid:"ai-keiei",t:"営業",gr:"営業",gi:0,total:14,
   d:"提案資料、商談フィードバック、資金計画、顧客対応の返信まで。",
   items:[
    {id:"e1",t:"換気1種vs3種の比較スライドをChatGPT×Gensparkで数十分作成",
@@ -595,7 +699,7 @@ var GENRES=[
     notes:["自社らしい言い回しを10例ほど学習させる","事務的にならないよう一言添える枠を残す","金額・工期に関わる回答は必ず人が確認する"]}
   ]},
 
- {id:"sekkei",t:"設計",gr:"設計",gi:1,total:8,
+ {id:"sekkei",pid:"ai-keiei",t:"設計",gr:"設計",gi:1,total:8,
   d:"CADパースのフォトリアル化、法令検索、図面まわりの実務。",
   items:[
    {id:"s1",t:"ChatGPTでCADパースをフォトリアル化&部分修正（選択範囲編集で外構・車・素材を対話編集）",
@@ -612,11 +716,11 @@ var GENRES=[
     notes:["必ず出典の条文を併記させる","自社の運用ルールも同じノートに入れる","最終判断は有資格者が行う前提で運用する"]}
   ]},
 
- {id:"genba",t:"現場",gr:"現場",gi:2,total:0,
+ {id:"genba",pid:"ai-keiei",t:"現場",gr:"現場",gi:2,total:0,
   d:"現場写真の整理、報告書、職人さんとのやりとり。",
   items:[]},
 
- {id:"marke",t:"マーケ",gr:"マーケ",gi:3,total:8,
+ {id:"marke",pid:"ai-keiei",t:"マーケ",gr:"マーケ",gi:3,total:8,
   d:"施工事例の文章化、競合調査、写真素材づくり。",
   items:[
    {id:"m1",t:"ChatGPTで施工事例の文章作成を自動化！半日の作業が10分に短縮",
@@ -633,7 +737,7 @@ var GENRES=[
     notes:["合成であることを明示する運用ルールを決める","実在する施主と誤認される表現は避ける","建物側は一切加工しない"]}
   ]},
 
- {id:"kyotsu",t:"共通",gr:"共通",gi:4,total:8,
+ {id:"kyotsu",pid:"ai-keiei",t:"共通",gr:"共通",gi:4,total:8,
   d:"社内の情報検索、ニュース収集、画像編集など職種を問わない事例。",
   items:[
    {id:"k1",t:"NotebookLMで仕様書・FAQを横断検索し属人化を解消（検索時間80%削減）",
@@ -650,7 +754,7 @@ var GENRES=[
     notes:["修正指示は部位を限定して出す","元画像は必ず別で保管する","提案用と社内検討用でファイルを分ける"]}
   ]},
 
- {id:"reform",t:"リフォーム",gr:"リフォーム",gi:5,total:3,
+ {id:"reform",pid:"ai-keiei",t:"リフォーム",gr:"リフォーム",gi:5,total:3,
   d:"間取り図の3D化、リノベ提案のビジュアライズ。",
   items:[
    {id:"r1",t:"間取り図を瞬時に3D化！Geminiで実現する店舗リノベ・マンション提案の最速ビジュアライズ術",
@@ -667,7 +771,7 @@ var GENRES=[
     notes:["現地写真は明るい時間に正対して撮る","什器・サインの入れ替えに絞ると精度が高い","見積根拠には使わない"]}
   ]},
 
- {id:"fudosan",t:"不動産",gr:"不動産",gi:0,total:2,
+ {id:"fudosan",pid:"ai-keiei",t:"不動産",gr:"不動産",gi:0,total:2,
   d:"契約書・重要事項説明のチェック、土地仕入れの実務。",
   items:[
    {id:"f1",t:"契約書・重説チェックをAIに任せる！見落としゼロの最強実務術",
@@ -679,6 +783,20 @@ var GENRES=[
     sum:"営業分野と共通の事例。設備仕様の比較を施主目線の資料に落とし込む。",
     notes:["営業ジャンルにも同じ事例を掲載している"]}
   ]}
+,
+
+ /* ---- スタートアップ支援 ---- */
+ {id:"su-junbi",pid:"startup",t:"導入準備",gr:"導入準備",gi:1,total:0,d:"現状の棚卸しと、移行計画の立て方。",items:[]},
+ {id:"su-ikou",pid:"startup",t:"データ移行",gr:"データ移行",gi:2,total:0,d:"社内サーバー・他社クラウドからの移行手順。",items:[]},
+ {id:"su-teichaku",pid:"startup",t:"運用定着",gr:"運用定着",gi:3,total:0,d:"共有ドライブ・権限設計と、社内ルールの決め方。",items:[]},
+
+ /* ---- AI顧問 ---- */
+ {id:"km-tanaoroshi",pid:"komon",t:"業務の棚卸し",gr:"業務の棚卸し",gi:0,total:0,d:"どの業務から手をつけるかの優先順位づけ。",items:[]},
+ {id:"km-jissou",pid:"komon",t:"仕組みの実装",gr:"仕組みの実装",gi:4,total:0,d:"プロンプトと自動化の組み立て。",items:[]},
+
+ /* ---- AI研修 ---- */
+ {id:"ks-kiso",pid:"kenshu",t:"全社共通",gr:"全社共通",gi:5,total:0,d:"職種を問わず全員が受ける基礎回。",items:[]},
+ {id:"ks-shokushu",pid:"kenshu",t:"職種別",gr:"職種別",gi:2,total:0,d:"営業・設計・現場・事務それぞれの演習。",items:[]}
 ];
 
 /* オリエンテーションは動画ジャンルとは別建て */
@@ -702,24 +820,24 @@ var ORIENT={
 
 var SKILLS=["新築","リフォーム","設計","不動産","積算・見積","現場管理","集客・広報","採用"];
 var MEMBERS=[
- {co:"サンプル工務店",nm:"山田 太郎",area:"静岡県浜松市",skills:["新築","現場管理"],works:"注文住宅の新築を年間20棟。木造在来を中心に、平屋の設計も増えています。",msg:"見積作成にAIを使い始めて3ヶ月です。同じことをやっている方と情報交換したいです。",mail:"sample@example.co.jp",tel:"053-000-0000"},
- {co:"サンプル建設",nm:"佐藤 花子",area:"愛知県名古屋市",skills:["リフォーム","集客・広報"],works:"戸建てのリノベーションが中心。水まわりの改修から全面改装まで。",msg:"SNSの投稿づくりにAIを使っています。写真の選定まで自動化するのが目標です。",mail:"sample@example.co.jp",tel:"052-000-0000"},
- {co:"サンプル設計事務所",nm:"鈴木 一郎",area:"静岡県静岡市",skills:["設計","新築"],works:"住宅設計と店舗設計。年間15件ほど。",msg:"プラン検討の初期段階でAIを使っています。使いどころの相談に乗れます。",mail:"sample@example.co.jp",tel:"054-000-0000"},
- {co:"サンプルホーム",nm:"高橋 美咲",area:"神奈川県横浜市",skills:["新築","積算・見積"],works:"分譲住宅と注文住宅。年間30棟。",msg:"積算のデータ整理でつまずいています。同じ課題の方いませんか。",mail:"sample@example.co.jp",tel:"045-000-0000"},
- {co:"サンプル不動産",nm:"田中 健",area:"静岡県浜松市",skills:["不動産","集客・広報"],works:"売買仲介と土地活用の提案。相続相談も対応。",msg:"物件紹介文の作成を自動化しました。仕組みを共有できます。",mail:"sample@example.co.jp",tel:"053-000-0000"},
- {co:"サンプル住建",nm:"伊藤 直樹",area:"三重県四日市市",skills:["リフォーム","現場管理"],works:"改修工事が中心。年間80件ほどの小規模工事。",msg:"現場からの報告をチャットで集めて自動でまとめています。",mail:"sample@example.co.jp",tel:"059-000-0000"},
- {co:"サンプル工業",nm:"渡辺 由美",area:"岐阜県岐阜市",skills:["採用","集客・広報"],works:"新築とリフォームの両方。社員28名。",msg:"求人票の作成にAIを使い始めました。採用まわりの話をしたいです。",mail:"sample@example.co.jp",tel:"058-000-0000"},
- {co:"サンプル建築",nm:"中村 隆",area:"愛知県豊橋市",skills:["設計","積算・見積"],works:"住宅設計と施工。木造中心で年間12棟。",msg:"図面のチェック作業にAIを使えないか試しています。",mail:"sample@example.co.jp",tel:"0532-00-0000"}
+ {pid:"ai-keiei",co:"サンプル工務店",nm:"山田 太郎",area:"静岡県浜松市",skills:["新築","現場管理"],works:"注文住宅の新築を年間20棟。木造在来を中心に、平屋の設計も増えています。",msg:"見積作成にAIを使い始めて3ヶ月です。同じことをやっている方と情報交換したいです。",mail:"sample@example.co.jp",tel:"053-000-0000"},
+ {pid:"ai-keiei",co:"サンプル建設",nm:"佐藤 花子",area:"愛知県名古屋市",skills:["リフォーム","集客・広報"],works:"戸建てのリノベーションが中心。水まわりの改修から全面改装まで。",msg:"SNSの投稿づくりにAIを使っています。写真の選定まで自動化するのが目標です。",mail:"sample@example.co.jp",tel:"052-000-0000"},
+ {pid:"ai-keiei",co:"サンプル設計事務所",nm:"鈴木 一郎",area:"静岡県静岡市",skills:["設計","新築"],works:"住宅設計と店舗設計。年間15件ほど。",msg:"プラン検討の初期段階でAIを使っています。使いどころの相談に乗れます。",mail:"sample@example.co.jp",tel:"054-000-0000"},
+ {pid:"ai-keiei",co:"サンプルホーム",nm:"高橋 美咲",area:"神奈川県横浜市",skills:["新築","積算・見積"],works:"分譲住宅と注文住宅。年間30棟。",msg:"積算のデータ整理でつまずいています。同じ課題の方いませんか。",mail:"sample@example.co.jp",tel:"045-000-0000"},
+ {pid:"ai-keiei",co:"サンプル不動産",nm:"田中 健",area:"静岡県浜松市",skills:["不動産","集客・広報"],works:"売買仲介と土地活用の提案。相続相談も対応。",msg:"物件紹介文の作成を自動化しました。仕組みを共有できます。",mail:"sample@example.co.jp",tel:"053-000-0000"},
+ {pid:"ai-keiei",co:"サンプル住建",nm:"伊藤 直樹",area:"三重県四日市市",skills:["リフォーム","現場管理"],works:"改修工事が中心。年間80件ほどの小規模工事。",msg:"現場からの報告をチャットで集めて自動でまとめています。",mail:"sample@example.co.jp",tel:"059-000-0000"},
+ {pid:"ai-keiei",co:"サンプル工業",nm:"渡辺 由美",area:"岐阜県岐阜市",skills:["採用","集客・広報"],works:"新築とリフォームの両方。社員28名。",msg:"求人票の作成にAIを使い始めました。採用まわりの話をしたいです。",mail:"sample@example.co.jp",tel:"058-000-0000"},
+ {pid:"ai-keiei",co:"サンプル建築",nm:"中村 隆",area:"愛知県豊橋市",skills:["設計","積算・見積"],works:"住宅設計と施工。木造中心で年間12棟。",msg:"図面のチェック作業にAIを使えないか試しています。",mail:"sample@example.co.jp",tel:"0532-00-0000"}
 ];
 
 var CASES=[
- {co:"サンプル工務店 様",t:"現場写真の整理が週3時間から15分に",cat:"現場・施工",before:"3時間/週",after:"15分/週",gi:0,
+ {pid:"ai-keiei",co:"サンプル工務店 様",t:"現場写真の整理が週3時間から15分に",cat:"現場・施工",before:"3時間/週",after:"15分/週",gi:0,
   x:"撮った写真を現場ごとに振り分けて報告書に貼る作業に、毎週3時間かかっていました。研究会で聞いたやり方をそのまま真似したら初週で終わりました。"},
- {co:"サンプル建設 様",t:"見積作成が1件2日から半日に",cat:"営業・見積",before:"2日/件",after:"0.5日/件",gi:1,
+ {pid:"ai-keiei",co:"サンプル建設 様",t:"見積作成が1件2日から半日に",cat:"営業・見積",before:"2日/件",after:"0.5日/件",gi:1,
   x:"見積に丸2日かかっていて、提案が遅れることもありました。過去の見積を読ませる形にしてから半日で出せています。受注率も上がりました。"},
- {co:"サンプル設計事務所 様",t:"プラン初期案が10時間から2時間に",cat:"設計・プラン",before:"10時間",after:"2時間",gi:2,
+ {pid:"ai-keiei",co:"サンプル設計事務所 様",t:"プラン初期案が10時間から2時間に",cat:"設計・プラン",before:"10時間",after:"2時間",gi:2,
   x:"初期のプラン検討で悩む時間が長かったのですが、たたき台をAIに出させて直す形に変えました。出せる案の数が増えました。"},
- {co:"サンプル住建 様",t:"議事録づくりが毎回1時間からゼロに",cat:"経営・管理",before:"1時間/回",after:"0分",gi:3,
+ {pid:"ai-keiei",co:"サンプル住建 様",t:"議事録づくりが毎回1時間からゼロに",cat:"経営・管理",before:"1時間/回",after:"0分",gi:3,
   x:"打ち合わせのあとに議事録を書くのが負担でした。録音して自動で要約する形にしたら、確認だけで済むようになりました。"}
 ];
 
@@ -770,7 +888,7 @@ function findCase(id){
 }
 function allCases(){
   var out=[];
-  GENRES.forEach(function(gn){ gn.items.forEach(function(c){ out.push({c:c,gn:gn}) }) });
+  inProd(GENRES).forEach(function(gn){ gn.items.forEach(function(c){ out.push({c:c,gn:gn}) }) });
   return out;
 }
 function genreCard(gn){
@@ -812,13 +930,17 @@ function renderHome(){
    +'<span><span class="ti">オリエンテーション</span>'
    +'<span class="m">研究会の歩き方と会員サイトの使い方 ・ '+on+'本 ・ '+hhmm(om)+'</span></span>'
    +'<span class="gpill">まずはこちら</span></button></div>';
-  $("#home-courses").innerHTML=GENRES.map(genreCard).join("");
+  var gs=inProd(GENRES);
+  $("#home-courses").innerHTML = gs.length
+    ? gs.map(genreCard).join("")
+    : '<div class="pending">このプロダクトの分野はまだ登録されていません。</div>';
+  $("#home-orient").parentNode.hidden = (PID!=="ai-keiei");
 }
 
 var actCat="すべて";
 var actTab="find";
 function renderChips(){
-  var cats=["すべて"].concat(GENRES.map(function(x){return x.t}));
+  var cats=["すべて"].concat(inProd(GENRES).map(function(x){return x.t}));
   $("#c-chips").innerHTML=cats.map(function(c){
     return '<button class="chip'+(c===actCat?' on':'')+'" data-cat="'+esc(c)+'">'+esc(c)+'</button>';
   }).join("")
@@ -830,12 +952,12 @@ function renderCourses(){
   $("#c-chips").hidden = (actTab!=="new");
   if(actTab==="find"){
     $("#newlist").hidden=true; $("#courses").hidden=false;
-    var list=GENRES.filter(function(gn){
+    var list=inProd(GENRES).filter(function(gn){
       if(!q) return true;
       return (gn.t+gn.d).toLowerCase().indexOf(q)>=0
         || gn.items.some(function(c){ return (c.t+c.sum+c.tools.join("")).toLowerCase().indexOf(q)>=0 });
     });
-    $("#c-empty").textContent="該当する分野が見つかりませんでした。";
+    $("#c-empty").textContent = inProd(GENRES).length ? "該当する分野が見つかりませんでした。" : "このプロダクトの分野はまだ登録されていません。";
     $("#c-empty").hidden=list.length>0;
     $("#courses").innerHTML=list.map(genreCard).join("");
   } else {
@@ -917,7 +1039,7 @@ function renderMChips(){
 }
 function renderMembers(){
   var q=$("#m-search").value.trim().toLowerCase();
-  var list=MEMBERS.filter(function(m){
+  var list=inProd(MEMBERS).filter(function(m){
     if(actSkill && m.skills.indexOf(actSkill)<0) return false;
     if(!q) return true;
     return (m.co+m.nm+m.area+m.skills.join("")+m.works).toLowerCase().indexOf(q)>=0;
@@ -934,7 +1056,7 @@ function renderMembers(){
 }
 
 function renderCases(){
-  $("#cases").innerHTML=CASES.map(function(c){
+  $("#cases").innerHTML=inProd(CASES).map(function(c){
     return '<div class="ccard" data-toast="インタビュー本編は撮影後に公開します">'
      +'<div class="th" style="background:'+g(c.gi)+'"><b>'+esc(c.cat)+'</b></div>'
      +'<div class="bd"><div class="cat">'+esc(c.co)+'</div>'
@@ -976,15 +1098,17 @@ function renderMenu(){
 }
 
 /* ====== ルーティング ====== */
-var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","menu"];
-var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu"};
+var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","menu","admin"];
+var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu",admin:"admin"};
 function go(v,arg){
   if(VIEWS.indexOf(v)<0) v="home";
+  if(v==="admin" && ROLE!=="admin") v="home";
   VIEWS.forEach(function(id){ $("#v-"+id).hidden = (id!==v) });
   $$("#bnav button").forEach(function(b){ b.classList.toggle("on", b.dataset.go===NAVOF[v]) });
   if(v==="course") renderCourse(arg);
   if(v==="case") renderCase(arg);
   if(v==="orient") renderOrient();
+  if(v==="admin"){ renderAdminVideo(); renderAdminMember(); }
   var h = (v==="course"||v==="case") ? "#"+v+"/"+arg : "#"+v;
   if(location.hash!==h) history.replaceState(null,"",h);
   window.scrollTo({top:0,behavior:"smooth"});
@@ -1000,6 +1124,23 @@ function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearT
 
 /* ====== イベント ====== */
 document.addEventListener("click",function(e){
+  // プロダクト切替
+  if(e.target.closest("#psel-btn")){ $("#psel-list").hidden=!$("#psel-list").hidden; return; }
+  var pp=e.target.closest("[data-pid]");
+  if(pp){ $("#psel-list").hidden=true; switchProduct(pp.dataset.pid); return; }
+  if(!e.target.closest(".psel")) $("#psel-list").hidden=true;
+
+  // 管理タブ
+  var at=e.target.closest("[data-atab]");
+  if(at){
+    $$("[data-atab]").forEach(function(b){b.classList.toggle("on",b===at)});
+    $("#a-video").hidden = at.dataset.atab!=="video";
+    $("#a-member").hidden = at.dataset.atab!=="member";
+    return;
+  }
+  var md=e.target.closest("[data-mdel]");
+  if(md){ memberDraft().splice(+md.dataset.mdel,1); renderAdminMember(); return; }
+
   var lo=e.target.closest("[data-logout]");
   if(lo){ try{sessionStorage.removeItem("lf_member")}catch(x){} location.hash="#home"; location.reload(); return; }
 
@@ -1071,6 +1212,36 @@ document.addEventListener("keydown",function(e){
 });
 $("#c-search").addEventListener("input",renderCourses);
 $("#m-search").addEventListener("input",renderMembers);
+
+document.addEventListener("input",function(e){
+  var v=e.target.closest("[data-vid]");
+  if(v){
+    VEDIT[v.dataset.vid]=v.value.trim();
+    var cell=v.closest("tr").lastElementChild;
+    cell.innerHTML = v.value.trim()==="" ? '<span style="color:var(--tx-mu);font-size:11px">未設定</span>'
+      : (vimeoSrc(v.value.trim()) ? '<span class="ok">OK</span>' : '<span class="ng">形式NG</span>');
+    return;
+  }
+  var f=e.target.closest("[data-mf]");
+  if(f){
+    var tr=f.closest("tr"); var m=memberDraft()[+tr.dataset.mi];
+    var k=f.dataset.mf;
+    m[k] = (k==="skills") ? f.value.split(",").map(function(x){return x.trim()}).filter(Boolean) : f.value;
+  }
+});
+
+$("#a-video-out").addEventListener("click",function(){ $("#a-video-json").value=buildVideosJson(); toast("出力しました") });
+$("#a-video-copy").addEventListener("click",function(){ if(!$("#a-video-json").value) $("#a-video-json").value=buildVideosJson(); copyText($("#a-video-json").value) });
+$("#a-video-dl").addEventListener("click",function(){ download("videos.json", buildVideosJson()) });
+$("#a-member-add").addEventListener("click",function(){
+  memberDraft().push({pid:PID,co:"",nm:"",area:"",skills:[],works:"",msg:"",mail:"",tel:""});
+  renderAdminMember();
+  var rows=$("#a-member-rows").querySelectorAll("tr");
+  if(rows.length) rows[rows.length-1].querySelector("input").focus();
+});
+$("#a-member-out").addEventListener("click",function(){ $("#a-member-json").value=buildMembersJson(); toast("出力しました") });
+$("#a-member-copy").addEventListener("click",function(){ if(!$("#a-member-json").value) $("#a-member-json").value=buildMembersJson(); copyText($("#a-member-json").value) });
+$("#a-member-dl").addEventListener("click",function(){ download("members.json", buildMembersJson()) });
 $("#globalsearch").addEventListener("keydown",function(e){
   if(e.key==="Enter"){ $("#c-search").value=this.value; actCat="すべて"; actTab="find";
     $$("[data-tab]").forEach(function(b){b.classList.toggle("on",b.dataset.tab==="find")});
@@ -1079,37 +1250,162 @@ $("#globalsearch").addEventListener("keydown",function(e){
 $("#talk-form").addEventListener("submit",function(e){e.preventDefault();toast("TimeRexの予約URLは確定後に接続します")});
 window.addEventListener("hashchange",function(){ if(!$("#app").hidden) fromHash() });
 
+/* ====== プロダクト切替 ====== */
+function renderPsel(){
+  var p=prod();
+  $("#psel-name").textContent=p.name;
+  $("#psel-dot").style.background=p.c;
+  $("#psel-list").innerHTML=PRODUCTS.map(function(x){
+    var n=inProd_count(x.id);
+    return '<li><button data-pid="'+x.id+'">'
+      +'<b'+(x.id===PID?' class="now"':'')+'>'+esc(x.name)+(x.id===PID?' ・ 表示中':'')+'</b>'
+      +'<small>'+esc(x.d)+'<br>分野 '+n.g+'／会員 '+n.m+'名</small></button></li>';
+  }).join("");
+}
+function inProd_count(pid){
+  return {
+    g:GENRES.filter(function(x){return (x.pid||"ai-keiei")===pid}).length,
+    m:MEMBERS.filter(function(x){return (x.pid||"ai-keiei")===pid}).length
+  };
+}
+function switchProduct(pid){
+  PID=pid;
+  try{ sessionStorage.setItem("lf_pid",pid) }catch(e){}
+  actCat="すべて"; actSkill="";
+  $("#c-search").value=""; $("#m-search").value="";
+  renderPsel(); drawAll();
+  go("home");
+}
+
+/* ====== ロール ====== */
+var ROLE="member";
+function applyRole(){
+  var admin = (ROLE==="admin");
+  $("#rolebadge").textContent = admin ? "管理者" : "会員";
+  $("#rolebadge").className = "rolebadge"+(admin?" admin":"");
+  $("#nav-admin").hidden = !admin;
+  $("#bnav").classList.toggle("admin", admin);
+}
+
+/* ====== 管理：動画 ====== */
+var VEDIT={};
+function renderAdminVideo(){
+  var rows=[];
+  GENRES.forEach(function(gn){
+    var pname=(PRODUCTS.filter(function(x){return x.id===(gn.pid||"ai-keiei")})[0]||{}).name||"";
+    gn.items.forEach(function(c){
+      var cur = (c.id in VEDIT) ? VEDIT[c.id] : rawOf(VIDEOS[c.id]);
+      var ok = cur ? !!vimeoSrc(cur) : null;
+      rows.push('<tr><td class="idcell">'+c.id+'</td><td>'+esc(pname)+'</td><td>'+esc(gn.t)+'</td>'
+        +'<td>'+esc(c.t)+'</td>'
+        +'<td><input type="text" data-vid="'+c.id+'" value="'+esc(cur||"")+'" placeholder="https://vimeo.com/..."></td>'
+        +'<td>'+(cur===""||cur===null||cur===undefined ? '<span style="color:var(--tx-mu);font-size:11px">未設定</span>' : (ok?'<span class="ok">OK</span>':'<span class="ng">形式NG</span>'))+'</td></tr>');
+    });
+  });
+  $("#a-video-rows").innerHTML = rows.length ? rows.join("") : '<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--tx-mu)">事例がまだ登録されていません。</td></tr>';
+}
+function rawOf(v){ if(!v) return ""; return (typeof v==="object") ? (v.url||"") : String(v) }
+function buildVideosJson(){
+  var out={
+    "_使い方":"キーは事例ID、値はVimeoのURLか数字IDです。管理画面から出力しています。",
+    "_受け付けるURL":"vimeo.com/123456789 / vimeo.com/123456789/ハッシュ / vimeo.com/manage/videos/123456789 / player.vimeo.com/video/123456789?h=ハッシュ / 数字IDのみ"
+  };
+  GENRES.forEach(function(gn){ gn.items.forEach(function(c){
+    var cur = (c.id in VEDIT) ? VEDIT[c.id] : rawOf(VIDEOS[c.id]);
+    if(cur && vimeoSrc(cur)) out[c.id]=cur;
+  })});
+  return JSON.stringify(out,null,2);
+}
+
+/* ====== 管理：会員名簿 ====== */
+var MEDIT=null;
+function memberDraft(){
+  if(!MEDIT) MEDIT=JSON.parse(JSON.stringify(MEMBERS));
+  return MEDIT;
+}
+function renderAdminMember(){
+  var list=memberDraft();
+  var rows=list.map(function(m,i){
+    if((m.pid||"ai-keiei")!==PID) return "";
+    return '<tr data-mi="'+i+'">'
+     +'<td><input data-mf="co" value="'+esc(m.co||"")+'"></td>'
+     +'<td><input data-mf="nm" value="'+esc(m.nm||"")+'"></td>'
+     +'<td><input data-mf="area" value="'+esc(m.area||"")+'"></td>'
+     +'<td><input data-mf="skills" value="'+esc((m.skills||[]).join(", "))+'"></td>'
+     +'<td><textarea data-mf="works" placeholder="手がけた工事">'+esc(m.works||"")+'</textarea>'
+     +'<textarea data-mf="msg" placeholder="ひとこと" style="margin-top:6px">'+esc(m.msg||"")+'</textarea></td>'
+     +'<td><input data-mf="mail" value="'+esc(m.mail||"")+'" placeholder="メール">'
+     +'<input data-mf="tel" value="'+esc(m.tel||"")+'" placeholder="電話" style="margin-top:6px"></td>'
+     +'<td><button class="mini-del" data-mdel="'+i+'">削除</button></td></tr>';
+  }).join("");
+  $("#a-member-rows").innerHTML = rows || '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--tx-mu)">このプロダクトの会員はまだ登録されていません。</td></tr>';
+}
+function buildMembersJson(){
+  return JSON.stringify({ members: memberDraft() }, null, 2);
+}
+function download(name,text){
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([text],{type:"application/json"}));
+  a.download=name; document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove() },0);
+}
+function copyText(t){
+  navigator.clipboard.writeText(t).then(function(){toast("コピーしました")},function(){
+    var ta=document.createElement("textarea"); ta.value=t; document.body.appendChild(ta);
+    ta.select(); document.execCommand("copy"); ta.remove(); toast("コピーしました");
+  });
+}
+
 /* ====== ログインゲート（デモ用・仮実装） ====== */
 var PASS="lifefund";
+var PASS_ADMIN="lifefund-admin";
 function drawAll(){
   renderHome(); renderChips(); renderCourses();
   renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu(); renderOrient();
 }
-function enter(mail){
+function enter(mail,role){
+  ROLE = (role==="admin") ? "admin" : "member";
+  try{ PID = sessionStorage.getItem("lf_pid") || PID }catch(e){}
   $("#gate").style.display="none";
   $("#app").hidden=false;
   $("#avatar").textContent=(mail||"会").charAt(0).toUpperCase();
-  drawAll();
-  fromHash();
-  // videos.json（Vimeoの対応表）を読み込んで描き直す
-  fetch("videos.json", {cache:"no-cache"})
+  applyRole(); renderPsel(); drawAll(); fromHash();
+
+  // videos.json（Vimeoの対応表）
+  fetch("videos.json",{cache:"no-cache"})
     .then(function(r){ return r.ok ? r.json() : null })
     .then(function(j){
       if(!j) return;
       Object.keys(j).forEach(function(k){ if(k.charAt(0)!=="_") VIDEOS[k]=j[k] });
-      drawAll();
-      fromHash();
-    })
-    .catch(function(){});
+      drawAll(); fromHash();
+    }).catch(function(){});
+
+  // members.json（会員名簿）※あれば内蔵データを置き換える
+  fetch("members.json",{cache:"no-cache"})
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(j){
+      if(!j || !j.members || !j.members.length) return;
+      MEMBERS.length=0;
+      j.members.forEach(function(m){ MEMBERS.push(m) });
+      MEDIT=null;
+      renderPsel(); drawAll(); fromHash();
+    }).catch(function(){});
 }
 $("#gate-form").addEventListener("submit",function(e){
   e.preventDefault();
-  if($("#g-pass").value!==PASS){ $("#gate-err").classList.add("on"); return; }
+  var role=(document.querySelector('input[name="role"]:checked')||{}).value||"member";
+  var want=(role==="admin")?PASS_ADMIN:PASS;
+  if($("#g-pass").value!==want){
+    $("#gate-err").textContent = (role==="admin")
+      ? "管理者の合言葉が違います。"
+      : "合言葉が違います。ご不明な場合は事務局までご連絡ください。";
+    $("#gate-err").classList.add("on"); return;
+  }
   var mail=$("#g-mail").value.trim();
-  try{ sessionStorage.setItem("lf_member",mail) }catch(x){}
-  enter(mail);
+  try{ sessionStorage.setItem("lf_member",mail); sessionStorage.setItem("lf_role",role) }catch(x){}
+  enter(mail,role);
 });
-try{ var sv=sessionStorage.getItem("lf_member"); if(sv) enter(sv); }catch(x){}
+try{ var sv=sessionStorage.getItem("lf_member"); if(sv) enter(sv, sessionStorage.getItem("lf_role")); }catch(x){}
 })();
 </script>
 </body>
