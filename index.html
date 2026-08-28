@@ -4,22 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>AI経営研究会 会員サイト</title>
+<title>建築AI経営研究会 会員サイト</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --br:#ED4903; --br-dk:#DA1D00; --br-lt:#FA863E; --br-ac:#ED6103;
+  /* ロゴ「建築業界を高生産産業へ」のグラデーション：紫 → 青 → シアン */
+  --br:#7B6EF0; --br-dk:#6247DE; --br-lt:#A78BFA; --br-ac:#4FD3E4;
+  --br-violet:#8B5CF6; --br-blue:#5B8DEF; --br-cyan:#4FD3E4;
   --tx:#333333; --tx-st:#232323; --tx-mu:#878787; --tx-mu2:#676767;
-  --bd:#EEEEEE; --bd2:#E0E0E0; --sf:#FFFFFF; --tint:#FFF5F0; --tint2:#FFF0E7; --gray:#F5F5F5;
-  --ok:#3AC24C;
+  --bd:#EEEEEE; --bd2:#E0E0E0; --sf:#FFFFFF;
+  --tint:#F2F0FE; --tint2:#E9E5FD; --gray:#F5F5F5; --ok:#22B8A6;
   --fe:"Montserrat",sans-serif;
   --fj:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
   --t:.2s;
   --r:12px; --r-sm:8px;
   --sh:0 1px 3px rgba(35,35,35,.06), 0 1px 2px rgba(35,35,35,.04);
   --nav-h:64px;
+  --logo-grad:linear-gradient(90deg,#8B5CF6,#5B8DEF 55%,#4FD3E4);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--fj);color:var(--tx);background:var(--sf);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -31,10 +34,10 @@ svg{display:block}
 
 /* ============ ログインゲート ============ */
 #gate{position:fixed;inset:0;z-index:300;background:var(--tx-st);display:flex;align-items:center;justify-content:center;padding:24px}
-#gate::before{content:"";position:absolute;inset:0;background:linear-gradient(45deg,#DA1D00,#ED610399 30%,transparent 55%);opacity:.9}
+#gate::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#8B5CF6,#5B8DEF 50%,#4FD3E4);opacity:.92}
 .gate-box{position:relative;background:#fff;width:100%;max-width:400px;padding:36px 32px;border-radius:var(--r)}
 .gate-logo{display:flex;align-items:center;gap:9px;margin-bottom:22px}
-.gate-logo i{width:16px;height:16px;background:var(--br);display:block;border-radius:3px}
+.gate-logo i{width:16px;height:16px;background:var(--logo-grad);display:block;border-radius:3px}
 .gate-logo b{font-family:var(--fe);font-weight:600;font-size:16px;letter-spacing:.05em}
 .gate-box h1{font-family:var(--fe);font-weight:600;font-size:34px;line-height:1.1}
 .gate-box .jp{font-size:16px;font-weight:700;margin-top:3px}
@@ -53,7 +56,7 @@ svg{display:block}
 /* ============ トップバー ============ */
 .topbar{position:sticky;top:0;z-index:80;background:#fff;border-bottom:1px solid var(--bd);height:56px;display:flex;align-items:center;gap:20px;padding:0 20px}
 .logo{display:flex;align-items:center;gap:9px;flex-shrink:0;cursor:pointer}
-.logo i{width:26px;height:26px;background:var(--br);border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fe);font-weight:700;font-size:13px}
+.logo i{width:26px;height:26px;background:var(--logo-grad);border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fe);font-weight:700;font-size:13px}
 .logo .tt{line-height:1.15}
 .logo b{display:block;font-family:var(--fe);font-weight:600;font-size:15px;letter-spacing:.04em;color:var(--tx-st)}
 .logo small{display:block;font-size:9px;color:var(--br);font-weight:700;letter-spacing:.06em}
@@ -118,7 +121,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .prow dt{font-size:12px;font-weight:700;color:var(--tx-mu);padding-top:3px}
 .prow dd{margin:0}
 .ptag{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:4px;margin:0 5px 5px 0}
-.ptag.cat{background:#EAF2FF;color:#2C5FA8}
+.ptag.cat{background:#E4F7F9;color:#1B7E8A}
 .ptag.tool{background:var(--tint);color:var(--br-dk)}
 .ptag.field{background:var(--tint2);color:var(--br-dk)}
 .vidbox{aspect-ratio:16/9;max-width:720px;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;border-radius:var(--r);overflow:hidden;margin:20px 0 8px}
@@ -129,6 +132,9 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .h3{font-size:17px;font-weight:700;margin:28px 0 10px}
 .bullets{margin:0;padding-left:20px;font-size:14px;line-height:2}
 .bullets li{margin-bottom:4px}
+.qa{border-left:3px solid var(--bd2);padding:0 0 0 18px;margin-bottom:24px}
+.qa h4{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--tx-st)}
+.qa p{font-size:14px;line-height:2;color:var(--tx-mu2)}
 .caselist{border:1px solid var(--bd);border-radius:var(--r);background:#fff;box-shadow:var(--sh);overflow:hidden}
 .caserow{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;padding:16px;border-bottom:1px solid var(--bd);cursor:pointer;transition:var(--t);width:100%;background:#fff;border-left:0;border-right:0;border-top:0;text-align:left}
 .caserow:last-child{border-bottom:0}
@@ -169,6 +175,31 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .out{width:100%;min-height:180px;font-family:var(--fe);font-size:12px;padding:14px;border:1px solid var(--bd2);border-radius:var(--r-sm);background:var(--gray);line-height:1.7;resize:vertical}
 .mini-del{font-size:11px;font-weight:700;color:var(--br-dk);background:transparent;border:1px solid var(--bd2);border-radius:6px;padding:6px 10px;cursor:pointer;transition:var(--t);white-space:nowrap}
 .mini-del:hover{border-color:var(--br-dk)}
+
+.vision{border-radius:var(--r);padding:36px 32px;color:#fff;margin-bottom:28px;background:var(--logo-grad)}
+.vision-en{font-weight:600;font-size:12px;letter-spacing:.14em;opacity:.85}
+.vision-h{font-size:30px;font-weight:900;line-height:1.35;margin:6px 0 14px}
+.vision-l{font-size:14px;line-height:2.1;opacity:.95}
+.vision-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.vision-3 div{background:rgba(255,255,255,.14);border-radius:var(--r-sm);padding:16px}
+.vision-3 b{display:block;font-size:14px;margin-bottom:6px}
+.vision-3 span{font-size:12px;line-height:1.9;opacity:.92}
+@media(max-width:820px){.vision{padding:26px 20px}.vision-h{font-size:22px}.vision-3{grid-template-columns:1fr}}
+
+.talkbox{display:flex;gap:24px;align-items:center;justify-content:space-between;border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);padding:22px;flex-wrap:wrap}
+.talkbox b{display:block;font-size:16px;margin-bottom:8px}
+.talkbox p{font-size:13px;line-height:1.95;color:var(--tx-mu2);max-width:660px}
+.talkbox .btn{flex-shrink:0}
+
+.arcbox{border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:16px}
+.arcbox-hd{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--gray);border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.arcbox-hd .no{font-family:var(--fe);font-weight:600;font-size:20px;background:var(--logo-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.arcbox-hd h3{flex:1;min-width:180px;font-size:15px;font-weight:700}
+.arcbox-hd time{font-family:var(--fe);font-size:12px;color:var(--tx-mu)}
+
+.tips{display:flex;align-items:center;gap:10px;background:var(--tint);border:1px solid var(--tint2);border-radius:var(--r-sm);padding:10px 14px;margin:0 20px 0 0;font-size:12px;font-weight:700;color:var(--br-dk);cursor:pointer;transition:var(--t);white-space:nowrap;flex-shrink:0}
+.tips:hover{border-color:var(--br)}
+@media(max-width:1080px){.tips{display:none}}
 
 .pending{padding:40px;text-align:center;color:var(--tx-mu);font-size:13px;line-height:1.9;border:1px dashed var(--bd2);border-radius:var(--r)}
 
@@ -309,7 +340,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div class="gate-box">
     <div class="gate-logo"><i></i><b>LIFEFUND</b></div>
     <h1 class="en">MEMBERS</h1>
-    <div class="jp">AI経営研究会 会員サイト</div>
+    <div class="jp">建築AI経営研究会 会員サイト</div>
     <p class="lead">会員限定サイトです。ご入会時にお伝えしたメールアドレスと合言葉でログインしてください。</p>
     <form id="gate-form">
       <label>ログインする種別</label>
@@ -334,7 +365,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 <div class="topbar">
   <div class="logo" data-go="home">
     <i class="en">L</i>
-    <span class="tt"><b>LIFEFUND</b><small>AI経営研究会</small></span>
+    <span class="tt"><b>LIFEFUND</b><small>建築AI経営研究会</small></span>
   </div>
   <div class="psel">
     <button id="psel-btn"><span class="dot" id="psel-dot"></span><span id="psel-name"></span>
@@ -355,6 +386,10 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     <button class="icbtn" data-toast="ヘルプは準備中です" aria-label="ヘルプ">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.2a2.8 2.8 0 1 1 3.8 2.6c-.7.3-1 .9-1 1.6v.4"/><path d="M12 17.2v.01"/></svg>
     </button>
+    <button class="tips" data-go="orient">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5" stroke-linecap="round"/><path d="M12 7.6v.01" stroke-linecap="round"/></svg>
+      はじめての方へ
+    </button>
     <span class="rolebadge" id="rolebadge">会員</span>
     <button class="me" data-go="menu"><span class="avatar" id="avatar">中</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878787" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
@@ -366,25 +401,93 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 
 <!-- ---------- ホーム ---------- -->
 <section class="view" id="v-home">
+
+  <!-- ビジョン -->
+  <div class="vision" id="vision">
+    <div class="vision-en en">VISION</div>
+    <h2 class="vision-h">建築業界を、高生産産業へ。</h2>
+    <p class="vision-l">職人の勘と経験でしか回らなかった仕事に、AIという道具を足す。<br>
+    人を増やさずに、いい家を、いい仕事を、無理なく届けられる会社を増やす。<br>
+    そのやり方を、集まった経営者どうしで持ち寄って磨いていく場です。</p>
+    <div class="vision-3">
+      <div><b>①　隠さず持ち寄る</b><span>うまくいったことも、失敗も、そのまま共有する。競合ではなく、同じ課題を持つ仲間として集まっています。</span></div>
+      <div><b>②　明日から動かせる形にする</b><span>抽象論はやりません。プロンプトも手順も、そのまま自社に持ち帰れる粒度まで落とします。</span></div>
+      <div><b>③　一社の成果を、業界の標準にする</b><span>1社でうまくいったやり方を汎用化して、業界全体の生産性を押し上げていきます。</span></div>
+    </div>
+  </div>
+
   <div class="notice">
     <b>お知らせ</b>
     9月研究会より会費が月額10,000円に変わります。あわせて「無料AI顧問」は「無料壁打ち会」に名称変更し、運営からご案内する定例面談の形になります。
   </div>
 
-  <div class="sec">
+  <!-- ① オリエンテーション -->
+  <div class="sec" id="sec-orient">
     <div class="sec-hd">
       <h2>はじめての方へ</h2>
-      <button class="more" data-go="orient">オリエンテーションを見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button class="more" data-go="orient">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
     <div id="home-orient"></div>
   </div>
 
+  <!-- ② 事例インタビュー -->
   <div class="sec">
     <div class="sec-hd">
-      <h2>分野から探す</h2>
+      <h2>事例インタビュー</h2>
+      <button class="more" data-go="cases">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <p class="mk-sub" style="margin:0 0 16px">入会して、実際に何がどう変わったか。動画と記事の両方でご覧いただけます。</p>
+    <div class="cgrid" id="home-cases"></div>
+  </div>
+
+  <!-- ③ サービス紹介 -->
+  <div class="sec">
+    <div class="sec-hd">
+      <h2>サービス紹介</h2>
+      <button class="more" data-go="services">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="cgrid" id="home-services"></div>
+  </div>
+
+  <!-- ④ 事例動画 -->
+  <div class="sec">
+    <div class="sec-hd">
+      <h2>事例動画（分野から探す）</h2>
       <button class="more" data-go="courses">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
     <div class="cgrid" id="home-courses"></div>
+  </div>
+
+  <!-- 研究会アーカイブ -->
+  <div class="sec" id="sec-archive">
+    <div class="sec-hd"><h2>過去の研究会</h2></div>
+    <p class="mk-sub" style="margin:0 0 16px">当日の講座動画と、登壇資料・ワークショップ課題をまとめています。</p>
+    <div id="home-archive"></div>
+  </div>
+
+  <!-- ⑤ 無料壁打ち会 -->
+  <div class="sec">
+    <div class="sec-hd">
+      <h2>無料壁打ち会</h2>
+      <button class="more" data-go="talk">くわしく見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="talkbox">
+      <div>
+        <b>AI活用の困りごとを、運営と一緒に整理する時間です。</b>
+        <p>その場で全部解決しなくて大丈夫です。何から手をつければいいか分からない段階でも構いません。参考になる動画や資料もその場でご案内します。研究会当日にその場で初回のご予約をお取りしています。</p>
+      </div>
+      <button class="btn btn--pri" data-go="talk">予約する</button>
+    </div>
+  </div>
+
+  <!-- ⑥ 会員名簿 -->
+  <div class="sec">
+    <div class="sec-hd">
+      <h2>会員名簿</h2>
+      <button class="more" data-go="members">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <p class="mk-sub" style="margin:0 0 16px">どんな会社の、どんな方が参加しているか。次の研究会で話しかけるきっかけに。</p>
+    <div class="members" id="home-members"></div>
   </div>
 </section>
 
@@ -471,12 +574,33 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 <section class="view" id="v-cases" hidden>
   <div class="crumbs"><a data-go="menu">メニュー</a><span class="sep">›</span><span class="cur">事例インタビュー</span></div>
   <div class="sec-hd"><h2>事例インタビュー</h2></div>
-  <p class="cintro" style="margin-top:0;margin-bottom:18px">研究会に入って、実際に何がどう変わったか。技術的な細かい話よりも、業務がどれだけ楽になったかを会員の言葉で聞いています。</p>
+  <p class="cintro" style="margin-top:0;margin-bottom:18px">研究会に入って、実際に何がどう変わったか。動画と記事の両方でご覧いただけます。技術的な細かい話よりも、業務がどれだけ楽になったかを会員の言葉で聞いています。</p>
   <div class="notice">
     <b>撮影予定</b>
-    次回研究会の休憩時間に、3〜5社のインタビュー撮影を行います。「研究会を知ったきっかけ」「入会して感じた違い」「具体的な業務改善」を1人5〜10分で伺います。ご協力いただける方は運営までお声がけください。
+    次回研究会の休憩時間に、3〜5社の撮影を行います。ただし当日の限られた時間では記事にできる深さまで聞き切れないため、記事化する分は後日あらためて取材のお時間をいただく想定です。ご協力いただける方は運営までお声がけください。
   </div>
   <div class="cgrid" id="cases"></div>
+</section>
+
+<!-- ---------- インタビュー詳細 ---------- -->
+<section class="view" id="v-interview" hidden>
+  <div class="crumbs">
+    <a data-go="home">ホーム</a><span class="sep">›</span>
+    <a data-go="cases">事例インタビュー</a><span class="sep">›</span>
+    <span class="cur" id="iv-crumb"></span>
+  </div>
+  <div class="ctitle"><h1 id="iv-title"></h1></div>
+  <div class="cmeta"><span id="iv-co"></span><span id="iv-cat"></span></div>
+
+  <div class="ba" style="max-width:460px" id="iv-ba"></div>
+
+  <div class="vidbox" id="iv-vid"></div>
+  <p class="ph" id="iv-vidnote"></p>
+
+  <div class="h3">インタビュー記事</div>
+  <div id="iv-article"></div>
+
+  <div class="notice" id="iv-pitch" style="margin-top:28px"></div>
 </section>
 
 <!-- ---------- 壁打ち会 ---------- -->
@@ -583,7 +707,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div id="a-member" hidden>
     <p class="cintro" style="margin-top:0;margin-bottom:18px">選択中のプロダクトの会員名簿を編集します。掲載可否は会員ご本人に確認のうえ反映してください。</p>
     <div class="awrap"><table class="atable">
-      <thead><tr><th style="width:150px">会社名</th><th style="width:110px">氏名</th><th style="width:130px">エリア</th><th style="width:150px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>手がけた工事 / ひとこと</th><th style="width:160px">連絡先</th><th style="width:60px"></th></tr></thead>
+      <thead><tr><th style="width:140px">会社名</th><th style="width:100px">氏名</th><th style="width:120px">エリア</th><th style="width:90px">入会<br><span style="font-weight:400">YYYY-MM</span></th><th style="width:140px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>施工範囲 / 手がけた工事 / ひとこと / 自由記述</th><th style="width:150px">メール</th><th style="width:56px"></th></tr></thead>
       <tbody id="a-member-rows"></tbody>
     </table></div>
     <div class="arow-actions">
@@ -627,9 +751,12 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     <div class="modal-bd">
       <dl>
         <dt>エリア</dt><dd id="md-area"></dd>
+        <dt>入会</dt><dd id="md-joined"></dd>
         <dt>得意分野</dt><dd id="md-skill"></dd>
+        <dt>施工範囲</dt><dd id="md-scope"></dd>
         <dt>手がけた工事</dt><dd id="md-works"></dd>
         <dt>ひとこと</dt><dd id="md-msg"></dd>
+        <dt>自由記述</dt><dd id="md-free"></dd>
         <dt>連絡先</dt><dd id="md-contact"></dd>
       </dl>
     </div>
@@ -654,22 +781,22 @@ var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return({'&':'
 
 /* 見出しグラフィックの背景（LIFEFUNDのグラデーション） */
 var GRADS=[
- "linear-gradient(45deg,#DA1D00,#ED6103 55%,#FA863E)",
- "linear-gradient(120deg,#232323,#ED4903 70%,#FA863E)",
- "linear-gradient(200deg,#ED4903,#DA1D00 60%,#232323)",
- "linear-gradient(30deg,#ED6103,#FA863E 55%,#ED4903)",
- "linear-gradient(160deg,#232323,#DA1D00 65%,#ED6103)",
- "linear-gradient(75deg,#DA1D00,#232323 60%,#ED4903)"
+ "linear-gradient(90deg,#8B5CF6,#5B8DEF 55%,#4FD3E4)",
+ "linear-gradient(135deg,#6247DE,#7B6EF0 50%,#5B8DEF)",
+ "linear-gradient(120deg,#5B8DEF,#4FD3E4 70%,#7FE3EA)",
+ "linear-gradient(60deg,#8B5CF6,#A78BFA 60%,#5B8DEF)",
+ "linear-gradient(160deg,#232323,#6247DE 60%,#5B8DEF)",
+ "linear-gradient(45deg,#4FD3E4,#5B8DEF 55%,#8B5CF6)"
 ];
 var g=function(i){return GRADS[i%GRADS.length]};
 
 /* ====== データ（すべてサンプル。実データ確定後に差し替え） ====== */
 /* ===== プロダクト ===== */
 var PRODUCTS=[
- {id:"ai-keiei",name:"AI経営研究会",c:"#ED4903",d:"建築業の経営者向け。月1回の研究会と、分野別のAI活用事例動画。"},
- {id:"startup", name:"スタートアップ支援",c:"#DA1D00",d:"Google Workspaceを基盤に、社内の情報を1か所へ集約する導入支援。"},
- {id:"komon",   name:"AI顧問",c:"#ED6103",d:"自社業務へのAI導入を継続して伴走するプログラム。"},
- {id:"kenshu",  name:"AI研修",c:"#232323",d:"職種別カリキュラムで社員向けに実施する研修プログラム。"}
+ {id:"ai-keiei",name:"建築AI経営研究会",c:"#8B5CF6",d:"建築業の経営者向け。月1回の研究会と、分野別のAI活用事例動画。"},
+ {id:"startup", name:"スタートアップ支援",c:"#5B8DEF",d:"Google Workspaceを基盤に、社内の情報を1か所へ集約する導入支援。"},
+ {id:"komon",   name:"AI顧問",c:"#4FD3E4",d:"自社業務へのAI導入を継続して伴走するプログラム。"},
+ {id:"kenshu",  name:"AI研修",c:"#6247DE",d:"職種別カリキュラムで社員向けに実施する研修プログラム。"}
 ];
 var PID="ai-keiei";
 function prod(){ return PRODUCTS.filter(function(x){return x.id===PID})[0] || PRODUCTS[0] }
@@ -801,44 +928,125 @@ var GENRES=[
 
 /* オリエンテーションは動画ジャンルとは別建て */
 var ORIENT={
-  intro:"AI経営研究会にご入会いただきありがとうございます。研究会の進み方と、この会員サイトの使い方をまとめています。まずはこちらからご覧ください。",
+  intro:"建築AI経営研究会にご入会いただきありがとうございます。研究会の進み方と、この会員サイトの使い方をまとめています。まずはこちらからご覧ください。",
   groups:[
    {t:"入会してまずやること",items:[
-    {id:"o2",t:"会員サイトの初期設定",k:"動画",m:2,sp:"事務局"},
-    {id:"o3",t:"会員限定チャットへの参加方法",k:"動画",m:3,sp:"事務局"},
-    {id:"o4",t:"研究会の年間スケジュールを確認する",k:"動画",m:2,sp:"事務局"},
-    {id:"o5",t:"無料壁打ち会の予約のしかた",k:"動画",m:3,sp:"事務局"}]},
+    {id:"o1",t:"会員サイトの初期設定",k:"動画",m:2,sp:"事務局"},
+    {id:"o2",t:"会員限定チャットへの参加方法",k:"動画",m:3,sp:"事務局"},
+    {id:"o3",t:"研究会の年間スケジュールを確認する",k:"動画",m:2,sp:"事務局"},
+    {id:"o4",t:"無料壁打ち会の予約のしかた",k:"動画",m:3,sp:"事務局"},
+    {id:"o5",t:"会員名簿の使い方と掲載範囲の決め方",k:"動画",m:3,sp:"事務局"}]},
    {t:"研究会の歩き方",items:[
-    {id:"o7",t:"研究会はこう進みます（1日の流れ）",k:"動画",m:5,sp:"事務局"},
-    {id:"o8",t:"ワークショップの初級・上級について",k:"動画",m:4,sp:"事務局"},
-    {id:"o9",t:"会員名簿の使い方と掲載範囲の決め方",k:"動画",m:3,sp:"事務局"}]},
+    {id:"o6",t:"研究会はこう進みます（1日の流れ）",k:"動画",m:5,sp:"事務局"},
+    {id:"o7",t:"ワークショップの初級・上級について",k:"動画",m:4,sp:"事務局"}]},
    {t:"事例動画の見方",items:[
-    {id:"o11",t:"分野から事例を探す",k:"動画",m:3,sp:"事務局"},
-    {id:"o12",t:"使用プロンプトを自社用に書き換える",k:"動画",m:5,sp:"事務局"}]}
+    {id:"o8",t:"分野から事例を探す",k:"動画",m:3,sp:"事務局"},
+    {id:"o9",t:"使用プロンプトを自社用に書き換える",k:"動画",m:5,sp:"事務局"}]}
   ]
 };
 
+
 var SKILLS=["新築","リフォーム","設計","不動産","積算・見積","現場管理","集客・広報","採用"];
 var MEMBERS=[
- {pid:"ai-keiei",co:"サンプル工務店",nm:"山田 太郎",area:"静岡県浜松市",skills:["新築","現場管理"],works:"注文住宅の新築を年間20棟。木造在来を中心に、平屋の設計も増えています。",msg:"見積作成にAIを使い始めて3ヶ月です。同じことをやっている方と情報交換したいです。",mail:"sample@example.co.jp",tel:"053-000-0000"},
- {pid:"ai-keiei",co:"サンプル建設",nm:"佐藤 花子",area:"愛知県名古屋市",skills:["リフォーム","集客・広報"],works:"戸建てのリノベーションが中心。水まわりの改修から全面改装まで。",msg:"SNSの投稿づくりにAIを使っています。写真の選定まで自動化するのが目標です。",mail:"sample@example.co.jp",tel:"052-000-0000"},
- {pid:"ai-keiei",co:"サンプル設計事務所",nm:"鈴木 一郎",area:"静岡県静岡市",skills:["設計","新築"],works:"住宅設計と店舗設計。年間15件ほど。",msg:"プラン検討の初期段階でAIを使っています。使いどころの相談に乗れます。",mail:"sample@example.co.jp",tel:"054-000-0000"},
- {pid:"ai-keiei",co:"サンプルホーム",nm:"高橋 美咲",area:"神奈川県横浜市",skills:["新築","積算・見積"],works:"分譲住宅と注文住宅。年間30棟。",msg:"積算のデータ整理でつまずいています。同じ課題の方いませんか。",mail:"sample@example.co.jp",tel:"045-000-0000"},
- {pid:"ai-keiei",co:"サンプル不動産",nm:"田中 健",area:"静岡県浜松市",skills:["不動産","集客・広報"],works:"売買仲介と土地活用の提案。相続相談も対応。",msg:"物件紹介文の作成を自動化しました。仕組みを共有できます。",mail:"sample@example.co.jp",tel:"053-000-0000"},
- {pid:"ai-keiei",co:"サンプル住建",nm:"伊藤 直樹",area:"三重県四日市市",skills:["リフォーム","現場管理"],works:"改修工事が中心。年間80件ほどの小規模工事。",msg:"現場からの報告をチャットで集めて自動でまとめています。",mail:"sample@example.co.jp",tel:"059-000-0000"},
- {pid:"ai-keiei",co:"サンプル工業",nm:"渡辺 由美",area:"岐阜県岐阜市",skills:["採用","集客・広報"],works:"新築とリフォームの両方。社員28名。",msg:"求人票の作成にAIを使い始めました。採用まわりの話をしたいです。",mail:"sample@example.co.jp",tel:"058-000-0000"},
- {pid:"ai-keiei",co:"サンプル建築",nm:"中村 隆",area:"愛知県豊橋市",skills:["設計","積算・見積"],works:"住宅設計と施工。木造中心で年間12棟。",msg:"図面のチェック作業にAIを使えないか試しています。",mail:"sample@example.co.jp",tel:"0532-00-0000"}
+ {pid:"ai-keiei",co:"サンプル工務店",nm:"山田 太郎",area:"静岡県浜松市",joined:"2026-05",
+  skills:["新築","現場管理"],scope:"新築（木造在来）／外構まで自社施工。RC造は協力会社と。",
+  works:"注文住宅の新築を年間20棟。木造在来を中心に、平屋の設計も増えています。",
+  msg:"見積作成にAIを使い始めて3ヶ月です。同じことをやっている方と情報交換したいです。",
+  free:"月イチで社内AI勉強会をやっています。見学歓迎です。",mail:"sample@example.co.jp"},
+ {pid:"ai-keiei",co:"サンプル建設",nm:"佐藤 花子",area:"愛知県名古屋市",joined:"2026-05",
+  skills:["リフォーム","集客・広報"],scope:"水まわり改修〜全面改装。増築・耐震補強も対応。",
+  works:"戸建てのリノベーションが中心。水まわりの改修から全面改装まで。",
+  msg:"SNSの投稿づくりにAIを使っています。写真の選定まで自動化するのが目標です。",
+  free:"",mail:"sample@example.co.jp"},
+ {pid:"ai-keiei",co:"サンプル設計事務所",nm:"鈴木 一郎",area:"静岡県静岡市",joined:"2026-06",
+  skills:["設計","新築"],scope:"設計・監理のみ（施工は行いません）。住宅・小規模店舗。",
+  works:"住宅設計と店舗設計。年間15件ほど。",
+  msg:"プラン検討の初期段階でAIを使っています。使いどころの相談に乗れます。",
+  free:"設計事務所の立場からの相談も受けます。",mail:"sample@example.co.jp"},
+ {pid:"ai-keiei",co:"サンプルホーム",nm:"高橋 美咲",area:"神奈川県横浜市",joined:"2026-06",
+  skills:["新築","積算・見積"],scope:"分譲・注文の新築。土地の仕入れから引渡しまで一貫。",
+  works:"分譲住宅と注文住宅。年間30棟。",
+  msg:"積算のデータ整理でつまずいています。同じ課題の方いませんか。",
+  free:"",mail:"sample@example.co.jp"},
+ {pid:"ai-keiei",co:"サンプル不動産",nm:"田中 健",area:"静岡県浜松市",joined:"2026-07",
+  skills:["不動産","集客・広報"],scope:"売買仲介・土地活用の提案。工事は協力会社に委託。",
+  works:"売買仲介と土地活用の提案。相続相談も対応。",
+  msg:"物件紹介文の作成を自動化しました。仕組みを共有できます。",
+  free:"相続まわりの相談もどうぞ。",mail:"sample@example.co.jp"},
+ {pid:"ai-keiei",co:"サンプル住建",nm:"伊藤 直樹",area:"三重県四日市市",joined:"2026-07",
+  skills:["リフォーム","現場管理"],scope:"小規模改修が中心。外装・屋根・内装。新築は請けていません。",
+  works:"改修工事が中心。年間80件ほどの小規模工事。",
+  msg:"現場からの報告をチャットで集めて自動でまとめています。",
+  free:"",mail:"sample@example.co.jp"},
+ {pid:"ai-keiei",co:"サンプル工業",nm:"渡辺 由美",area:"岐阜県岐阜市",joined:"2026-08",
+  skills:["採用","集客・広報"],scope:"新築・リフォーム両方。設備工事は自社施工。",
+  works:"新築とリフォームの両方。社員28名。",
+  msg:"求人票の作成にAIを使い始めました。採用まわりの話をしたいです。",
+  free:"採用でお困りの会社さん、情報交換しましょう。",mail:"sample@example.co.jp"},
+ {pid:"ai-keiei",co:"サンプル建築",nm:"中村 隆",area:"愛知県豊橋市",joined:"2026-08",
+  skills:["設計","積算・見積"],scope:"設計から施工まで自社対応。木造中心、規模は延床60坪まで。",
+  works:"住宅設計と施工。木造中心で年間12棟。",
+  msg:"図面のチェック作業にAIを使えないか試しています。",
+  free:"",mail:"sample@example.co.jp"}
 ];
 
 var CASES=[
- {pid:"ai-keiei",co:"サンプル工務店 様",t:"現場写真の整理が週3時間から15分に",cat:"現場・施工",before:"3時間/週",after:"15分/週",gi:0,
-  x:"撮った写真を現場ごとに振り分けて報告書に貼る作業に、毎週3時間かかっていました。研究会で聞いたやり方をそのまま真似したら初週で終わりました。"},
- {pid:"ai-keiei",co:"サンプル建設 様",t:"見積作成が1件2日から半日に",cat:"営業・見積",before:"2日/件",after:"0.5日/件",gi:1,
-  x:"見積に丸2日かかっていて、提案が遅れることもありました。過去の見積を読ませる形にしてから半日で出せています。受注率も上がりました。"},
- {pid:"ai-keiei",co:"サンプル設計事務所 様",t:"プラン初期案が10時間から2時間に",cat:"設計・プラン",before:"10時間",after:"2時間",gi:2,
-  x:"初期のプラン検討で悩む時間が長かったのですが、たたき台をAIに出させて直す形に変えました。出せる案の数が増えました。"},
- {pid:"ai-keiei",co:"サンプル住建 様",t:"議事録づくりが毎回1時間からゼロに",cat:"経営・管理",before:"1時間/回",after:"0分",gi:3,
-  x:"打ち合わせのあとに議事録を書くのが負担でした。録音して自動で要約する形にしたら、確認だけで済むようになりました。"}
+ {id:"iv1",pid:"ai-keiei",co:"サンプル工務店 様",t:"現場写真の整理が週3時間から15分に",cat:"現場・施工",before:"3時間/週",after:"15分/週",gi:0,
+  x:"撮った写真を現場ごとに振り分けて報告書に貼る作業に、毎週3時間かかっていました。研究会で聞いたやり方をそのまま真似したら初週で終わりました。",
+  pitch:"入会2ヶ月。研究会で見た方法をそのまま試して、初週で成果が出た例。「まず1つやってみる」の典型として、ガイダンスで使いやすい。",
+  article:[
+   {h:"入会したきっかけ",b:"以前から現場の事務作業を減らしたいとは思っていましたが、AIとなると何から手をつければいいのか分かりませんでした。同業の社長から研究会の話を聞いて、建築の話が通じる場ならと思って参加しました。"},
+   {h:"何が一番きつかったか",b:"毎週の現場写真の整理です。1日に何十枚も撮るので、それを現場ごとに振り分けて、報告書に貼って、コメントを書く。金曜の夕方が毎回それで潰れていました。"},
+   {h:"どう変わったか",b:"保存のルールを決めて、振り分けを自動化しました。報告書への貼り込みまで含めて15分です。今は事務の担当者が回していて、私は最後に目を通すだけになりました。"},
+   {h:"これから試したいこと",b:"報告書の所見も自動で下書きさせたいです。まだ精度が足りないので、研究会で他社さんのやり方を聞きたいと思っています。"}
+  ]},
+ {id:"iv2",pid:"ai-keiei",co:"サンプル建設 様",t:"見積作成が1件2日から半日に",cat:"営業・見積",before:"2日/件",after:"0.5日/件",gi:1,
+  x:"見積に丸2日かかっていて、提案が遅れることもありました。過去の見積を読ませる形にしてから半日で出せています。受注率も上がりました。",
+  pitch:"工数削減が受注率の改善につながった例。「早く出せる会社が勝つ」という文脈で、営業資料に使える。",
+  article:[
+   {h:"入会したきっかけ",b:"見積が遅いせいで失注していると感じていました。人を増やすしかないと思っていたところで研究会を知りました。"},
+   {h:"何が一番きつかったか",b:"1件あたり丸2日です。特に過去の似た物件を探すところに時間がかかっていました。ファイルの置き場もバラバラで、探す時間のほうが長いくらいでした。"},
+   {h:"どう変わったか",b:"過去の見積を全部1か所に集めて、項目名のゆれをそろえるところから始めました。そのうえでたたき台を出させると、半日で出せます。速く出せるようになったら、受注率も上がりました。"},
+   {h:"これから試したいこと",b:"金額の妥当性チェックまで任せられるか試しています。ここは慎重にやりたいところです。"}
+  ]},
+ {id:"iv3",pid:"ai-keiei",co:"サンプル設計事務所 様",t:"プラン初期案が10時間から2時間に",cat:"設計・プラン",before:"10時間",after:"2時間",gi:2,
+  x:"初期のプラン検討で悩む時間が長かったのですが、たたき台をAIに出させて直す形に変えました。出せる案の数が増えました。",
+  pitch:"「時間が減った」ではなく「出せる案が増えた」という質の変化。設計者向けの説明に効く。",
+  article:[
+   {h:"入会したきっかけ",b:"設計の初期段階で手が止まる時間が長く、それが全体の納期を圧迫していました。"},
+   {h:"何が一番きつかったか",b:"白紙から考える時間です。要望を聞いて、それをどう形にするかで悩んでいると、あっという間に1日が終わります。"},
+   {h:"どう変わったか",b:"たたき台をAIに出させて、そこから直す形にしました。作業時間自体は2時間になりましたが、それ以上に、施主に見せられる案の数が3案に増えたのが大きいです。選んでもらう形の打ち合わせになりました。"},
+   {h:"これから試したいこと",b:"法規チェックとの組み合わせです。プランと同時に法的な引っかかりも見られるようにしたいです。"}
+  ]},
+ {id:"iv4",pid:"ai-keiei",co:"サンプル住建 様",t:"議事録づくりが毎回1時間からゼロに",cat:"経営・管理",before:"1時間/回",after:"0分",gi:3,
+  x:"打ち合わせのあとに議事録を書くのが負担でした。録音して自動で要約する形にしたら、確認だけで済むようになりました。",
+  pitch:"社長自身の時間が空いた例。経営者向けの「まず自分の手元から」という訴求に使える。",
+  article:[
+   {h:"入会したきっかけ",b:"社内の情報共有が私の口頭頼みになっていて、それをどうにかしたいと思っていました。"},
+   {h:"何が一番きつかったか",b:"打ち合わせのあとの議事録です。書かないと共有できないのに、書く時間がない。結局あとまわしになって、記憶が曖昧なまま書くことになっていました。"},
+   {h:"どう変わったか",b:"録音して自動で要約と決定事項の抽出をさせています。私は確認するだけです。社内への共有が当日中にできるようになったので、次の動きが1日早くなりました。"},
+   {h:"これから試したいこと",b:"決まったタスクを、そのまま担当者に振るところまで自動化したいです。"}
+  ]}
+];
+
+var ARCHIVE=[
+ {no:"VOL.04",date:"2026.08",t:"AIで見積・積算をどこまで巻き取れるか",
+  items:[{id:"a41",t:"第一講座：見積作成の時間を1/4にした社内フローの話",k:"動画",m:42,sp:"森大建 森社長"},
+         {id:"a42",t:"第二講座：積算データをAIに読ませるための下ごしらえ",k:"動画",m:38,sp:"LIFEFUND"},
+         {id:"a43",t:"パネルディスカッション：使い続けられた仕組みの共通点",k:"動画",m:52,sp:"経営者3名"},
+         {id:"a44",t:"当日の登壇資料・ワークショップ課題",k:"資料",m:0,sp:""}]},
+ {no:"VOL.03",date:"2026.07",t:"現場写真と報告書をAIで片づける",
+  items:[{id:"a31",t:"第一講座：現場写真の整理を週3時間から15分にした話",k:"動画",m:45,sp:"バド設計事務所 深川さん"},
+         {id:"a32",t:"第二講座：報告書の自動生成、実際どこまでできるか",k:"動画",m:35,sp:"LIFEFUND"},
+         {id:"a33",t:"当日の登壇資料",k:"資料",m:0,sp:""}]},
+ {no:"VOL.02",date:"2026.06",t:"集客とSNSをAIで回す",
+  items:[{id:"a21",t:"第一講座：パース画像生成を営業の現場で使う",k:"動画",m:40,sp:"エクシードホーム 戸樫さん"},
+         {id:"a22",t:"第二講座：SNS投稿を月80本つくる仕組み",k:"動画",m:33,sp:"LIFEFUND"},
+         {id:"a23",t:"ワークショップ課題",k:"資料",m:0,sp:""}]},
+ {no:"VOL.01",date:"2026.05",t:"はじめてのAI経営 ─ 何から手をつけるか",
+  items:[{id:"a11",t:"第一講座：建築業でAIが効くところ、効かないところ",k:"動画",m:50,sp:"LIFEFUND 白都社長"},
+         {id:"a12",t:"第二講座：まず社内の情報を1か所に集める",k:"動画",m:36,sp:"LIFEFUND"},
+         {id:"a13",t:"当日の登壇資料",k:"資料",m:0,sp:""}]}
 ];
 
 var SERVICES=[
@@ -869,11 +1077,17 @@ function vimeoSrc(v){
 function vimeoMin(v){ return (v && typeof v==="object" && v.min) ? v.min : 0 }
 function hasVideo(id){ return !!vimeoSrc(VIDEOS[id]) }
 
+function joinedLabel(v){
+  if(!v) return "";
+  var m=String(v).match(/^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?$/);
+  if(!m) return String(v);
+  return m[1]+"年"+Number(m[2])+"月"+(m[3]?Number(m[3])+"日":"")+"入会";
+}
 function hhmm(min){
   if(min<60) return "約"+min+"分";
   return "約"+(Math.round(min/6)/10)+"時間";
 }
-var AVA=["#ED4903","#DA1D00","#ED6103","#FA863E","#C93D12","#232323"];
+var AVA=["#8B5CF6","#7B6EF0","#5B8DEF","#6247DE","#4FD3E4","#232323"];
 function avatarColor(s){var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))%997}return AVA[h%AVA.length]}
 function stat(c){
   return {items:c.items.length,total:c.total};
@@ -903,6 +1117,33 @@ function genreCard(gn){
    +(st.total>st.items ? '<span style="color:var(--tx-mu)"> / Notion '+st.total+'本</span>' : '')
    +'</div></div></button>';
 }
+function caseCard(c){
+  return '<button class="ccard" data-interview="'+c.id+'">'
+   +'<div class="th" style="background:'+g(c.gi)+'"><b>'+esc(c.cat)+'</b></div>'
+   +'<div class="bd"><div class="cat">'+esc(c.co)+'</div>'
+   +'<div class="ti">'+esc(c.t)+'</div>'
+   +'<div class="ba"><div><span class="l">BEFORE</span><span class="v en">'+esc(c.before)+'</span></div>'
+   +'<div class="ar">→</div>'
+   +'<div><span class="l">AFTER</span><span class="v en af">'+esc(c.after)+'</span></div></div>'
+   +'<div class="ds" style="-webkit-line-clamp:3">'+esc(c.x)+'</div>'
+   +'<div class="mt">'+(hasVideo(c.id)?'動画あり ・ ':'')+'記事を読む →</div></div></button>';
+}
+function serviceCard(sv){
+  return '<div class="ccard" data-go="talk">'
+   +'<div class="th" style="background:'+g(sv.gi)+'"><b>'+esc(sv.t)+'</b></div>'
+   +'<div class="bd"><div class="cat en">'+esc(sv.cat)+'</div>'
+   +'<div class="ti">'+esc(sv.t)+'</div>'
+   +'<div class="ds" style="-webkit-line-clamp:4">'+esc(sv.d)+'</div>'
+   +'<div class="mt">壁打ち会で相談する →</div></div></div>';
+}
+function memberCard(m){
+  return '<button class="mcard" data-member="'+MEMBERS.indexOf(m)+'">'
+   +'<div class="ava" style="background:'+avatarColor(m.co)+'">'+esc((m.nm||"?").charAt(0))+'</div>'
+   +'<div class="bd"><div class="co">'+esc(m.co)+'</div><div class="nm">'+esc(m.nm)+'</div>'
+   +'<div class="ar">'+esc(m.area||"")+(m.joined?' ・ '+esc(joinedLabel(m.joined)):'')+'</div>'
+   +'<div class="tags">'+(m.skills||[]).map(function(x){return '<span class="tag">'+esc(x)+'</span>'}).join("")+'</div>'
+   +'</div></button>';
+}
 function caseRow(v,showGenre){
   var c=v.c;
   return '<button class="caserow" data-case="'+c.id+'">'
@@ -923,6 +1164,12 @@ function lessonRow(it){
 }
 
 function renderHome(){
+  var isKeiei = (PID==="ai-keiei");
+  $("#vision").hidden = !isKeiei;
+  $("#sec-orient").hidden = !isKeiei;
+  $("#sec-archive").hidden = !isKeiei;
+
+  // ① オリエンテーション
   var on=0, om=0;
   ORIENT.groups.forEach(function(gp){ gp.items.forEach(function(x){ on++; om+=x.m }) });
   $("#home-orient").innerHTML='<div class="caselist"><button class="caserow" data-go="orient">'
@@ -930,11 +1177,30 @@ function renderHome(){
    +'<span><span class="ti">オリエンテーション</span>'
    +'<span class="m">研究会の歩き方と会員サイトの使い方 ・ '+on+'本 ・ '+hhmm(om)+'</span></span>'
    +'<span class="gpill">まずはこちら</span></button></div>';
+
+  // ② 事例インタビュー
+  $("#home-cases").innerHTML=inProd(CASES).map(caseCard).join("")
+    || '<div class="pending">インタビューはまだ登録されていません。</div>';
+
+  // ③ サービス紹介
+  $("#home-services").innerHTML=SERVICES.map(serviceCard).join("");
+
+  // ④ 事例動画
   var gs=inProd(GENRES);
   $("#home-courses").innerHTML = gs.length
     ? gs.map(genreCard).join("")
     : '<div class="pending">このプロダクトの分野はまだ登録されていません。</div>';
-  $("#home-orient").parentNode.hidden = (PID!=="ai-keiei");
+
+  // 研究会アーカイブ
+  $("#home-archive").innerHTML=ARCHIVE.map(function(a){
+    return '<div class="arcbox"><div class="arcbox-hd">'
+     +'<span class="no en">'+esc(a.no)+'</span><h3>'+esc(a.t)+'</h3><time>'+esc(a.date)+'</time></div>'
+     +'<div class="lessons">'+a.items.map(lessonRow).join("")+'</div></div>';
+  }).join("");
+
+  // ⑥ 会員名簿（先頭4名）
+  $("#home-members").innerHTML=inProd(MEMBERS).slice(0,4).map(memberCard).join("")
+    || '<div class="pending">会員はまだ登録されていません。</div>';
 }
 
 var actCat="すべて";
@@ -1040,45 +1306,48 @@ function renderMChips(){
 function renderMembers(){
   var q=$("#m-search").value.trim().toLowerCase();
   var list=inProd(MEMBERS).filter(function(m){
-    if(actSkill && m.skills.indexOf(actSkill)<0) return false;
+    if(actSkill && (m.skills||[]).indexOf(actSkill)<0) return false;
     if(!q) return true;
-    return (m.co+m.nm+m.area+m.skills.join("")+m.works).toLowerCase().indexOf(q)>=0;
+    return (m.co+m.nm+m.area+(m.skills||[]).join("")+(m.works||"")+(m.scope||"")+(m.free||"")).toLowerCase().indexOf(q)>=0;
   });
   $("#m-empty").hidden=list.length>0;
-  $("#members").innerHTML=list.map(function(m){
-    return '<button class="mcard" data-member="'+MEMBERS.indexOf(m)+'">'
-     +'<div class="ava" style="background:'+avatarColor(m.co)+'">'+esc(m.nm.charAt(0))+'</div>'
-     +'<div class="bd"><div class="co">'+esc(m.co)+'</div><div class="nm">'+esc(m.nm)+'</div>'
-     +'<div class="ar">'+esc(m.area)+'</div>'
-     +'<div class="tags">'+m.skills.map(function(s){return '<span class="tag">'+esc(s)+'</span>'}).join("")+'</div>'
-     +'</div></button>';
-  }).join("");
+  $("#members").innerHTML=list.map(memberCard).join("");
 }
 
 function renderCases(){
-  $("#cases").innerHTML=inProd(CASES).map(function(c){
-    return '<div class="ccard" data-toast="インタビュー本編は撮影後に公開します">'
-     +'<div class="th" style="background:'+g(c.gi)+'"><b>'+esc(c.cat)+'</b></div>'
-     +'<div class="bd"><div class="cat">'+esc(c.co)+'</div>'
-     +'<div class="ti">'+esc(c.t)+'</div>'
-     +'<div class="ba"><div><span class="l">BEFORE</span><span class="v en">'+esc(c.before)+'</span></div>'
-     +'<div class="ar">→</div>'
-     +'<div><span class="l">AFTER</span><span class="v en af">'+esc(c.after)+'</span></div></div>'
-     +'<div class="ds" style="-webkit-line-clamp:3">'+esc(c.x)+'</div></div></div>';
+  $("#cases").innerHTML=inProd(CASES).map(caseCard).join("")
+    || '<div class="pending">インタビューはまだ登録されていません。</div>';
+}
+
+function renderInterview(id){
+  var c=CASES.filter(function(x){return x.id===id})[0];
+  if(!c) return;
+  $("#iv-crumb").textContent=c.t;
+  $("#iv-title").textContent=c.t;
+  $("#iv-co").textContent=c.co;
+  $("#iv-cat").textContent=c.cat;
+  $("#iv-ba").innerHTML='<div><span class="l">BEFORE</span><span class="v en">'+esc(c.before)+'</span></div>'
+    +'<div class="ar">→</div><div><span class="l">AFTER</span><span class="v en af">'+esc(c.after)+'</span></div>';
+  var src=vimeoSrc(VIDEOS[c.id]);
+  if(src){
+    $("#iv-vid").outerHTML='<div class="vidbox" id="iv-vid" style="background:#000">'
+      +'<iframe src="'+src+'" title="'+esc(c.t)+'" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen '
+      +'style="position:absolute;inset:0;width:100%;height:100%"></iframe></div>';
+    $("#iv-vidnote").textContent="";
+  } else {
+    $("#iv-vid").outerHTML='<div class="vidbox" id="iv-vid" style="background:'+g(c.gi)+'">'
+      +'<div class="in"><div class="play">▶</div><b>'+esc(c.t)+'</b></div></div>';
+    $("#iv-vidnote").textContent="※ インタビュー動画は撮影後に埋め込みます。";
+  }
+  $("#iv-article").innerHTML=(c.article||[]).map(function(a){
+    return '<div class="qa"><h4>'+esc(a.h)+'</h4><p>'+esc(a.b)+'</p></div>';
   }).join("");
+  $("#iv-pitch").innerHTML='<b>ガイダンス・営業での使いどころ</b>'+esc(c.pitch||"");
 }
 
 function renderServices(){
-  $("#services").innerHTML=SERVICES.map(function(s){
-    return '<div class="ccard" data-go="talk">'
-     +'<div class="th" style="background:'+g(s.gi)+'"><b>'+esc(s.t)+'</b></div>'
-     +'<div class="bd"><div class="cat en">'+esc(s.cat)+'</div>'
-     +'<div class="ti">'+esc(s.t)+'</div>'
-     +'<div class="ds" style="-webkit-line-clamp:4">'+esc(s.d)+'</div>'
-     +'<div class="mt">壁打ち会で相談する →</div></div></div>';
-  }).join("");
+  $("#services").innerHTML=SERVICES.map(serviceCard).join("");
 }
-
 var MENU=[
  {go:"orient",t:"オリエンテーション",d:"研究会の歩き方と会員サイトの使い方"},
  {go:"cases",t:"事例インタビュー",d:"会員のみなさんの、入会後に変わったこと"},
@@ -1098,8 +1367,8 @@ function renderMenu(){
 }
 
 /* ====== ルーティング ====== */
-var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","menu","admin"];
-var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu",admin:"admin"};
+var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","interview","menu","admin"];
+var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu",admin:"admin",interview:"menu"};
 function go(v,arg){
   if(VIEWS.indexOf(v)<0) v="home";
   if(v==="admin" && ROLE!=="admin") v="home";
@@ -1107,15 +1376,17 @@ function go(v,arg){
   $$("#bnav button").forEach(function(b){ b.classList.toggle("on", b.dataset.go===NAVOF[v]) });
   if(v==="course") renderCourse(arg);
   if(v==="case") renderCase(arg);
+  if(v==="interview") renderInterview(arg);
   if(v==="orient") renderOrient();
   if(v==="admin"){ renderAdminVideo(); renderAdminMember(); }
-  var h = (v==="course"||v==="case") ? "#"+v+"/"+arg : "#"+v;
+  var h = (v==="course"||v==="case"||v==="interview") ? "#"+v+"/"+arg : "#"+v;
   if(location.hash!==h) history.replaceState(null,"",h);
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function fromHash(){
   var h=(location.hash||"#home").slice(1);
   if(h.indexOf("course/")===0) go("course",h.slice(7));
+  else if(h.indexOf("interview/")===0) go("interview",h.slice(10));
   else if(h.indexOf("case/")===0) go("case",h.slice(5));
   else go(h);
 }
@@ -1143,6 +1414,9 @@ document.addEventListener("click",function(e){
 
   var lo=e.target.closest("[data-logout]");
   if(lo){ try{sessionStorage.removeItem("lf_member")}catch(x){} location.hash="#home"; location.reload(); return; }
+
+  var iv=e.target.closest("[data-interview]");
+  if(iv){ go("interview",iv.dataset.interview); return; }
 
   var kc=e.target.closest("[data-case]");
   if(kc){ go("case",kc.dataset.case); return; }
@@ -1198,11 +1472,14 @@ function openMember(m){
   $("#md-co").textContent=m.co;
   $("#md-nm").textContent=m.nm;
   $("#md-tags").innerHTML=m.skills.map(function(s){return '<span class="tag">'+esc(s)+'</span>'}).join("");
-  $("#md-area").textContent=m.area;
-  $("#md-skill").textContent=m.skills.join(" / ");
-  $("#md-works").textContent=m.works;
-  $("#md-msg").textContent=m.msg;
-  $("#md-contact").textContent=m.mail+" ／ "+m.tel;
+  $("#md-area").textContent=m.area||"—";
+  $("#md-joined").textContent=m.joined?joinedLabel(m.joined):"—";
+  $("#md-skill").textContent=(m.skills||[]).join(" / ")||"—";
+  $("#md-scope").textContent=m.scope||"—";
+  $("#md-works").textContent=m.works||"—";
+  $("#md-msg").textContent=m.msg||"—";
+  $("#md-free").textContent=m.free||"—";
+  $("#md-contact").textContent=m.mail||"—";
   $("#modal").hidden=false;
 }
 
@@ -1234,7 +1511,7 @@ $("#a-video-out").addEventListener("click",function(){ $("#a-video-json").value=
 $("#a-video-copy").addEventListener("click",function(){ if(!$("#a-video-json").value) $("#a-video-json").value=buildVideosJson(); copyText($("#a-video-json").value) });
 $("#a-video-dl").addEventListener("click",function(){ download("videos.json", buildVideosJson()) });
 $("#a-member-add").addEventListener("click",function(){
-  memberDraft().push({pid:PID,co:"",nm:"",area:"",skills:[],works:"",msg:"",mail:"",tel:""});
+  memberDraft().push({pid:PID,co:"",nm:"",area:"",joined:"",skills:[],scope:"",works:"",msg:"",free:"",mail:""});
   renderAdminMember();
   var rows=$("#a-member-rows").querySelectorAll("tr");
   if(rows.length) rows[rows.length-1].querySelector("input").focus();
@@ -1291,6 +1568,10 @@ function applyRole(){
 var VEDIT={};
 function renderAdminVideo(){
   var rows=[];
+  var extra=[];
+  CASES.forEach(function(c){ extra.push({pid:c.pid,gt:"インタビュー",id:c.id,t:c.t}) });
+  ARCHIVE.forEach(function(a){ a.items.forEach(function(x){ if(x.k==="動画") extra.push({pid:"ai-keiei",gt:"過去の研究会 "+a.no,id:x.id,t:x.t}) }) });
+  ORIENT.groups.forEach(function(gp){ gp.items.forEach(function(x){ extra.push({pid:"ai-keiei",gt:"オリエンテーション",id:x.id,t:x.t}) }) });
   GENRES.forEach(function(gn){
     var pname=(PRODUCTS.filter(function(x){return x.id===(gn.pid||"ai-keiei")})[0]||{}).name||"";
     gn.items.forEach(function(c){
@@ -1302,6 +1583,15 @@ function renderAdminVideo(){
         +'<td>'+(cur===""||cur===null||cur===undefined ? '<span style="color:var(--tx-mu);font-size:11px">未設定</span>' : (ok?'<span class="ok">OK</span>':'<span class="ng">形式NG</span>'))+'</td></tr>');
     });
   });
+  extra.forEach(function(x){
+    var pname=(PRODUCTS.filter(function(q){return q.id===(x.pid||"ai-keiei")})[0]||{}).name||"";
+    var cur=(x.id in VEDIT)?VEDIT[x.id]:rawOf(VIDEOS[x.id]);
+    var ok=cur?!!vimeoSrc(cur):null;
+    rows.push('<tr><td class="idcell">'+x.id+'</td><td>'+esc(pname)+'</td><td>'+esc(x.gt)+'</td>'
+      +'<td>'+esc(x.t)+'</td>'
+      +'<td><input type="text" data-vid="'+x.id+'" value="'+esc(cur||"")+'" placeholder="https://vimeo.com/..."></td>'
+      +'<td>'+(!cur ? '<span style="color:var(--tx-mu);font-size:11px">未設定</span>' : (ok?'<span class="ok">OK</span>':'<span class="ng">形式NG</span>'))+'</td></tr>');
+  });
   $("#a-video-rows").innerHTML = rows.length ? rows.join("") : '<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--tx-mu)">事例がまだ登録されていません。</td></tr>';
 }
 function rawOf(v){ if(!v) return ""; return (typeof v==="object") ? (v.url||"") : String(v) }
@@ -1310,10 +1600,15 @@ function buildVideosJson(){
     "_使い方":"キーは事例ID、値はVimeoのURLか数字IDです。管理画面から出力しています。",
     "_受け付けるURL":"vimeo.com/123456789 / vimeo.com/123456789/ハッシュ / vimeo.com/manage/videos/123456789 / player.vimeo.com/video/123456789?h=ハッシュ / 数字IDのみ"
   };
-  GENRES.forEach(function(gn){ gn.items.forEach(function(c){
-    var cur = (c.id in VEDIT) ? VEDIT[c.id] : rawOf(VIDEOS[c.id]);
-    if(cur && vimeoSrc(cur)) out[c.id]=cur;
-  })});
+  var ids=[];
+  GENRES.forEach(function(gn){ gn.items.forEach(function(c){ ids.push(c.id) }) });
+  CASES.forEach(function(c){ ids.push(c.id) });
+  ARCHIVE.forEach(function(a){ a.items.forEach(function(x){ if(x.k==="動画") ids.push(x.id) }) });
+  ORIENT.groups.forEach(function(gp){ gp.items.forEach(function(x){ ids.push(x.id) }) });
+  ids.forEach(function(id){
+    var cur = (id in VEDIT) ? VEDIT[id] : rawOf(VIDEOS[id]);
+    if(cur && vimeoSrc(cur)) out[id]=cur;
+  });
   return JSON.stringify(out,null,2);
 }
 
@@ -1331,11 +1626,13 @@ function renderAdminMember(){
      +'<td><input data-mf="co" value="'+esc(m.co||"")+'"></td>'
      +'<td><input data-mf="nm" value="'+esc(m.nm||"")+'"></td>'
      +'<td><input data-mf="area" value="'+esc(m.area||"")+'"></td>'
+     +'<td><input data-mf="joined" value="'+esc(m.joined||"")+'" placeholder="2026-05"></td>'
      +'<td><input data-mf="skills" value="'+esc((m.skills||[]).join(", "))+'"></td>'
-     +'<td><textarea data-mf="works" placeholder="手がけた工事">'+esc(m.works||"")+'</textarea>'
-     +'<textarea data-mf="msg" placeholder="ひとこと" style="margin-top:6px">'+esc(m.msg||"")+'</textarea></td>'
-     +'<td><input data-mf="mail" value="'+esc(m.mail||"")+'" placeholder="メール">'
-     +'<input data-mf="tel" value="'+esc(m.tel||"")+'" placeholder="電話" style="margin-top:6px"></td>'
+     +'<td><textarea data-mf="scope" placeholder="施工範囲（どこまで工事が行えるか）">'+esc(m.scope||"")+'</textarea>'
+     +'<textarea data-mf="works" placeholder="手がけた工事" style="margin-top:6px">'+esc(m.works||"")+'</textarea>'
+     +'<textarea data-mf="msg" placeholder="ひとこと" style="margin-top:6px">'+esc(m.msg||"")+'</textarea>'
+     +'<textarea data-mf="free" placeholder="自由記述" style="margin-top:6px">'+esc(m.free||"")+'</textarea></td>'
+     +'<td><input data-mf="mail" value="'+esc(m.mail||"")+'" placeholder="メール"></td>'
      +'<td><button class="mini-del" data-mdel="'+i+'">削除</button></td></tr>';
   }).join("");
   $("#a-member-rows").innerHTML = rows || '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--tx-mu)">このプロダクトの会員はまだ登録されていません。</td></tr>';
