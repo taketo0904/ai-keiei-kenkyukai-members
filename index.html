@@ -10,22 +10,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* ロゴ「建築業界を高生産産業へ」のグラデーション：紫 → 青 → シアン */
-  --br:#7B6EF0; --br-dk:#6247DE; --br-lt:#A78BFA; --br-ac:#4FD3E4;
-  --br-violet:#8B5CF6; --br-blue:#5B8DEF; --br-cyan:#4FD3E4;
-  --tx:#333333; --tx-st:#232323; --tx-mu:#878787; --tx-mu2:#676767;
-  --bd:#EEEEEE; --bd2:#E0E0E0; --sf:#FFFFFF;
-  --tint:#F2F0FE; --tint2:#E9E5FD; --gray:#F5F5F5; --ok:#22B8A6;
+  /* 建築AI経営研究会ロゴ：ティール → バイオレット → マゼンタ */
+  --br:#6C3CE0; --br-dk:#5325C0; --br-lt:#B98BF0;
+  --teal:#0BA6AE; --violet:#6C3CE0; --magenta:#C9009A;
+  --br-ac:#C9009A;
+  --tx:#1A1A1A; --tx-st:#111111; --tx-mu:#8A8A88; --tx-mu2:#5F5F5D;
+  --navy:#1B2A4A;
+  --bd:#E7E4DE; --bd2:#D9D5CD; --sf:#FFFFFF; --page:#F4F2EE;
+  --tint:#F4EEFC; --tint2:#E8DBFA; --gray:#EFEDE8; --ok:#0BA6AE;
   --fe:"Montserrat",sans-serif;
   --fj:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
   --t:.2s;
   --r:12px; --r-sm:8px;
-  --sh:0 1px 3px rgba(35,35,35,.06), 0 1px 2px rgba(35,35,35,.04);
+  --sh:0 1px 3px rgba(17,17,17,.05), 0 1px 2px rgba(17,17,17,.04);
   --nav-h:64px;
-  --logo-grad:linear-gradient(90deg,#8B5CF6,#5B8DEF 55%,#4FD3E4);
+  --logo-grad:linear-gradient(90deg,#0BA6AE,#6C3CE0 52%,#C9009A);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--fj);color:var(--tx);background:var(--sf);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:var(--fj);color:var(--tx);background:var(--page);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:var(--fj)}
@@ -33,21 +35,26 @@ button{font-family:var(--fj)}
 svg{display:block}
 
 /* ============ ログインゲート ============ */
-#gate{position:fixed;inset:0;z-index:300;background:var(--tx-st);display:flex;align-items:center;justify-content:center;padding:24px}
-#gate::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#8B5CF6,#5B8DEF 50%,#4FD3E4);opacity:.92}
+#gate{position:fixed;inset:0;z-index:300;background:#111111;display:flex;align-items:center;justify-content:center;padding:24px}
+#gate::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#0BA6AE,#6C3CE0 50%,#C9009A);opacity:.94}
 .gate-box{position:relative;background:#fff;width:100%;max-width:400px;padding:36px 32px;border-radius:var(--r)}
-.gate-logo{display:flex;align-items:center;gap:9px;margin-bottom:22px}
-.gate-logo i{width:16px;height:16px;background:var(--logo-grad);display:block;border-radius:3px}
-.gate-logo b{font-family:var(--fe);font-weight:600;font-size:16px;letter-spacing:.05em}
-.gate-box h1{font-family:var(--fe);font-weight:600;font-size:34px;line-height:1.1}
+.gate-logo{display:flex;align-items:center;gap:11px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
+.gate-logo .gl-t{line-height:1.2}
+.gate-logo b{display:block;font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--tx-st)}
+.gate-logo small{display:block;font-family:var(--fe);font-size:7px;font-weight:500;color:var(--navy);letter-spacing:.1em;margin-top:3px}
+.gate-box h1{font-family:var(--fe);font-weight:700;font-size:34px;line-height:1.1;background:var(--logo-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .gate-box .jp{font-size:16px;font-weight:700;margin-top:3px}
 .gate-box .lead{font-size:13px;color:var(--tx-mu);margin-top:12px;line-height:1.9}
 .gate-box label{display:block;font-size:12px;font-weight:700;margin:18px 0 6px}
-.gate-box .opt{margin:0}
-.gate-box .opt label{margin:0}
-.gate-box .opts label{margin:0}
-.gate-box input{width:100%;padding:11px 13px;border:1px solid var(--bd2);border-radius:var(--r-sm);font-family:var(--fj);font-size:14px;transition:var(--t)}
-.gate-box input:focus{outline:0;border-color:var(--br);box-shadow:0 0 0 3px var(--tint)}
+.gate-box .opt{display:flex;align-items:center;gap:10px;margin:0;padding:11px 13px;border:1px solid var(--bd2);border-radius:var(--r-sm);background:#fff;font-size:13px;font-weight:400;line-height:1.5;cursor:pointer;transition:var(--t)}
+.gate-box .opt:hover{border-color:var(--br)}
+.gate-box .opt:has(input:checked){border-color:var(--br);background:var(--tint)}
+.gate-box .opt input[type="radio"]{width:auto;flex:0 0 auto;padding:0;margin:0;accent-color:var(--br)}
+.gate-box .opt span{flex:1;min-width:0}
+.gate-box .opt .t{display:inline;font-size:13px;font-weight:700}
+.gate-box .opt .d{display:inline;font-size:11px;color:var(--tx-mu);font-weight:400;margin-left:6px}
+.gate-box input[type="email"],.gate-box input[type="password"]{width:100%;padding:11px 13px;border:1px solid var(--bd2);border-radius:var(--r-sm);font-family:var(--fj);font-size:14px;transition:var(--t)}
+.gate-box input[type="email"]:focus,.gate-box input[type="password"]:focus{outline:0;border-color:var(--br);box-shadow:0 0 0 3px var(--tint)}
 .gate-err{font-size:12px;color:var(--br-dk);margin-top:8px;display:none}
 .gate-err.on{display:block}
 .gate-note{font-size:11px;color:var(--tx-mu);margin-top:16px;line-height:1.8;border-top:1px solid var(--bd);padding-top:13px}
@@ -55,11 +62,15 @@ svg{display:block}
 
 /* ============ トップバー ============ */
 .topbar{position:sticky;top:0;z-index:80;background:#fff;border-bottom:1px solid var(--bd);height:56px;display:flex;align-items:center;gap:20px;padding:0 20px}
-.logo{display:flex;align-items:center;gap:9px;flex-shrink:0;cursor:pointer}
-.logo i{width:26px;height:26px;background:var(--logo-grad);border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fe);font-weight:700;font-size:13px}
-.logo .tt{line-height:1.15}
-.logo b{display:block;font-family:var(--fe);font-weight:600;font-size:15px;letter-spacing:.04em;color:var(--tx-st)}
-.logo small{display:block;font-size:9px;color:var(--br);font-weight:700;letter-spacing:.06em}
+.logo{display:flex;align-items:center;gap:11px;flex-shrink:0;cursor:pointer}
+.aimark{display:flex;flex-direction:column;gap:3px;flex-shrink:0}
+.aimark .en{font-weight:700;font-size:21px;line-height:1;letter-spacing:.01em;
+  background:var(--logo-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.aimark i{display:block;height:3px;border-radius:2px;background:var(--logo-grad)}
+.logo .tt{line-height:1.2}
+.logo b{display:block;font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--tx-st)}
+.logo small{display:block;font-family:var(--fe);font-size:7.5px;font-weight:500;color:var(--navy);letter-spacing:.11em;margin-top:2px;white-space:nowrap}
+@media(max-width:900px){.logo small{display:none}}
 .search{flex:1;max-width:340px;position:relative}
 .search input{width:100%;height:38px;border:1px solid transparent;background:var(--gray);border-radius:var(--r-sm);padding:0 60px 0 38px;font-family:var(--fj);font-size:14px;transition:var(--t)}
 .search input:focus{outline:0;background:#fff;border-color:var(--br);box-shadow:0 0 0 3px var(--tint)}
@@ -121,7 +132,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .prow dt{font-size:12px;font-weight:700;color:var(--tx-mu);padding-top:3px}
 .prow dd{margin:0}
 .ptag{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:4px;margin:0 5px 5px 0}
-.ptag.cat{background:#E4F7F9;color:#1B7E8A}
+.ptag.cat{background:#E2F5F5;color:#0B7F86}
 .ptag.tool{background:var(--tint);color:var(--br-dk)}
 .ptag.field{background:var(--tint2);color:var(--br-dk)}
 .vidbox{aspect-ratio:16/9;max-width:720px;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;border-radius:var(--r);overflow:hidden;margin:20px 0 8px}
@@ -338,15 +349,18 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 <!-- ============ ログインゲート ============ -->
 <div id="gate">
   <div class="gate-box">
-    <div class="gate-logo"><i></i><b>LIFEFUND</b></div>
+    <div class="gate-logo">
+      <span class="aimark"><span class="en">AI</span><i></i></span>
+      <span class="gl-t"><b>建築AI経営研究会</b><small>KENCHIKU AI INSTITUTE OF MANAGEMENT</small></span>
+    </div>
     <h1 class="en">MEMBERS</h1>
-    <div class="jp">建築AI経営研究会 会員サイト</div>
+    <div class="jp">会員サイト</div>
     <p class="lead">会員限定サイトです。ご入会時にお伝えしたメールアドレスと合言葉でログインしてください。</p>
     <form id="gate-form">
       <label>ログインする種別</label>
-      <div class="opts two" style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-        <label class="opt" style="padding:9px 11px"><input type="radio" name="role" value="member" checked><span><span class="t" style="font-size:13px">会員</span><span class="d">閲覧のみ</span></span></label>
-        <label class="opt" style="padding:9px 11px"><input type="radio" name="role" value="admin"><span><span class="t" style="font-size:13px">管理者</span><span class="d">動画・名簿の更新</span></span></label>
+      <div class="opts" style="display:grid;grid-template-columns:1fr;gap:6px">
+        <label class="opt"><input type="radio" name="role" value="member" checked><span><span class="t" style="font-size:13px">会員</span><span class="d">閲覧のみ</span></span></label>
+        <label class="opt"><input type="radio" name="role" value="admin"><span><span class="t" style="font-size:13px">管理者</span><span class="d">動画・名簿の更新</span></span></label>
       </div>
       <label for="g-mail">メールアドレス</label>
       <input type="email" id="g-mail" autocomplete="username" placeholder="you@example.co.jp" required>
@@ -364,8 +378,8 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 
 <div class="topbar">
   <div class="logo" data-go="home">
-    <i class="en">L</i>
-    <span class="tt"><b>LIFEFUND</b><small>建築AI経営研究会</small></span>
+    <span class="aimark"><span class="en">AI</span><i></i></span>
+    <span class="tt"><b>建築AI経営研究会</b><small>KENCHIKU AI INSTITUTE OF MANAGEMENT</small></span>
   </div>
   <div class="psel">
     <button id="psel-btn"><span class="dot" id="psel-dot"></span><span id="psel-name"></span>
@@ -404,7 +418,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 
   <!-- ビジョン -->
   <div class="vision" id="vision">
-    <div class="vision-en en">VISION</div>
+    <div class="vision-en en">KENCHIKU AI INSTITUTE OF MANAGEMENT</div>
     <h2 class="vision-h">建築業界を、高生産産業へ。</h2>
     <p class="vision-l">職人の勘と経験でしか回らなかった仕事に、AIという道具を足す。<br>
     人を増やさずに、いい家を、いい仕事を、無理なく届けられる会社を増やす。<br>
@@ -781,22 +795,22 @@ var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return({'&':'
 
 /* 見出しグラフィックの背景（LIFEFUNDのグラデーション） */
 var GRADS=[
- "linear-gradient(90deg,#8B5CF6,#5B8DEF 55%,#4FD3E4)",
- "linear-gradient(135deg,#6247DE,#7B6EF0 50%,#5B8DEF)",
- "linear-gradient(120deg,#5B8DEF,#4FD3E4 70%,#7FE3EA)",
- "linear-gradient(60deg,#8B5CF6,#A78BFA 60%,#5B8DEF)",
- "linear-gradient(160deg,#232323,#6247DE 60%,#5B8DEF)",
- "linear-gradient(45deg,#4FD3E4,#5B8DEF 55%,#8B5CF6)"
+ "linear-gradient(90deg,#0BA6AE,#6C3CE0 52%,#C9009A)",
+ "linear-gradient(130deg,#0BA6AE,#3F7ACF 55%,#6C3CE0)",
+ "linear-gradient(120deg,#6C3CE0,#9B22C6 50%,#C9009A)",
+ "linear-gradient(60deg,#0BA6AE,#5AC8B8 40%,#6C3CE0)",
+ "linear-gradient(150deg,#111111,#5325C0 58%,#C9009A)",
+ "linear-gradient(45deg,#C9009A,#6C3CE0 55%,#0BA6AE)"
 ];
 var g=function(i){return GRADS[i%GRADS.length]};
 
 /* ====== データ（すべてサンプル。実データ確定後に差し替え） ====== */
 /* ===== プロダクト ===== */
 var PRODUCTS=[
- {id:"ai-keiei",name:"建築AI経営研究会",c:"#8B5CF6",d:"建築業の経営者向け。月1回の研究会と、分野別のAI活用事例動画。"},
- {id:"startup", name:"スタートアップ支援",c:"#5B8DEF",d:"Google Workspaceを基盤に、社内の情報を1か所へ集約する導入支援。"},
- {id:"komon",   name:"AI顧問",c:"#4FD3E4",d:"自社業務へのAI導入を継続して伴走するプログラム。"},
- {id:"kenshu",  name:"AI研修",c:"#6247DE",d:"職種別カリキュラムで社員向けに実施する研修プログラム。"}
+ {id:"ai-keiei",name:"建築AI経営研究会",c:"#6C3CE0",d:"建築業の経営者向け。月1回の研究会と、分野別のAI活用事例動画。"},
+ {id:"startup", name:"スタートアップ支援",c:"#0BA6AE",d:"Google Workspaceを基盤に、社内の情報を1か所へ集約する導入支援。"},
+ {id:"komon",   name:"AI顧問",c:"#C9009A",d:"自社業務へのAI導入を継続して伴走するプログラム。"},
+ {id:"kenshu",  name:"AI研修",c:"#111111",d:"職種別カリキュラムで社員向けに実施する研修プログラム。"}
 ];
 var PID="ai-keiei";
 function prod(){ return PRODUCTS.filter(function(x){return x.id===PID})[0] || PRODUCTS[0] }
@@ -1087,7 +1101,7 @@ function hhmm(min){
   if(min<60) return "約"+min+"分";
   return "約"+(Math.round(min/6)/10)+"時間";
 }
-var AVA=["#8B5CF6","#7B6EF0","#5B8DEF","#6247DE","#4FD3E4","#232323"];
+var AVA=["#6C3CE0","#0BA6AE","#C9009A","#5325C0","#9B22C6","#111111"];
 function avatarColor(s){var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))%997}return AVA[h%AVA.length]}
 function stat(c){
   return {items:c.items.length,total:c.total};
