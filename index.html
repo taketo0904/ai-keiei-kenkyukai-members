@@ -77,12 +77,27 @@ svg{display:block}
 .search .ic{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tx-mu);pointer-events:none}
 .search kbd{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-family:var(--fe);font-size:11px;color:var(--tx-mu);background:#fff;border:1px solid var(--bd2);border-radius:4px;padding:2px 5px;pointer-events:none}
 .tb-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+@media(max-width:760px){
+  .topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:10px;row-gap:9px}
+  .logo{order:1}
+  .tb-right{order:2;margin-left:auto;gap:9px}
+  .psel{order:3;flex:1 1 auto;min-width:0}
+  .psel button{width:100%;justify-content:space-between}
+  .psel #psel-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .search{order:4;flex:1 1 100%;max-width:none}
+  .search kbd{display:none}
+  .icbtn{width:30px;height:30px}
+  .rolebadge{padding:3px 7px}
+}
+@media(max-width:400px){
+  .logo b{font-size:13px}
+  .aimark .en{font-size:18px}
+}
 .icbtn{width:34px;height:34px;border:0;background:transparent;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--tx-mu2);transition:var(--t);position:relative}
 .icbtn:hover{background:var(--gray);color:var(--tx)}
 .icbtn .dot{position:absolute;top:6px;right:7px;width:7px;height:7px;background:var(--br);border-radius:50%;border:1.5px solid #fff}
 .me{display:flex;align-items:center;gap:5px;cursor:pointer;border:0;background:transparent;padding:0}
 .avatar{width:34px;height:34px;border-radius:50%;background:var(--br);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
-@media(max-width:640px){.search{max-width:none}.search kbd{display:none}}
 
 /* ============ ボトムナビ ============ */
 .bottomnav{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--bd);height:var(--nav-h);display:grid;grid-template-columns:repeat(4,1fr)}
@@ -131,6 +146,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .prow:last-child{border-bottom:0}
 .prow dt{font-size:12px;font-weight:700;color:var(--tx-mu);padding-top:3px}
 .prow dd{margin:0}
+@media(max-width:560px){.prow{grid-template-columns:1fr;gap:4px}.prow dt{padding-top:0}}
 .ptag{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:4px;margin:0 5px 5px 0}
 .ptag.cat{background:#E2F5F5;color:#0B7F86}
 .ptag.tool{background:var(--tint);color:var(--br-dk)}
@@ -159,7 +175,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .psel button{display:flex;align-items:center;gap:7px;height:36px;padding:0 12px;border:1px solid var(--bd2);border-radius:var(--r-sm);background:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:var(--t);white-space:nowrap}
 .psel button:hover{border-color:var(--br);color:var(--br)}
 .psel .dot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
-.psel ul{position:absolute;top:42px;left:0;min-width:260px;background:#fff;border:1px solid var(--bd2);border-radius:var(--r);box-shadow:0 6px 24px rgba(35,35,35,.14);padding:6px;z-index:90;list-style:none}
+.psel ul{position:absolute;top:42px;left:0;min-width:260px;max-width:calc(100vw - 28px);background:#fff;border:1px solid var(--bd2);border-radius:var(--r);box-shadow:0 6px 24px rgba(35,35,35,.14);padding:6px;z-index:90;list-style:none}
 .psel ul[hidden]{display:none}
 .psel li button{width:100%;height:auto;padding:10px 12px;border:0;text-align:left;display:block;border-radius:var(--r-sm)}
 .psel li button:hover{background:var(--tint);color:inherit}
@@ -172,8 +188,9 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .rolebadge.admin{background:var(--br)}
 .adminbar{border-left:3px solid var(--br);background:var(--tint);border-radius:var(--r-sm);padding:13px 16px;font-size:13px;line-height:1.9;margin-bottom:24px}
 .adminbar b{display:block;font-size:11px;color:var(--br-dk);margin-bottom:3px}
-.atable{width:100%;border-collapse:collapse;font-size:13px}
-.atable th{text-align:left;font-size:11px;color:var(--tx-mu);font-weight:700;padding:8px 10px;background:var(--gray);border-bottom:1px solid var(--bd2)}
+.atable{width:100%;border-collapse:collapse;font-size:13px;min-width:860px}
+#a-member .atable{min-width:1020px}
+.atable th{text-align:left;font-size:11px;color:var(--tx-mu);font-weight:700;padding:8px 10px;background:var(--gray);border-bottom:1px solid var(--bd2);white-space:nowrap}
 .atable td{padding:8px 10px;border-bottom:1px solid var(--bd);vertical-align:top}
 .atable input,.atable textarea{width:100%;padding:8px 10px;border:1px solid var(--bd2);border-radius:6px;font-family:var(--fj);font-size:13px;transition:var(--t)}
 .atable input:focus,.atable textarea:focus{outline:0;border-color:var(--br);box-shadow:0 0 0 3px var(--tint)}
@@ -181,7 +198,9 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .atable .ok{color:var(--ok);font-size:11px;font-weight:700;white-space:nowrap}
 .atable .ng{color:var(--br-dk);font-size:11px;font-weight:700;white-space:nowrap}
 .atable .idcell{font-family:var(--fe);font-size:11px;color:var(--tx-mu);white-space:nowrap}
-.awrap{border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);overflow:auto;margin-bottom:18px}
+.awrap{border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:8px;background:#fff}
+.ascroll-note{font-size:11px;color:var(--tx-mu);margin-bottom:18px}
+@media(min-width:900px){.ascroll-note{display:none}}
 .arow-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .out{width:100%;min-height:180px;font-family:var(--fe);font-size:12px;padding:14px;border:1px solid var(--bd2);border-radius:var(--r-sm);background:var(--gray);line-height:1.7;resize:vertical}
 .mini-del{font-size:11px;font-weight:700;color:var(--br-dk);background:transparent;border:1px solid var(--bd2);border-radius:6px;padding:6px 10px;cursor:pointer;transition:var(--t);white-space:nowrap}
@@ -329,7 +348,9 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 /* ============ モーダル ============ */
 .modal{position:fixed;inset:0;z-index:200;background:rgba(35,35,35,.55);display:flex;align-items:center;justify-content:center;padding:20px}
 .modal[hidden]{display:none}
-.modal-in{background:#fff;border-radius:var(--r);max-width:520px;width:100%;max-height:86vh;overflow:auto}
+.modal-in{background:#fff;border-radius:var(--r);max-width:520px;width:100%;max-height:86vh;overflow:auto;position:relative}
+.modal-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:var(--tx-mu2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--t);z-index:2}
+.modal-x:hover{background:var(--gray);color:var(--tx)}
 .modal-hd{display:flex;gap:16px;padding:22px;border-bottom:1px solid var(--bd)}
 .modal-hd .ava{width:84px;height:84px;border-radius:var(--r-sm);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--fe);font-weight:600;font-size:32px;color:#fff}
 .modal-hd .co{font-size:12px;color:var(--tx-mu)}
@@ -710,6 +731,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       <thead><tr><th style="width:70px">ID</th><th style="width:110px">プロダクト</th><th style="width:90px">分野</th><th>事例</th><th style="width:280px">Vimeo URL</th><th style="width:70px">判定</th></tr></thead>
       <tbody id="a-video-rows"></tbody>
     </table></div>
+    <p class="ascroll-note">← → 表を横にスクロールできます。入力しやすいのはパソコンです。</p>
     <div class="arow-actions">
       <button class="btn btn--pri" id="a-video-out">videos.json を出力</button>
       <button class="btn btn--gh" id="a-video-copy">コピー</button>
@@ -724,6 +746,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       <thead><tr><th style="width:140px">会社名</th><th style="width:100px">氏名</th><th style="width:120px">エリア</th><th style="width:90px">入会<br><span style="font-weight:400">YYYY-MM</span></th><th style="width:140px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>施工範囲 / 手がけた工事 / ひとこと / 自由記述</th><th style="width:150px">メール</th><th style="width:56px"></th></tr></thead>
       <tbody id="a-member-rows"></tbody>
     </table></div>
+    <p class="ascroll-note">← → 表を横にスクロールできます。入力しやすいのはパソコンです。</p>
     <div class="arow-actions">
       <button class="btn btn--gh" id="a-member-add">＋ 会員を追加</button>
       <button class="btn btn--pri" id="a-member-out">members.json を出力</button>
@@ -754,6 +777,9 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 <!-- 会員詳細モーダル -->
 <div class="modal" id="modal" hidden>
   <div class="modal-in">
+    <button class="modal-x" id="md-x" aria-label="閉じる">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
     <div class="modal-hd">
       <div class="ava" id="md-ava"></div>
       <div>
@@ -1467,7 +1493,7 @@ document.addEventListener("click",function(e){
     return;
   }
 
-  if(e.target.closest("#md-close") || e.target.id==="modal"){ $("#modal").hidden=true; return; }
+  if(e.target.closest("#md-close") || e.target.closest("#md-x") || e.target.id==="modal"){ $("#modal").hidden=true; return; }
 });
 
 function openVideo(id,title){
