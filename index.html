@@ -162,6 +162,17 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .qa{border-left:3px solid var(--bd2);padding:0 0 0 18px;margin-bottom:24px}
 .qa h4{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--tx-st)}
 .qa p{font-size:14px;line-height:2;color:var(--tx-mu2)}
+.faq-item{border:1px solid var(--bd);border-radius:var(--r);background:#fff;box-shadow:var(--sh);margin-bottom:12px;overflow:hidden}
+.faq-q{display:grid;grid-template-columns:24px 1fr 20px;gap:12px;align-items:start;width:100%;padding:16px 18px;background:#fff;border:0;text-align:left;cursor:pointer;font-family:var(--fj);transition:var(--t)}
+.faq-q:hover{background:var(--tint)}
+.faq-q .mark{font-family:var(--fe);font-weight:700;font-size:15px;color:var(--violet);line-height:1.5}
+.faq-q .txt{font-size:15px;font-weight:700;line-height:1.55}
+.faq-q .chev{transition:var(--t);color:var(--tx-mu);margin-top:3px}
+.faq-item.open .faq-q .chev{transform:rotate(180deg)}
+.faq-a{display:none;grid-template-columns:24px 1fr;gap:12px;padding:0 18px 18px}
+.faq-item.open .faq-a{display:grid}
+.faq-a .mark{font-family:var(--fe);font-weight:700;font-size:15px;color:var(--magenta);line-height:1.9}
+.faq-a .txt{font-size:14px;line-height:2;color:var(--tx-mu2)}
 .caselist{border:1px solid var(--bd);border-radius:var(--r);background:#fff;box-shadow:var(--sh);overflow:hidden}
 .caserow{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;padding:16px;border-bottom:1px solid var(--bd);cursor:pointer;transition:var(--t);width:100%;background:#fff;border-left:0;border-right:0;border-top:0;text-align:left}
 .caserow:last-child{border-bottom:0}
@@ -215,6 +226,49 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .vision-3 b{display:block;font-size:14px;margin-bottom:6px}
 .vision-3 span{font-size:12px;line-height:1.9;opacity:.92}
 @media(max-width:820px){.vision{padding:26px 20px}.vision-h{font-size:22px}.vision-3{grid-template-columns:1fr}}
+
+/* ---- サービス体系図 ---- */
+.sysmap{border:1px solid var(--bd);border-radius:var(--r);background:#fff;box-shadow:var(--sh);padding:26px 22px;margin-bottom:28px}
+.sysmap-hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.sysmap-hd h2{font-size:19px;font-weight:700}
+.sysmap-hd span{font-size:12px;color:var(--tx-mu)}
+.tier{border-radius:var(--r-sm);padding:16px 18px;position:relative}
+.tier-lbl{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:4px;margin-bottom:9px}
+.tier h3{font-size:17px;font-weight:700;line-height:1.4}
+.tier .fee{font-size:12px;font-weight:700;margin-left:8px;white-space:nowrap}
+.tier p{font-size:12px;line-height:1.85;color:var(--tx-mu2);margin-top:6px}
+.tier-entry{background:linear-gradient(90deg,rgba(11,166,174,.10),rgba(11,166,174,.04));border:1px solid rgba(11,166,174,.35)}
+.tier-entry .tier-lbl{background:var(--teal);color:#fff}
+.tier-entry .fee{color:var(--teal)}
+.tier-core{background:linear-gradient(90deg,rgba(108,60,224,.10),rgba(201,0,154,.06));border:1px solid rgba(108,60,224,.35)}
+.tier-core .tier-lbl{background:var(--violet);color:#fff}
+.tier-core .fee{color:var(--violet)}
+.tier-ext{background:var(--gray);border:1px solid var(--bd2)}
+.tier-ext .tier-lbl{background:var(--magenta);color:#fff}
+.tier-arrow{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0;color:var(--tx-mu)}
+.tier-arrow svg{opacity:.55}
+.tier-arrow em{font-style:normal;font-size:11px;font-weight:700}
+.core-list{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.core-list div{background:#fff;border:1px solid var(--bd);border-radius:6px;padding:10px 12px}
+.core-list b{display:block;font-size:12px;font-weight:700;margin-bottom:3px}
+.core-list span{font-size:11px;color:var(--tx-mu);line-height:1.7}
+.ext-list{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.ext-list button{background:#fff;border:1px solid var(--bd2);border-radius:6px;padding:12px;text-align:left;cursor:pointer;transition:var(--t);font-family:var(--fj)}
+.ext-list button:hover{border-color:var(--br)}
+.ext-list b{display:block;font-size:13px;font-weight:700;margin-bottom:4px}
+.ext-list span{font-size:11px;color:var(--tx-mu);line-height:1.7}
+@media(max-width:700px){.core-list,.ext-list{grid-template-columns:1fr}.sysmap{padding:20px 16px}}
+
+/* ---- 壁打ち会CTA ---- */
+.cta{display:flex;align-items:center;justify-content:space-between;gap:20px;border-radius:var(--r);padding:22px 24px;margin-bottom:28px;background:var(--logo-grad);color:#fff;flex-wrap:wrap}
+.cta b{display:block;font-size:19px;font-weight:900;line-height:1.4}
+.cta p{font-size:13px;line-height:1.85;margin-top:6px;opacity:.95;max-width:560px}
+.cta .btn{background:#fff;color:var(--br-dk);border:0;font-weight:700;flex-shrink:0;box-shadow:0 2px 10px rgba(17,17,17,.14)}
+.cta .btn:hover{background:#F4F2EE}
+@media(max-width:700px){.cta{padding:18px 16px}.cta b{font-size:16px}.cta .btn{width:100%}}
+.hd-cta{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 13px;border-radius:var(--r-sm);background:var(--br);color:#fff;border:0;font-size:12px;font-weight:700;cursor:pointer;transition:var(--t);white-space:nowrap;flex-shrink:0}
+.hd-cta:hover{background:var(--br-dk)}
+@media(max-width:900px){.hd-cta span{display:none}.hd-cta{padding:0 9px}}
 
 .talkbox{display:flex;gap:24px;align-items:center;justify-content:space-between;border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);padding:22px;flex-wrap:wrap}
 .talkbox b{display:block;font-size:16px;margin-bottom:8px}
@@ -376,7 +430,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     </div>
     <h1 class="en">MEMBERS</h1>
     <div class="jp">会員サイト</div>
-    <p class="lead">会員限定サイトです。ご入会時にお伝えしたメールアドレスと合言葉でログインしてください。</p>
+    <p class="lead">会員限定サイトです。ご入会時にお伝えしたメールアドレスとパスワードでログインしてください。</p>
     <form id="gate-form">
       <label>ログインする種別</label>
       <div class="opts" style="display:grid;grid-template-columns:1fr;gap:6px">
@@ -385,12 +439,12 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       </div>
       <label for="g-mail">メールアドレス</label>
       <input type="email" id="g-mail" autocomplete="username" placeholder="you@example.co.jp" required>
-      <label for="g-pass">合言葉</label>
+      <label for="g-pass">パスワード</label>
       <input type="password" id="g-pass" autocomplete="current-password" required>
-      <p class="gate-err" id="gate-err">合言葉が違います。ご不明な場合は事務局までご連絡ください。</p>
+      <p class="gate-err" id="gate-err">パスワードが違います。ご不明な場合は事務局までご連絡ください。</p>
       <button class="btn btn--pri btn--w" type="submit" style="margin-top:18px">ログイン</button>
     </form>
-    <p class="gate-note"><b>※ 開発中のデモ用ゲートです。</b>現時点の認証も管理者と会員の切り分けもフロントエンドのみの仮実装で、セキュリティ要件は満たしていません（合言葉はソースを見れば読めます）。本番のログイン認証と権限管理は杉山さんと設計のうえ実装します。<br>デモ用合言葉 — 会員：<b>lifefund</b> ／ 管理者：<b>lifefund-admin</b></p>
+    <p class="gate-note"><b>※ 開発中のデモ用ゲートです。</b>現時点の認証も管理者と会員の切り分けもフロントエンドのみの仮実装で、セキュリティ要件は満たしていません（パスワードはソースを見れば読めます）。本番のログイン認証と権限管理は杉山さんと設計のうえ実装します。<br>デモ用パスワード — 会員：<b>lifefund</b> ／ 管理者：<b>lifefund-admin</b></p>
   </div>
 </div>
 
@@ -425,6 +479,10 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5" stroke-linecap="round"/><path d="M12 7.6v.01" stroke-linecap="round"/></svg>
       はじめての方へ
     </button>
+    <button class="hd-cta" data-go="talk">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.5 9.5 0 0 1-2.8-.4L3 21l1.6-4.7A8.2 8.2 0 0 1 3.6 11.5a8.4 8.4 0 0 1 8.4-8.4 8.4 8.4 0 0 1 9 8.4z"/></svg>
+      <span>壁打ち会を予約</span>
+    </button>
     <span class="rolebadge" id="rolebadge">会員</span>
     <button class="me" data-go="menu"><span class="avatar" id="avatar">中</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#878787" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
@@ -449,6 +507,55 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       <div><b>②　明日から動かせる形にする</b><span>抽象論はやりません。プロンプトも手順も、そのまま自社に持ち帰れる粒度まで落とします。</span></div>
       <div><b>③　一社の成果を、業界の標準にする</b><span>1社でうまくいったやり方を汎用化して、業界全体の生産性を押し上げていきます。</span></div>
     </div>
+  </div>
+
+  <!-- サービス体系図 -->
+  <div class="sysmap" id="sysmap">
+    <div class="sysmap-hd">
+      <h2>ライフファンドのサービス体系</h2>
+      <span>どのサービスがどうつながっているか</span>
+    </div>
+
+    <div class="tier tier-entry">
+      <span class="tier-lbl">入口・無料</span>
+      <h3>AI無料壁打ち会<span class="fee">無料</span></h3>
+      <p>AI活用の困りごとを一緒に整理する時間です。会員でない方もご参加いただけます。ここから研究会へお入りいただく方がほとんどです。</p>
+    </div>
+
+    <div class="tier-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg><em>まずはここから</em></div>
+
+    <div class="tier tier-core">
+      <span class="tier-lbl">中核・会員制</span>
+      <h3>建築AI経営研究会<span class="fee">月額 10,000円</span></h3>
+      <p>建築業の経営者どうしで事例を持ち寄り、自社で動かせる形にして持ち帰る会員制プログラムです。この会員サイトがその拠点になります。</p>
+      <div class="core-list">
+        <div><b>月1回の研究会</b><span>講座・パネルディスカッション・ワークショップ</span></div>
+        <div><b>事例動画</b><span>営業・設計・現場など7分野の実践事例</span></div>
+        <div><b>会員コミュニティ</b><span>会員名簿と、研究会での横のつながり</span></div>
+      </div>
+    </div>
+
+    <div class="tier-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg><em>自社で本格的に進めるなら</em></div>
+
+    <div class="tier tier-ext">
+      <span class="tier-lbl">個別支援</span>
+      <h3>会社ごとの伴走メニュー</h3>
+      <p>研究会での学びを自社で形にするところまでご一緒します。どれが合うかは壁打ち会でご相談ください。</p>
+      <div class="ext-list">
+        <button data-go="services"><b>スタートアップ支援</b><span>Google Workspaceを基盤に社内の情報を1か所へ</span></button>
+        <button data-go="services"><b>AI顧問</b><span>業務への組み込みを継続して伴走</span></button>
+        <button data-go="services"><b>AI研修</b><span>職種別カリキュラムで社員向けに実施</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 壁打ち会CTA -->
+  <div class="cta">
+    <div>
+      <b>AI無料壁打ち会、受付中です</b>
+      <p>何から手をつければいいか分からない段階で大丈夫です。その場で全部解決しなくても構いません。参考になる動画や資料もご案内します。</p>
+    </div>
+    <button class="btn" data-go="talk">壁打ち会を予約する →</button>
   </div>
 
   <div class="notice">
@@ -757,6 +864,28 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   </div>
 </section>
 
+<!-- ---------- FAQ ---------- -->
+<section class="view" id="v-faq" hidden>
+  <div class="crumbs"><a data-go="menu">メニュー</a><span class="sep">›</span><span class="cur">よくある質問</span></div>
+  <div class="sec-hd"><h2>よくある質問</h2></div>
+  <p class="cintro" style="margin-top:0;margin-bottom:22px">研究会のなりたちや、他のサービスとの関係についてよくいただくご質問をまとめました。ここにない疑問は壁打ち会でも遠慮なくお尋ねください。</p>
+
+  <div class="notice" style="margin-bottom:24px">
+    <b>この内容は確認中です</b>
+    過去サービスとの関係について、事実関係を運営側で最終確認中です。記載に誤りを見つけた方は事務局までお知らせください。
+  </div>
+
+  <div id="faq-list"></div>
+
+  <div class="cta" style="margin-top:32px">
+    <div>
+      <b>解決しないことがあれば</b>
+      <p>AI無料壁打ち会で直接お聞きください。サービスの選び方についてのご相談でも構いません。</p>
+    </div>
+    <button class="btn" data-go="talk">壁打ち会を予約する →</button>
+  </div>
+</section>
+
 <!-- ---------- メニュー ---------- -->
 <section class="view" id="v-menu" hidden>
   <div class="sec-hd"><h2>メニュー</h2></div>
@@ -819,7 +948,7 @@ var $=function(s,r){return (r||document).querySelector(s)};
 var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]})};
 
-/* 見出しグラフィックの背景（LIFEFUNDのグラデーション） */
+/* 見出しグラフィックの背景（ライフファンドのグラデーション） */
 var GRADS=[
  "linear-gradient(90deg,#0BA6AE,#6C3CE0 52%,#C9009A)",
  "linear-gradient(130deg,#0BA6AE,#3F7ACF 55%,#6C3CE0)",
@@ -1072,20 +1201,20 @@ var CASES=[
 var ARCHIVE=[
  {no:"VOL.04",date:"2026.08",t:"AIで見積・積算をどこまで巻き取れるか",
   items:[{id:"a41",t:"第一講座：見積作成の時間を1/4にした社内フローの話",k:"動画",m:42,sp:"森大建 森社長"},
-         {id:"a42",t:"第二講座：積算データをAIに読ませるための下ごしらえ",k:"動画",m:38,sp:"LIFEFUND"},
+         {id:"a42",t:"第二講座：積算データをAIに読ませるための下ごしらえ",k:"動画",m:38,sp:"ライフファンド"},
          {id:"a43",t:"パネルディスカッション：使い続けられた仕組みの共通点",k:"動画",m:52,sp:"経営者3名"},
          {id:"a44",t:"当日の登壇資料・ワークショップ課題",k:"資料",m:0,sp:""}]},
  {no:"VOL.03",date:"2026.07",t:"現場写真と報告書をAIで片づける",
   items:[{id:"a31",t:"第一講座：現場写真の整理を週3時間から15分にした話",k:"動画",m:45,sp:"バド設計事務所 深川さん"},
-         {id:"a32",t:"第二講座：報告書の自動生成、実際どこまでできるか",k:"動画",m:35,sp:"LIFEFUND"},
+         {id:"a32",t:"第二講座：報告書の自動生成、実際どこまでできるか",k:"動画",m:35,sp:"ライフファンド"},
          {id:"a33",t:"当日の登壇資料",k:"資料",m:0,sp:""}]},
  {no:"VOL.02",date:"2026.06",t:"集客とSNSをAIで回す",
   items:[{id:"a21",t:"第一講座：パース画像生成を営業の現場で使う",k:"動画",m:40,sp:"エクシードホーム 戸樫さん"},
-         {id:"a22",t:"第二講座：SNS投稿を月80本つくる仕組み",k:"動画",m:33,sp:"LIFEFUND"},
+         {id:"a22",t:"第二講座：SNS投稿を月80本つくる仕組み",k:"動画",m:33,sp:"ライフファンド"},
          {id:"a23",t:"ワークショップ課題",k:"資料",m:0,sp:""}]},
  {no:"VOL.01",date:"2026.05",t:"はじめてのAI経営 ─ 何から手をつけるか",
-  items:[{id:"a11",t:"第一講座：建築業でAIが効くところ、効かないところ",k:"動画",m:50,sp:"LIFEFUND 白都社長"},
-         {id:"a12",t:"第二講座：まず社内の情報を1か所に集める",k:"動画",m:36,sp:"LIFEFUND"},
+  items:[{id:"a11",t:"第一講座：建築業でAIが効くところ、効かないところ",k:"動画",m:50,sp:"ライフファンド 白都社長"},
+         {id:"a12",t:"第二講座：まず社内の情報を1か所に集める",k:"動画",m:36,sp:"ライフファンド"},
          {id:"a13",t:"当日の登壇資料",k:"資料",m:0,sp:""}]}
 ];
 
@@ -1388,14 +1517,45 @@ function renderInterview(id){
 function renderServices(){
   $("#services").innerHTML=SERVICES.map(serviceCard).join("");
 }
+var FAQ=[
+ {q:"「ホリエモンAI学校」とはどういう関係ですか？",
+  a:"別のサービスです。運営もプログラムの中身も異なります。ただ、AI学校を受講されたあとに、建築業に特化した内容を求めて研究会へお入りいただいた方が複数いらっしゃいます。両方に在籍いただくことも、研究会のみのご参加も可能です。"},
+ {q:"以前は「AI経営研究会」という名前ではありませんでしたか？",
+  a:"同じ研究会です。建築業に特化した会であることを分かりやすくするため、名称を「建築AI経営研究会」に改めました。会員資格・会費・提供内容に変更はありません。"},
+ {q:"運営会社の名前は「LIFEFUND」ですか、「ライフファンド」ですか？",
+  a:"同じ会社です。表記を「ライフファンド」に統一しています。過去の資料やご案内に英字表記が残っている場合がありますが、同一の会社です。"},
+ {q:"「無料AI顧問」はなくなったのですか？",
+  a:"名称を「AI無料壁打ち会」に改めました。申込制から、運営側からご案内する定例面談の形に変わっています。その場ですべてを解決する会ではなく、困りごとを一緒に整理して、見るべき動画や資料をご案内する時間としてお使いください。"},
+ {q:"会費はいくらですか？",
+  a:"月額10,000円です。研究会への参加、事例動画の視聴、会員名簿の閲覧、AI無料壁打ち会のご利用がすべて含まれます。"},
+ {q:"研究会に参加できない月があっても大丈夫ですか？",
+  a:"問題ありません。当日の講座とパネルディスカッションはすべて録画し、この会員サイトの「過去の研究会」から後日ご覧いただけます。登壇資料やワークショップの課題も同じ場所に置いています。"},
+ {q:"スタートアップ支援・AI顧問・AI研修は会費に含まれますか？",
+  a:"含まれません。会社ごとの個別支援メニューとして、別途お見積りのうえご提供しています。どれが自社に合うかを含めて、まず壁打ち会でご相談いただくのが確実です。"},
+ {q:"社員も会員サイトを見られますか？",
+  a:"現在は1社につき経営者の方お一人でのご利用を前提にしています。社員のみなさま向けにはAI研修のメニューをご用意しています。複数名での利用をご希望の場合は事務局へご相談ください。"},
+ {q:"会員名簿に自分の情報を載せたくない項目があります",
+  a:"掲載範囲はご本人が選べます。顔写真・連絡先・施工範囲など、項目ごとに掲載の可否を決めていただけますので、事務局までお知らせください。"}
+];
+
 var MENU=[
  {go:"orient",t:"オリエンテーション",d:"研究会の歩き方と会員サイトの使い方"},
  {go:"cases",t:"事例インタビュー",d:"会員のみなさんの、入会後に変わったこと"},
  {go:"talk",t:"無料壁打ち会",d:"AI活用の困りごとを一緒に整理します"},
  {go:"services",t:"サービス紹介",d:"研究会の学びを自社で形にするメニュー"},
+ {go:"faq",t:"よくある質問",d:"研究会のなりたちと、他サービスとの関係"},
  {go:"members",t:"会員名簿",d:"どんな会社の、どんな方が参加しているか"},
  {logout:true,t:"ログアウト",d:""}
 ];
+function renderFaq(){
+  $("#faq-list").innerHTML=FAQ.map(function(f,i){
+    return '<div class="faq-item'+(i===0?' open':'')+'">'
+     +'<button class="faq-q"><span class="mark">Q</span><span class="txt">'+esc(f.q)+'</span>'
+     +'<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>'
+     +'<div class="faq-a"><span class="mark">A</span><span class="txt">'+esc(f.a)+'</span></div></div>';
+  }).join("");
+}
+
 function renderMenu(){
   $("#menu-list").innerHTML=MENU.map(function(m){
     return '<button class="mrow" '+(m.logout?'data-logout="1"':'data-go="'+m.go+'"')+'>'
@@ -1407,8 +1567,8 @@ function renderMenu(){
 }
 
 /* ====== ルーティング ====== */
-var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","interview","menu","admin"];
-var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu",admin:"admin",interview:"menu"};
+var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","interview","faq","menu","admin"];
+var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu",admin:"admin",interview:"menu",faq:"menu"};
 function go(v,arg){
   if(VIEWS.indexOf(v)<0) v="home";
   if(v==="admin" && ROLE!=="admin") v="home";
@@ -1480,6 +1640,9 @@ document.addEventListener("click",function(e){
   if(pv){ openVideo(pv.dataset.play, pv.querySelector(".ti").textContent); return; }
 
   if(e.target.closest("#vm-close") || e.target.id==="vmodal"){ closeVideo(); return; }
+
+  var fq=e.target.closest(".faq-q");
+  if(fq){ fq.parentNode.classList.toggle("open"); return; }
 
   var tt=e.target.closest("[data-toast]");
   if(tt){ toast(tt.dataset.toast); return; }
@@ -1698,7 +1861,7 @@ var PASS="lifefund";
 var PASS_ADMIN="lifefund-admin";
 function drawAll(){
   renderHome(); renderChips(); renderCourses();
-  renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu(); renderOrient();
+  renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu(); renderOrient(); renderFaq();
 }
 function enter(mail,role){
   ROLE = (role==="admin") ? "admin" : "member";
@@ -1734,8 +1897,8 @@ $("#gate-form").addEventListener("submit",function(e){
   var want=(role==="admin")?PASS_ADMIN:PASS;
   if($("#g-pass").value!==want){
     $("#gate-err").textContent = (role==="admin")
-      ? "管理者の合言葉が違います。"
-      : "合言葉が違います。ご不明な場合は事務局までご連絡ください。";
+      ? "管理者のパスワードが違います。"
+      : "パスワードが違います。ご不明な場合は事務局までご連絡ください。";
     $("#gate-err").classList.add("on"); return;
   }
   var mail=$("#g-mail").value.trim();
