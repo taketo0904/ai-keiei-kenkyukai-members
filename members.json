@@ -1,6 +1,6 @@
 {
   "_使い方": "会員名簿の実データ。管理画面の「members.json を出力」で生成したものをここに置き換えます。",
-  "_項目": "pid / co 会社名 / nm 氏名 / area エリア / joined 入会年月(YYYY-MM) / skills 得意分野 / scope 施工範囲 / works 手がけた工事 / msg ひとこと / free 自由記述 / mail メール / photo 写真(data URI) / vimeo 自己紹介動画URL",
+  "_項目": "pid / co 会社名 / nm 氏名 / area エリア / joined 入会年月(YYYY-MM) / skills 得意分野 / scope 施工範囲 / works 手がけた工事 / msg ひとこと / free 自由記述 / mail メール / photo 写真(data URI)",
   "_注意": "メールアドレスは会員ごとに一意にしてください。取り込み時の照合キーに使います。",
   "members": [
     {

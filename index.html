@@ -264,8 +264,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--tx-mu);
   font-size:12px;overflow:hidden}
 .pf-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.pf-ok{color:var(--ok);font-weight:700}
-.pf-ng{color:var(--magenta);font-weight:700}
 
 /* ---- 研究会の写真 ---- */
 .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
@@ -371,7 +369,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .mcard{position:relative}
 .mcard .ava{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-family:var(--fe);font-weight:600;font-size:44px;color:#fff;overflow:hidden}
 .mcard .ava img{width:100%;height:100%;object-fit:cover;display:block}
-.mv-badge{position:absolute;top:9px;right:9px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(17,17,17,.78);color:#fff}
 .mcard .bd{padding:13px}
 .mcard .co{font-size:11px;color:var(--tx-mu)}
 .mcard .nm{font-size:16px;font-weight:700;margin-top:2px}
@@ -908,7 +905,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div id="a-member" hidden>
     <p class="cintro" style="margin-top:0;margin-bottom:18px">選択中のプロダクトの会員名簿を編集します。掲載可否は会員ご本人に確認のうえ反映してください。</p>
     <div class="awrap"><table class="atable">
-      <thead><tr><th style="width:140px">会社名</th><th style="width:100px">氏名</th><th style="width:120px">エリア</th><th style="width:90px">入会<br><span style="font-weight:400">YYYY-MM</span></th><th style="width:140px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>施工範囲 / 手がけた工事 / ひとこと / 自由記述</th><th style="width:150px">メール</th><th style="width:170px">自己紹介動画</th><th style="width:70px">写真</th><th style="width:56px"></th></tr></thead>
+      <thead><tr><th style="width:140px">会社名</th><th style="width:100px">氏名</th><th style="width:120px">エリア</th><th style="width:90px">入会<br><span style="font-weight:400">YYYY-MM</span></th><th style="width:140px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>施工範囲 / 手がけた工事 / ひとこと / 自由記述</th><th style="width:150px">メール</th><th style="width:70px">写真</th><th style="width:56px"></th></tr></thead>
       <tbody id="a-member-rows"></tbody>
     </table></div>
     <p class="ascroll-note">← → 表を横にスクロールできます。入力しやすいのはパソコンです。</p>
@@ -935,7 +932,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 <section class="view" id="v-profile" hidden>
   <div class="crumbs"><a data-go="menu">メニュー</a><span class="sep">›</span><span class="cur">マイプロフィール</span></div>
   <div class="sec-hd"><h2>マイプロフィール</h2></div>
-  <p class="cintro" style="margin-top:0;margin-bottom:20px">会員名簿に載せるご自身の情報です。写真と自己紹介動画も掲載できます。入力したら下の「事務局に送る」から内容を送ってください。掲載したくない項目は空欄のままで構いません。</p>
+  <p class="cintro" style="margin-top:0;margin-bottom:20px">会員名簿に載せるご自身の情報です。写真も掲載できます。入力したら下の「事務局に送る」から内容を送ってください。掲載したくない項目は空欄のままで構いません。</p>
 
   <div class="notice" style="margin-bottom:24px">
     <b>いまは自動で反映されません</b>
@@ -978,19 +975,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
             <button class="btn btn--gh" id="pf-photo-clear">削除</button>
           </div>
           <p style="font-size:11px;color:var(--tx-mu);line-height:1.8;margin-top:10px">お顔でも、会社やお仕事の写真でも構いません。選んだ写真はこのブラウザの中で正方形に縮小されます。元のファイルがどこかへ送られることはありません。</p>
-        </div>
-      </div>
-
-      <div class="panel">
-        <h3>自己紹介動画（任意）</h3>
-        <div class="bd">
-          <div class="field">
-            <label for="pf-vimeo">VimeoのURL</label>
-            <input id="pf-vimeo" data-pf="vimeo" type="text" placeholder="https://vimeo.com/123456789">
-            <p style="font-size:11px;margin-top:6px" id="pf-vimeo-state"></p>
-          </div>
-          <div id="pf-vimeo-prev"></div>
-          <p style="font-size:11px;color:var(--tx-mu);line-height:1.8">限定公開のURL（ハッシュ付き）でも構いません。Vimeo側で「特定のドメインのみ埋め込み可」に設定される場合は <b>taketo0904.github.io</b> を許可してください。</p>
         </div>
       </div>
 
@@ -1061,7 +1045,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       </div>
     </div>
     <div class="modal-bd">
-      <div id="md-vid"></div>
       <dl>
         <dt>エリア</dt><dd id="md-area"></dd>
         <dt>入会</dt><dd id="md-joined"></dd>
@@ -1457,7 +1440,6 @@ function memberAva(m,cls){
 function memberCard(m){
   return '<button class="mcard" data-member="'+MEMBERS.indexOf(m)+'">'
    +memberAva(m,"ava")
-   +(vimeoSrc(m.vimeo)?'<span class="mv-badge">動画あり</span>':'')
    +'<div class="bd"><div class="co">'+esc(m.co)+'</div><div class="nm">'+esc(m.nm)+'</div>'
    +'<div class="ar">'+esc(m.area||"")+(m.joined?' ・ '+esc(joinedLabel(m.joined)):'')+'</div>'
    +'<div class="tags">'+(m.skills||[]).map(function(x){return '<span class="tag">'+esc(x)+'</span>'}).join("")+'</div>'
@@ -1705,7 +1687,7 @@ var FAQ=[
 ];
 
 var MENU=[
- {go:"profile",t:"マイプロフィール",d:"名簿に載せるご自身の情報・写真・自己紹介動画"},
+ {go:"profile",t:"マイプロフィール",d:"名簿に載せるご自身の情報と写真"},
  {go:"orient",t:"オリエンテーション",d:"研究会の歩き方と会員サイトの使い方"},
  {go:"cases",t:"事例インタビュー",d:"会員のみなさんの、入会後に変わったこと"},
  {go:"talk",t:"AI無料壁打ち会",d:"30分でAI活用の困りごとを一緒に整理します"},
@@ -1726,7 +1708,7 @@ function renderFaq(){
 /* ====== マイプロフィール ====== */
 var MYMAIL="";
 var PROF=null;
-var PF_FIELDS=["co","nm","area","joined","mail","skills","scope","works","msg","free","vimeo"];
+var PF_FIELDS=["co","nm","area","joined","mail","skills","scope","works","msg","free"];
 
 function profKey(){ return "lf_profile:"+(MYMAIL||"anon") }
 function loadProf(){
@@ -1752,7 +1734,6 @@ function renderProfile(){
     el.value = (k==="skills") ? (m.skills||[]).join(", ") : (m[k]||"");
   });
   renderProfPhoto();
-  renderProfVimeo();
   updateProfSize();
 }
 function renderProfPhoto(){
@@ -1760,19 +1741,6 @@ function renderProfPhoto(){
   box.innerHTML = PROF.photo
     ? '<img src="'+esc(PROF.photo)+'" alt="プロフィール写真">'
     : '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-5 5-2-2-6 5"/></svg><span>写真は未設定です</span>';
-}
-function renderProfVimeo(){
-  var src=vimeoSrc(PROF.vimeo);
-  var st=$("#pf-vimeo-state"), pv=$("#pf-vimeo-prev");
-  if(!st) return;
-  if(!PROF.vimeo){ st.textContent=""; pv.innerHTML=""; return; }
-  if(src){
-    st.innerHTML='<span class="pf-ok">URLを認識しました</span>';
-    pv.innerHTML='<div class="vidbox" style="background:#000;max-width:none;margin:10px 0 14px"><iframe src="'+src+'" title="自己紹介動画" frameborder="0" allow="fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%"></iframe></div>';
-  } else {
-    st.innerHTML='<span class="pf-ng">VimeoのURLとして読み取れません</span>';
-    pv.innerHTML="";
-  }
 }
 function profPayload(){
   var out={};
@@ -1921,10 +1889,6 @@ function closeVideo(){ $("#vframe").innerHTML=""; $("#vmodal").hidden=true; }
 function openMember(m){
   if(m.photo){ $("#md-ava").innerHTML='<img src="'+esc(m.photo)+'" alt="'+esc(m.nm||"")+'">'; $("#md-ava").style.background="#000"; }
   else { $("#md-ava").textContent=(m.nm||"?").charAt(0); $("#md-ava").style.background=avatarColor(m.co||m.nm||"?"); }
-  var mvs=vimeoSrc(m.vimeo);
-  $("#md-vid").innerHTML = mvs
-    ? '<div class="vidbox" style="background:#000;max-width:none;margin:0 0 20px"><iframe src="'+mvs+'" title="'+esc(m.nm||"")+' 自己紹介" frameborder="0" allow="fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%"></iframe></div>'
-    : "";
   $("#md-co").textContent=m.co;
   $("#md-nm").textContent=m.nm;
   $("#md-tags").innerHTML=m.skills.map(function(s){return '<span class="tag">'+esc(s)+'</span>'}).join("");
@@ -1969,7 +1933,6 @@ document.addEventListener("input",function(e){
   if(!f || !PROF) return;
   var k=f.dataset.pf;
   PROF[k] = (k==="skills") ? f.value.split(",").map(function(x){return x.trim()}).filter(Boolean) : f.value;
-  if(k==="vimeo") renderProfVimeo();
   saveProf(); updateProfSize();
 });
 $("#pf-photo-pick").addEventListener("click",function(){ $("#pf-photo-file").click() });
@@ -1998,7 +1961,6 @@ $("#pf-mail-send").addEventListener("click",function(){
     "得意分野："+((p.skills||[]).join(" / ")),
     "施工範囲："+(p.scope||""),"手がけた工事："+(p.works||""),
     "ひとこと："+(p.msg||""),"自由記述："+(p.free||""),
-    "自己紹介動画："+(p.vimeo||"なし"),
     "写真："+(p.photo?"別途添付します（サイト上で保存済み）":"なし"),""];
   if(p.photo) lines.push("※ 写真はこのメールに添付するか、「ファイルで保存」で書き出したJSONをお送りください。");
   var url="mailto:?subject="+encodeURIComponent("【会員名簿】掲載内容のご連絡（"+(p.nm||"")+"）")
