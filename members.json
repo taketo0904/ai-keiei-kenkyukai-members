@@ -1,6 +1,7 @@
 {
   "_使い方": "会員名簿の実データ。管理画面の「members.json を出力」で生成したものをここに置き換えます。",
-  "_項目": "pid / co 会社名 / nm 氏名 / area エリア / joined 入会年月(YYYY-MM) / skills 得意分野 / scope 施工範囲 / works 手がけた工事 / msg ひとこと / free 自由記述 / mail メール",
+  "_項目": "pid / co 会社名 / nm 氏名 / area エリア / joined 入会年月(YYYY-MM) / skills 得意分野 / scope 施工範囲 / works 手がけた工事 / msg ひとこと / free 自由記述 / mail メール / photo 写真(data URI) / vimeo 自己紹介動画URL",
+  "_注意": "メールアドレスは会員ごとに一意にしてください。取り込み時の照合キーに使います。",
   "members": [
     {
       "pid": "ai-keiei",
@@ -16,7 +17,7 @@
       "works": "注文住宅の新築を年間20棟。木造在来を中心に、平屋の設計も増えています。",
       "msg": "見積作成にAIを使い始めて3ヶ月です。同じことをやっている方と情報交換したいです。",
       "free": "月イチで社内AI勉強会をやっています。見学歓迎です。",
-      "mail": "sample@example.co.jp"
+      "mail": "yamada@sample-koumuten.example"
     },
     {
       "pid": "ai-keiei",
@@ -32,7 +33,7 @@
       "works": "戸建てのリノベーションが中心。水まわりの改修から全面改装まで。",
       "msg": "SNSの投稿づくりにAIを使っています。写真の選定まで自動化するのが目標です。",
       "free": "",
-      "mail": "sample@example.co.jp"
+      "mail": "sato@sample-kensetsu.example"
     },
     {
       "pid": "ai-keiei",
@@ -48,7 +49,7 @@
       "works": "住宅設計と店舗設計。年間15件ほど。",
       "msg": "プラン検討の初期段階でAIを使っています。使いどころの相談に乗れます。",
       "free": "設計事務所の立場からの相談も受けます。",
-      "mail": "sample@example.co.jp"
+      "mail": "suzuki@sample-sekkei.example"
     },
     {
       "pid": "ai-keiei",
@@ -64,7 +65,7 @@
       "works": "分譲住宅と注文住宅。年間30棟。",
       "msg": "積算のデータ整理でつまずいています。同じ課題の方いませんか。",
       "free": "",
-      "mail": "sample@example.co.jp"
+      "mail": "takahashi@sample-home.example"
     },
     {
       "pid": "ai-keiei",
@@ -80,7 +81,7 @@
       "works": "売買仲介と土地活用の提案。相続相談も対応。",
       "msg": "物件紹介文の作成を自動化しました。仕組みを共有できます。",
       "free": "相続まわりの相談もどうぞ。",
-      "mail": "sample@example.co.jp"
+      "mail": "tanaka@sample-fudosan.example"
     },
     {
       "pid": "ai-keiei",
@@ -96,7 +97,7 @@
       "works": "改修工事が中心。年間80件ほどの小規模工事。",
       "msg": "現場からの報告をチャットで集めて自動でまとめています。",
       "free": "",
-      "mail": "sample@example.co.jp"
+      "mail": "ito@sample-juken.example"
     },
     {
       "pid": "ai-keiei",
@@ -112,7 +113,7 @@
       "works": "新築とリフォームの両方。社員28名。",
       "msg": "求人票の作成にAIを使い始めました。採用まわりの話をしたいです。",
       "free": "採用でお困りの会社さん、情報交換しましょう。",
-      "mail": "sample@example.co.jp"
+      "mail": "watanabe@sample-kogyo.example"
     },
     {
       "pid": "ai-keiei",
@@ -128,7 +129,7 @@
       "works": "住宅設計と施工。木造中心で年間12棟。",
       "msg": "図面のチェック作業にAIを使えないか試しています。",
       "free": "",
-      "mail": "sample@example.co.jp"
+      "mail": "nakamura@sample-kenchiku.example"
     }
   ]
 }

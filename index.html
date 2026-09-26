@@ -259,6 +259,14 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .ext-list span{font-size:11px;color:var(--tx-mu);line-height:1.7}
 @media(max-width:700px){.core-list,.ext-list{grid-template-columns:1fr}.sysmap{padding:20px 16px}}
 
+/* ---- マイプロフィール ---- */
+.pf-photo{aspect-ratio:1/1;border-radius:var(--r-sm);background:var(--gray);border:1px dashed var(--bd2);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--tx-mu);
+  font-size:12px;overflow:hidden}
+.pf-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pf-ok{color:var(--ok);font-weight:700}
+.pf-ng{color:var(--magenta);font-weight:700}
+
 /* ---- 研究会の写真 ---- */
 .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 @media(max-width:820px){.photos{grid-template-columns:repeat(2,1fr)}}
@@ -360,7 +368,10 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 .members{display:grid;grid-template-columns:repeat(auto-fill,minmax(214px,1fr));gap:18px}
 .mcard{border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:var(--sh);cursor:pointer;transition:var(--t);text-align:left;padding:0}
 .mcard:hover{border-color:var(--br);transform:translateY(-2px)}
-.mcard .ava{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-family:var(--fe);font-weight:600;font-size:44px;color:#fff}
+.mcard{position:relative}
+.mcard .ava{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-family:var(--fe);font-weight:600;font-size:44px;color:#fff;overflow:hidden}
+.mcard .ava img{width:100%;height:100%;object-fit:cover;display:block}
+.mv-badge{position:absolute;top:9px;right:9px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(17,17,17,.78);color:#fff}
 .mcard .bd{padding:13px}
 .mcard .co{font-size:11px;color:var(--tx-mu)}
 .mcard .nm{font-size:16px;font-weight:700;margin-top:2px}
@@ -897,10 +908,19 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div id="a-member" hidden>
     <p class="cintro" style="margin-top:0;margin-bottom:18px">選択中のプロダクトの会員名簿を編集します。掲載可否は会員ご本人に確認のうえ反映してください。</p>
     <div class="awrap"><table class="atable">
-      <thead><tr><th style="width:140px">会社名</th><th style="width:100px">氏名</th><th style="width:120px">エリア</th><th style="width:90px">入会<br><span style="font-weight:400">YYYY-MM</span></th><th style="width:140px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>施工範囲 / 手がけた工事 / ひとこと / 自由記述</th><th style="width:150px">メール</th><th style="width:56px"></th></tr></thead>
+      <thead><tr><th style="width:140px">会社名</th><th style="width:100px">氏名</th><th style="width:120px">エリア</th><th style="width:90px">入会<br><span style="font-weight:400">YYYY-MM</span></th><th style="width:140px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>施工範囲 / 手がけた工事 / ひとこと / 自由記述</th><th style="width:150px">メール</th><th style="width:170px">自己紹介動画</th><th style="width:70px">写真</th><th style="width:56px"></th></tr></thead>
       <tbody id="a-member-rows"></tbody>
     </table></div>
     <p class="ascroll-note">← → 表を横にスクロールできます。入力しやすいのはパソコンです。</p>
+    <div class="panel" style="margin-bottom:18px">
+      <h3>会員から届いたプロフィールを取り込む</h3>
+      <div class="bd">
+        <p>会員のみなさんが「マイプロフィール」から送ってきたJSONを貼り付けて取り込みます。メールアドレスが一致する方は上書き、いない方は新規追加されます。</p>
+        <textarea class="out" id="a-import" placeholder='{"co":"サンプル工務店","nm":"山田 太郎", ...}' style="min-height:120px"></textarea>
+        <div class="arow-actions" style="margin:12px 0 0"><button class="btn btn--pri" id="a-import-run">取り込む</button></div>
+      </div>
+    </div>
+
     <div class="arow-actions">
       <button class="btn btn--gh" id="a-member-add">＋ 会員を追加</button>
       <button class="btn btn--pri" id="a-member-out">members.json を出力</button>
@@ -908,6 +928,87 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       <button class="btn btn--gh" id="a-member-dl">ダウンロード</button>
     </div>
     <textarea class="out" id="a-member-json" readonly placeholder="「members.json を出力」を押すとここに出ます"></textarea>
+  </div>
+</section>
+
+<!-- ---------- マイプロフィール ---------- -->
+<section class="view" id="v-profile" hidden>
+  <div class="crumbs"><a data-go="menu">メニュー</a><span class="sep">›</span><span class="cur">マイプロフィール</span></div>
+  <div class="sec-hd"><h2>マイプロフィール</h2></div>
+  <p class="cintro" style="margin-top:0;margin-bottom:20px">会員名簿に載せるご自身の情報です。写真と自己紹介動画も掲載できます。入力したら下の「事務局に送る」から内容を送ってください。掲載したくない項目は空欄のままで構いません。</p>
+
+  <div class="notice" style="margin-bottom:24px">
+    <b>いまは自動で反映されません</b>
+    入力内容はこのブラウザに下書きとして残りますが、名簿へ載せるには事務局での反映作業が必要です。「事務局に送る」でメールを開くか、JSONをコピーして事務局へお送りください。
+  </div>
+
+  <div class="two">
+    <div>
+      <div class="panel">
+        <h3>基本情報</h3>
+        <div class="bd">
+          <div class="field"><label for="pf-co">会社名</label><input id="pf-co" data-pf="co" type="text" placeholder="株式会社〇〇"></div>
+          <div class="field"><label for="pf-nm">お名前</label><input id="pf-nm" data-pf="nm" type="text" placeholder="山田 太郎"></div>
+          <div class="field"><label for="pf-area">エリア</label><input id="pf-area" data-pf="area" type="text" placeholder="静岡県浜松市"></div>
+          <div class="field"><label for="pf-joined">入会年月</label><input id="pf-joined" data-pf="joined" type="text" placeholder="2026-05"></div>
+          <div class="field"><label for="pf-mail">メールアドレス</label><input id="pf-mail" data-pf="mail" type="email" placeholder="you@example.co.jp"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>お仕事について</h3>
+        <div class="bd">
+          <div class="field"><label for="pf-skills">得意分野<span style="font-weight:400;color:var(--tx-mu)">（カンマ区切り）</span></label><input id="pf-skills" data-pf="skills" type="text" placeholder="新築, 現場管理"></div>
+          <div class="field"><label for="pf-scope">施工範囲</label><textarea id="pf-scope" data-pf="scope" placeholder="どこまでの工事を請けられるかをお書きください"></textarea></div>
+          <div class="field"><label for="pf-works">手がけた工事</label><textarea id="pf-works" data-pf="works" placeholder="年間の棟数や、得意な工法など"></textarea></div>
+          <div class="field"><label for="pf-msg">ひとこと</label><textarea id="pf-msg" data-pf="msg" placeholder="いま取り組んでいることや、話してみたいこと"></textarea></div>
+          <div class="field"><label for="pf-free">自由記述</label><textarea id="pf-free" data-pf="free" placeholder="決まった項目に収まらないこと"></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="panel">
+        <h3>写真</h3>
+        <div class="bd">
+          <div class="pf-photo" id="pf-photo-box"></div>
+          <input type="file" id="pf-photo-file" accept="image/*" hidden>
+          <div class="arow-actions" style="margin:12px 0 0">
+            <button class="btn btn--gh" id="pf-photo-pick">写真を選ぶ</button>
+            <button class="btn btn--gh" id="pf-photo-clear">削除</button>
+          </div>
+          <p style="font-size:11px;color:var(--tx-mu);line-height:1.8;margin-top:10px">お顔でも、会社やお仕事の写真でも構いません。選んだ写真はこのブラウザの中で正方形に縮小されます。元のファイルがどこかへ送られることはありません。</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>自己紹介動画（任意）</h3>
+        <div class="bd">
+          <div class="field">
+            <label for="pf-vimeo">VimeoのURL</label>
+            <input id="pf-vimeo" data-pf="vimeo" type="text" placeholder="https://vimeo.com/123456789">
+            <p style="font-size:11px;margin-top:6px" id="pf-vimeo-state"></p>
+          </div>
+          <div id="pf-vimeo-prev"></div>
+          <p style="font-size:11px;color:var(--tx-mu);line-height:1.8">限定公開のURL（ハッシュ付き）でも構いません。Vimeo側で「特定のドメインのみ埋め込み可」に設定される場合は <b>taketo0904.github.io</b> を許可してください。</p>
+        </div>
+      </div>
+
+      <div class="panel br">
+        <h3>事務局に送る</h3>
+        <div class="bd">
+          <p>内容を確認したら、下のいずれかで事務局へお送りください。</p>
+          <div class="arow-actions" style="margin-bottom:12px">
+            <button class="btn btn--pri btn--w" id="pf-mail-send">メールで送る</button>
+          </div>
+          <div class="arow-actions">
+            <button class="btn btn--gh" id="pf-copy">内容をコピー</button>
+            <button class="btn btn--gh" id="pf-download">ファイルで保存</button>
+          </div>
+          <p style="font-size:11px;color:var(--tx-mu);margin-top:10px" id="pf-size"></p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -960,6 +1061,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
       </div>
     </div>
     <div class="modal-bd">
+      <div id="md-vid"></div>
       <dl>
         <dt>エリア</dt><dd id="md-area"></dd>
         <dt>入会</dt><dd id="md-joined"></dd>
@@ -1163,42 +1265,42 @@ var MEMBERS=[
   skills:["新築","現場管理"],scope:"新築（木造在来）／外構まで自社施工。RC造は協力会社と。",
   works:"注文住宅の新築を年間20棟。木造在来を中心に、平屋の設計も増えています。",
   msg:"見積作成にAIを使い始めて3ヶ月です。同じことをやっている方と情報交換したいです。",
-  free:"月イチで社内AI勉強会をやっています。見学歓迎です。",mail:"sample@example.co.jp"},
+  free:"月イチで社内AI勉強会をやっています。見学歓迎です。",mail:"yamada@sample-koumuten.example"},
  {pid:"ai-keiei",co:"サンプル建設",nm:"佐藤 花子",area:"愛知県名古屋市",joined:"2026-05",
   skills:["リフォーム","集客・広報"],scope:"水まわり改修〜全面改装。増築・耐震補強も対応。",
   works:"戸建てのリノベーションが中心。水まわりの改修から全面改装まで。",
   msg:"SNSの投稿づくりにAIを使っています。写真の選定まで自動化するのが目標です。",
-  free:"",mail:"sample@example.co.jp"},
+  free:"",mail:"sato@sample-kensetsu.example"},
  {pid:"ai-keiei",co:"サンプル設計事務所",nm:"鈴木 一郎",area:"静岡県静岡市",joined:"2026-06",
   skills:["設計","新築"],scope:"設計・監理のみ（施工は行いません）。住宅・小規模店舗。",
   works:"住宅設計と店舗設計。年間15件ほど。",
   msg:"プラン検討の初期段階でAIを使っています。使いどころの相談に乗れます。",
-  free:"設計事務所の立場からの相談も受けます。",mail:"sample@example.co.jp"},
+  free:"設計事務所の立場からの相談も受けます。",mail:"suzuki@sample-sekkei.example"},
  {pid:"ai-keiei",co:"サンプルホーム",nm:"高橋 美咲",area:"神奈川県横浜市",joined:"2026-06",
   skills:["新築","積算・見積"],scope:"分譲・注文の新築。土地の仕入れから引渡しまで一貫。",
   works:"分譲住宅と注文住宅。年間30棟。",
   msg:"積算のデータ整理でつまずいています。同じ課題の方いませんか。",
-  free:"",mail:"sample@example.co.jp"},
+  free:"",mail:"takahashi@sample-home.example"},
  {pid:"ai-keiei",co:"サンプル不動産",nm:"田中 健",area:"静岡県浜松市",joined:"2026-07",
   skills:["不動産","集客・広報"],scope:"売買仲介・土地活用の提案。工事は協力会社に委託。",
   works:"売買仲介と土地活用の提案。相続相談も対応。",
   msg:"物件紹介文の作成を自動化しました。仕組みを共有できます。",
-  free:"相続まわりの相談もどうぞ。",mail:"sample@example.co.jp"},
+  free:"相続まわりの相談もどうぞ。",mail:"tanaka@sample-fudosan.example"},
  {pid:"ai-keiei",co:"サンプル住建",nm:"伊藤 直樹",area:"三重県四日市市",joined:"2026-07",
   skills:["リフォーム","現場管理"],scope:"小規模改修が中心。外装・屋根・内装。新築は請けていません。",
   works:"改修工事が中心。年間80件ほどの小規模工事。",
   msg:"現場からの報告をチャットで集めて自動でまとめています。",
-  free:"",mail:"sample@example.co.jp"},
+  free:"",mail:"ito@sample-juken.example"},
  {pid:"ai-keiei",co:"サンプル工業",nm:"渡辺 由美",area:"岐阜県岐阜市",joined:"2026-08",
   skills:["採用","集客・広報"],scope:"新築・リフォーム両方。設備工事は自社施工。",
   works:"新築とリフォームの両方。社員28名。",
   msg:"求人票の作成にAIを使い始めました。採用まわりの話をしたいです。",
-  free:"採用でお困りの会社さん、情報交換しましょう。",mail:"sample@example.co.jp"},
+  free:"採用でお困りの会社さん、情報交換しましょう。",mail:"watanabe@sample-kogyo.example"},
  {pid:"ai-keiei",co:"サンプル建築",nm:"中村 隆",area:"愛知県豊橋市",joined:"2026-08",
   skills:["設計","積算・見積"],scope:"設計から施工まで自社対応。木造中心、規模は延床60坪まで。",
   works:"住宅設計と施工。木造中心で年間12棟。",
   msg:"図面のチェック作業にAIを使えないか試しています。",
-  free:"",mail:"sample@example.co.jp"}
+  free:"",mail:"nakamura@sample-kenchiku.example"}
 ];
 
 var CASES=[
@@ -1348,9 +1450,14 @@ function serviceCard(sv){
    +'<div class="ds" style="-webkit-line-clamp:4">'+esc(sv.d)+'</div>'
    +'<div class="mt">壁打ち会で相談する →</div></div></div>';
 }
+function memberAva(m,cls){
+  if(m.photo) return '<div class="'+cls+'" style="background:#000"><img src="'+esc(m.photo)+'" alt="'+esc(m.nm||"")+'"></div>';
+  return '<div class="'+cls+'" style="background:'+avatarColor(m.co||m.nm||"?")+'">'+esc((m.nm||"?").charAt(0))+'</div>';
+}
 function memberCard(m){
   return '<button class="mcard" data-member="'+MEMBERS.indexOf(m)+'">'
-   +'<div class="ava" style="background:'+avatarColor(m.co)+'">'+esc((m.nm||"?").charAt(0))+'</div>'
+   +memberAva(m,"ava")
+   +(vimeoSrc(m.vimeo)?'<span class="mv-badge">動画あり</span>':'')
    +'<div class="bd"><div class="co">'+esc(m.co)+'</div><div class="nm">'+esc(m.nm)+'</div>'
    +'<div class="ar">'+esc(m.area||"")+(m.joined?' ・ '+esc(joinedLabel(m.joined)):'')+'</div>'
    +'<div class="tags">'+(m.skills||[]).map(function(x){return '<span class="tag">'+esc(x)+'</span>'}).join("")+'</div>'
@@ -1598,6 +1705,7 @@ var FAQ=[
 ];
 
 var MENU=[
+ {go:"profile",t:"マイプロフィール",d:"名簿に載せるご自身の情報・写真・自己紹介動画"},
  {go:"orient",t:"オリエンテーション",d:"研究会の歩き方と会員サイトの使い方"},
  {go:"cases",t:"事例インタビュー",d:"会員のみなさんの、入会後に変わったこと"},
  {go:"talk",t:"AI無料壁打ち会",d:"30分でAI活用の困りごとを一緒に整理します"},
@@ -1615,6 +1723,87 @@ function renderFaq(){
   }).join("");
 }
 
+/* ====== マイプロフィール ====== */
+var MYMAIL="";
+var PROF=null;
+var PF_FIELDS=["co","nm","area","joined","mail","skills","scope","works","msg","free","vimeo"];
+
+function profKey(){ return "lf_profile:"+(MYMAIL||"anon") }
+function loadProf(){
+  var base=null;
+  for(var i=0;i<MEMBERS.length;i++){
+    var m=MEMBERS[i];
+    if(m.mail && MYMAIL && m.mail.toLowerCase()===MYMAIL.toLowerCase()){ base=m; break; }
+  }
+  var draft=null;
+  try{ var raw=localStorage.getItem(profKey()); if(raw) draft=JSON.parse(raw); }catch(e){}
+  PROF = draft || (base ? JSON.parse(JSON.stringify(base)) : {pid:PID, mail:MYMAIL});
+  if(!PROF.pid) PROF.pid=PID;
+  if(!PROF.mail) PROF.mail=MYMAIL;
+  return PROF;
+}
+function saveProf(){
+  try{ localStorage.setItem(profKey(), JSON.stringify(PROF)); }catch(e){}
+}
+function renderProfile(){
+  var m=loadProf();
+  PF_FIELDS.forEach(function(k){
+    var el=$('[data-pf="'+k+'"]'); if(!el) return;
+    el.value = (k==="skills") ? (m.skills||[]).join(", ") : (m[k]||"");
+  });
+  renderProfPhoto();
+  renderProfVimeo();
+  updateProfSize();
+}
+function renderProfPhoto(){
+  var box=$("#pf-photo-box"); if(!box) return;
+  box.innerHTML = PROF.photo
+    ? '<img src="'+esc(PROF.photo)+'" alt="プロフィール写真">'
+    : '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-5 5-2-2-6 5"/></svg><span>写真は未設定です</span>';
+}
+function renderProfVimeo(){
+  var src=vimeoSrc(PROF.vimeo);
+  var st=$("#pf-vimeo-state"), pv=$("#pf-vimeo-prev");
+  if(!st) return;
+  if(!PROF.vimeo){ st.textContent=""; pv.innerHTML=""; return; }
+  if(src){
+    st.innerHTML='<span class="pf-ok">URLを認識しました</span>';
+    pv.innerHTML='<div class="vidbox" style="background:#000;max-width:none;margin:10px 0 14px"><iframe src="'+src+'" title="自己紹介動画" frameborder="0" allow="fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%"></iframe></div>';
+  } else {
+    st.innerHTML='<span class="pf-ng">VimeoのURLとして読み取れません</span>';
+    pv.innerHTML="";
+  }
+}
+function profPayload(){
+  var out={};
+  PF_FIELDS.forEach(function(k){ if(PROF[k]) out[k]=PROF[k] });
+  out.pid=PROF.pid||PID;
+  if(PROF.photo) out.photo=PROF.photo;
+  return out;
+}
+function updateProfSize(){
+  var el=$("#pf-size"); if(!el) return;
+  var kb=Math.round(JSON.stringify(profPayload()).length/1024);
+  el.textContent = PROF.photo ? "送信サイズ 約"+kb+"KB（写真を含みます）" : "送信サイズ 約"+kb+"KB";
+}
+function shrinkImage(file,cb){
+  var r=new FileReader();
+  r.onload=function(){
+    var img=new Image();
+    img.onload=function(){
+      var S=480, c=document.createElement("canvas"); c.width=S; c.height=S;
+      var x=img.width, y=img.height, side=Math.min(x,y);
+      var ctx=c.getContext("2d");
+      ctx.drawImage(img, (x-side)/2, (y-side)/2, side, side, 0, 0, S, S);
+      cb(c.toDataURL("image/jpeg", 0.82));
+    };
+    img.onerror=function(){ cb(null) };
+    img.src=r.result;
+  };
+  r.onerror=function(){ cb(null) };
+  r.readAsDataURL(file);
+}
+
 function renderMenu(){
   $("#menu-list").innerHTML=MENU.map(function(m){
     return '<button class="mrow" '+(m.logout?'data-logout="1"':'data-go="'+m.go+'"')+'>'
@@ -1626,8 +1815,8 @@ function renderMenu(){
 }
 
 /* ====== ルーティング ====== */
-var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","interview","faq","menu","admin"];
-var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu",admin:"admin",interview:"menu",faq:"menu"};
+var VIEWS=["home","courses","course","case","orient","members","cases","talk","services","interview","faq","profile","menu","admin"];
+var NAVOF={home:"home",courses:"courses",course:"courses",case:"courses",orient:"home",members:"members",cases:"menu",talk:"menu",services:"menu",menu:"menu",admin:"admin",interview:"menu",faq:"menu",profile:"menu"};
 function go(v,arg){
   if(VIEWS.indexOf(v)<0) v="home";
   if(v==="admin" && ROLE!=="admin") v="home";
@@ -1638,6 +1827,7 @@ function go(v,arg){
   if(v==="interview") renderInterview(arg);
   if(v==="orient") renderOrient();
   if(v==="admin"){ renderAdminVideo(); renderAdminMember(); }
+  if(v==="profile") renderProfile();
   var h = (v==="course"||v==="case"||v==="interview") ? "#"+v+"/"+arg : "#"+v;
   if(location.hash!==h) history.replaceState(null,"",h);
   window.scrollTo({top:0,behavior:"smooth"});
@@ -1729,8 +1919,12 @@ function openVideo(id,title){
 function closeVideo(){ $("#vframe").innerHTML=""; $("#vmodal").hidden=true; }
 
 function openMember(m){
-  $("#md-ava").textContent=m.nm.charAt(0);
-  $("#md-ava").style.background=avatarColor(m.co);
+  if(m.photo){ $("#md-ava").innerHTML='<img src="'+esc(m.photo)+'" alt="'+esc(m.nm||"")+'">'; $("#md-ava").style.background="#000"; }
+  else { $("#md-ava").textContent=(m.nm||"?").charAt(0); $("#md-ava").style.background=avatarColor(m.co||m.nm||"?"); }
+  var mvs=vimeoSrc(m.vimeo);
+  $("#md-vid").innerHTML = mvs
+    ? '<div class="vidbox" style="background:#000;max-width:none;margin:0 0 20px"><iframe src="'+mvs+'" title="'+esc(m.nm||"")+' 自己紹介" frameborder="0" allow="fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%"></iframe></div>'
+    : "";
   $("#md-co").textContent=m.co;
   $("#md-nm").textContent=m.nm;
   $("#md-tags").innerHTML=m.skills.map(function(s){return '<span class="tag">'+esc(s)+'</span>'}).join("");
@@ -1769,6 +1963,49 @@ document.addEventListener("input",function(e){
   }
 });
 
+/* マイプロフィール入力 */
+document.addEventListener("input",function(e){
+  var f=e.target.closest("[data-pf]");
+  if(!f || !PROF) return;
+  var k=f.dataset.pf;
+  PROF[k] = (k==="skills") ? f.value.split(",").map(function(x){return x.trim()}).filter(Boolean) : f.value;
+  if(k==="vimeo") renderProfVimeo();
+  saveProf(); updateProfSize();
+});
+$("#pf-photo-pick").addEventListener("click",function(){ $("#pf-photo-file").click() });
+$("#pf-photo-file").addEventListener("change",function(){
+  var f=this.files && this.files[0]; if(!f) return;
+  if(f.size > 12*1024*1024){ toast("画像が大きすぎます（12MBまで）"); this.value=""; return; }
+  shrinkImage(f,function(data){
+    if(!data){ toast("この画像は読み込めませんでした"); return; }
+    PROF.photo=data; saveProf(); renderProfPhoto(); updateProfSize(); toast("写真を設定しました");
+  });
+  this.value="";
+});
+$("#pf-photo-clear").addEventListener("click",function(){
+  delete PROF.photo; saveProf(); renderProfPhoto(); updateProfSize(); toast("写真を削除しました");
+});
+$("#pf-copy").addEventListener("click",function(){ copyText(JSON.stringify(profPayload(),null,2)) });
+$("#pf-download").addEventListener("click",function(){
+  var nm=(PROF.nm||"profile").replace(/[^\wぁ-んァ-ヶ一-龠ー]/g,"");
+  download("会員プロフィール_"+nm+".json", JSON.stringify(profPayload(),null,2));
+});
+$("#pf-mail-send").addEventListener("click",function(){
+  var p=profPayload();
+  var lines=["建築AI経営研究会 事務局 御中","","会員名簿への掲載内容をお送りします。","",
+    "会社名："+(p.co||""),"お名前："+(p.nm||""),"エリア："+(p.area||""),
+    "入会年月："+(p.joined||""),"メール："+(p.mail||""),
+    "得意分野："+((p.skills||[]).join(" / ")),
+    "施工範囲："+(p.scope||""),"手がけた工事："+(p.works||""),
+    "ひとこと："+(p.msg||""),"自由記述："+(p.free||""),
+    "自己紹介動画："+(p.vimeo||"なし"),
+    "写真："+(p.photo?"別途添付します（サイト上で保存済み）":"なし"),""];
+  if(p.photo) lines.push("※ 写真はこのメールに添付するか、「ファイルで保存」で書き出したJSONをお送りください。");
+  var url="mailto:?subject="+encodeURIComponent("【会員名簿】掲載内容のご連絡（"+(p.nm||"")+"）")
+    +"&body="+encodeURIComponent(lines.join("\n"));
+  window.location.href=url;
+});
+
 $("#a-video-out").addEventListener("click",function(){ $("#a-video-json").value=buildVideosJson(); toast("出力しました") });
 $("#a-video-copy").addEventListener("click",function(){ if(!$("#a-video-json").value) $("#a-video-json").value=buildVideosJson(); copyText($("#a-video-json").value) });
 $("#a-video-dl").addEventListener("click",function(){ download("videos.json", buildVideosJson()) });
@@ -1778,6 +2015,29 @@ $("#a-member-add").addEventListener("click",function(){
   var rows=$("#a-member-rows").querySelectorAll("tr");
   if(rows.length) rows[rows.length-1].querySelector("input").focus();
 });
+$("#a-import-run").addEventListener("click",function(){
+  var raw=$("#a-import").value.trim();
+  if(!raw){ toast("貼り付けてください"); return; }
+  var j; try{ j=JSON.parse(raw) }catch(e){ toast("JSONとして読み取れません"); return; }
+  var list=Array.isArray(j)?j:[j];
+  var list2=memberDraft(), added=0, updated=0;
+  var dup=0;
+  list.forEach(function(x){
+    if(!x || !x.mail){ return; }
+    var key=String(x.mail).toLowerCase(), hit=-1, n=0;
+    for(var i=0;i<list2.length;i++){
+      if(list2[i].mail && list2[i].mail.toLowerCase()===key){ n++; if(hit<0) hit=i; }
+    }
+    if(n>1) dup++;
+    if(hit>=0){ list2[hit]=Object.assign({}, list2[hit], x); updated++; }
+    else { list2.push(Object.assign({pid:PID}, x)); added++; }
+  });
+  if(!added && !updated){ toast("メールアドレスのある行がありませんでした"); return; }
+  renderAdminMember(); $("#a-import").value="";
+  toast("取り込みました（更新"+updated+"件 / 追加"+added+"件）"
+    +(dup?" ※同じメールの会員が複数います。上の行に反映しました":""));
+});
+
 $("#a-member-out").addEventListener("click",function(){ $("#a-member-json").value=buildMembersJson(); toast("出力しました") });
 $("#a-member-copy").addEventListener("click",function(){ if(!$("#a-member-json").value) $("#a-member-json").value=buildMembersJson(); copyText($("#a-member-json").value) });
 $("#a-member-dl").addEventListener("click",function(){ download("members.json", buildMembersJson()) });
@@ -1924,6 +2184,7 @@ function drawAll(){
 }
 function enter(mail,role){
   ROLE = (role==="admin") ? "admin" : "member";
+  MYMAIL = mail || "";
   try{ PID = sessionStorage.getItem("lf_pid") || PID }catch(e){}
   $("#gate").style.display="none";
   $("#app").hidden=false;
