@@ -1101,128 +1101,126 @@ function inProd(a){ return a.filter(function(x){ return (x.pid||"ai-keiei")===PI
 /* 動画ジャンル＝Notion「建築業界特化のAI事例プラットフォーム」の分野。
    total は Notion 上の件数、items は当サイトへ取り込み済みの事例。 */
 var GENRES=[
- {id:"eigyo",pid:"ai-keiei",t:"営業",gr:"営業",gi:0,total:14,
+ {id:"eigyo",pid:"ai-keiei",t:"営業",gr:"営業",gi:0,total:22,
   d:"提案資料、商談フィードバック、資金計画、顧客対応の返信まで。",
   items:[
-   {id:"e1",t:"換気1種vs3種の比較スライドをChatGPT×Gensparkで数十分作成",
-    tools:["ChatGPT","Genspark"],cats:["個人の生産性向上","業務プロセス改善"],
-    sum:"住宅営業・設計の提案資料作成において、第1種換気と第3種換気のように施主が判断に迷う設備の比較スライドを、AIで数十分に短縮する事例。仕様の違い・コスト・メンテナンス性を施主目線の言葉に落とし込む。",
-    notes:["比較軸を先に決めてからAIに投げると、抜けのないスライドになる","数値は必ず自社の実績値で上書きする","Gensparkでスライド化まで一気通貫にする"]},
-   {id:"e2",t:"【商談フィードバックAI】トップ営業の思考を再現し若手育成を即時化（拘束時間90%削減）",
-    tools:["ChatGPT"],cats:["個人の生産性向上","業務プロセス改善"],
-    sum:"若手への商談フィードバックは上司やトップ営業の時間を大きく奪う。商談の録音・議事録をAIに読ませ、トップ営業の観点でフィードバックを返す仕組みをつくることで、上司の拘束時間を9割減らしながら育成のスピードを上げる事例。",
-    notes:["トップ営業の商談ログを事前に学習させておく","「良かった点」より「次にどう言うか」を出させる","本人が読んで動けるレベルまで具体化させる"]},
-   {id:"e3",t:"借入可能額を銀行別に一括算出（35年/40年・カーローン分岐）をChatGPTで秒速化",
-    tools:["ChatGPT"],cats:["個人の生産性向上","顧客体験向上"],
-    sum:"銀行ごとに審査金利・返済比率などの基準が異なるため、借入可能額の試算は手間がかかる。各行の基準をAIに持たせ、35年/40年やカーローンの有無で分岐した試算を商談中に即座に出す事例。",
-    notes:["各行の審査金利・返済比率を表にして先に学習させる","カーローン等の既存借入を必ず入力項目に入れる","試算はあくまで概算であることを施主に明示する"]},
-   {id:"e4",t:"ChatGPTでLINE返信を爆速化（テンプレート活用で温度感を落とさない）",
-    tools:["ChatGPT"],cats:["個人の生産性向上"],
-    sum:"施主とのLINEでのやりとりは件数が多く、返信の質にばらつきが出やすい。よくある質問と自社の言い回しをAIに学習させ、テンプレートから状況に合わせた返信文を生成する事例。",
-    notes:["自社らしい言い回しを10例ほど学習させる","事務的にならないよう一言添える枠を残す","金額・工期に関わる回答は必ず人が確認する"]}
+   {id:"e01",t:"換気1種vs3種の比較スライドをChatGPT×Gensparkで数十分作成",tools:["ChatGPT", "Genspark"],cats:[],sum:"",notes:[]},
+   {id:"e02",t:"【商談フィードバックAI】トップ営業の思考を再現し若手育成を即時化（拘束時間90%削減）",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"e03",t:"借入可能額を銀行別に一括算出（35年/40年・カーローン分岐）をChatGPTで秒速化",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"e04",t:"ChatGPTでLINE返信を爆速化！テンプレート学習で「送るだけ」の仕組み作り",tools:["ChatGPT", "Gemini"],cats:[],sum:"",notes:[]},
+   {id:"e05",t:"ChatGPT×NotebookLMで住宅ローン比較資料を10分で作成！35年vs40年のシミュレーションを自動化",tools:["ChatGPT", "NotebookLM"],cats:[],sum:"",notes:[]},
+   {id:"e06",t:"商談の議事録作成をAIで自動化！Gemini活用術",tools:["Gemini", "Google Workspace"],cats:[],sum:"",notes:[]},
+   {id:"e07",t:"NotebookLMでYouTube動画を爆速要約！忙しい設計士・営業のための情報収集術",tools:["NotebookLM"],cats:[],sum:"",notes:[]},
+   {id:"e08",t:"ChatGPTで顧客対応を爆速化！建築実務のチャット返信をAIで自動化する活用術",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"e09",t:"【Gemini活用】スマホ録音で商談議事録を自動化！有料ツールは不要！",tools:["Gemini"],cats:[],sum:"",notes:[]},
+   {id:"e10",t:"NotebookLMで競合対策・営業教育を仕組み化（競合調査を高速化）",tools:["NotebookLM"],cats:[],sum:"",notes:[]},
+   {id:"e11",t:"ClaudeCowork と Claude for EXCELで見積を作成する",tools:["Claude"],cats:[],sum:"",notes:[]},
+   {id:"e12",t:"営業で使える平面図をプレゼン資料はつくれるのか",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"e13",t:"売買契約書のリスクレビューはAIだけでできるのか（ChatGPT vs Claude 比較）",tools:["ChatGPT", "Claude"],cats:[],sum:"",notes:[]},
+   {id:"e14",t:"見積り差分比較分析（Claude）",tools:["Claude"],cats:[],sum:"",notes:[]},
+   {id:"e15",t:"インスタグラムの自動投稿❶",tools:["Claude", "Instagram", "GitHub"],cats:[],sum:"",notes:[]},
+   {id:"e16",t:"インスタグラムの自動投稿❷",tools:["Claude"],cats:[],sum:"",notes:[]},
+   {id:"e17",t:"土地探し全部自動化①",tools:["Claude"],cats:[],sum:"",notes:[]},
+   {id:"e18",t:"土地探し全部自動化②",tools:["Claude"],cats:[],sum:"",notes:[]},
+   {id:"e19",t:"音声自動収集→NotebookLM格納❶",tools:["Claude", "NotebookLM"],cats:[],sum:"",notes:[]},
+   {id:"e20",t:"音声自動収集→NotebookLM格納❷",tools:["Claude", "NotebookLM", "PLAUD"],cats:[],sum:"",notes:[]},
+   {id:"e21",t:"外観内観レンダリング自動化コンセプトブック作成①",tools:["Gemini", "Claude", "ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"e22",t:"外観内観レンダリング自動化コンセプトブック作成②",tools:["ChatGPT", "Canva"],cats:[],sum:"",notes:[]}
   ]},
-
- {id:"sekkei",pid:"ai-keiei",t:"設計",gr:"設計",gi:1,total:8,
-  d:"CADパースのフォトリアル化、法令検索、図面まわりの実務。",
+ {id:"sekkei",pid:"ai-keiei",t:"設計",gr:"設計",gi:1,total:7,
+  d:"CADパースのフォトリアル化、法令検索、積算、設計ヒアリングの整理。",
   items:[
-   {id:"s1",t:"ChatGPTでCADパースをフォトリアル化&部分修正（選択範囲編集で外構・車・素材を対話編集）",
-    tools:["ChatGPT"],cats:["顧客体験向上","業務プロセス改善"],
-    sum:"CADで作成したパースは提案に必須だが、質感や外構まで作り込むと工数がかかる。生成AIの選択範囲編集を使い、外構・車・素材だけを対話的に差し替えてフォトリアルに仕上げる事例。",
-    notes:["建物本体は触らず、周辺要素だけ選択範囲で編集する","「実写のように」より素材名で指示すると安定する","施主提示前に必ず寸法・仕様との矛盾を確認する"]},
-   {id:"s2",t:"【建築AI検証】CADパースを実写化！GPTs vs Gemini 徹底比較｜成約率爆上げのプレゼン術",
-    tools:["ChatGPT","Gemini"],cats:["顧客体験向上"],
-    sum:"CADで作成したパースをどこまで実写のように仕上げられるか、GPTsとGeminiで同条件比較した検証事例。得意・不得意の傾向と、提案の場面ごとの使い分けを整理する。",
-    notes:["同じ入力画像・同じ指示で比較する","外観と内観で得意なモデルが分かれる","提案の場面ごとに使い分けを決めておく"]},
-   {id:"s3",t:"【建築実務×AI】分厚い法令集はもう不要！NotebookLMで自社専用の「建築基準法AIアシスタント」を作る方法",
-    tools:["NotebookLM","Gemini"],cats:["業務プロセス改善","個人の生産性向上"],
-    sum:"建築基準法などの膨大な法令や、複雑なCAD操作マニュアルを都度引くのは負担が大きい。NotebookLMに法令・社内基準を読み込ませ、根拠の条文つきで答える自社専用アシスタントをつくる事例。",
-    notes:["必ず出典の条文を併記させる","自社の運用ルールも同じノートに入れる","最終判断は有資格者が行う前提で運用する"]}
+   {id:"s01",t:"ChatGPTでCADパースをフォトリアル化＆部分修正（選択範囲編集で外構・車・素材を対話編集）",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"s02",t:"【建築AI検証】CADパースを実写化！GPTs vs Gemini 徹底比較｜成約率爆上げのプレゼン術",tools:["ChatGPT", "Gemini"],cats:[],sum:"",notes:[]},
+   {id:"s03",t:"【建築実務×AI】分厚い法令集はもう不要！NotebookLMで自社専用の「建築基準法AIアシスタント」を作る方法",tools:["NotebookLM", "Gemini"],cats:[],sum:"",notes:[]},
+   {id:"s04",t:"【Gemini活用】施工事例写真をAIで劇的ビフォーアフター！外観・外構デザインの自動生成術",tools:["Gemini"],cats:[],sum:"",notes:[]},
+   {id:"s05",t:"「もう設計士に聞かなくていい？」NotebookLMで属人化を防げ！ナレッジを全社共有する方法",tools:["NotebookLM"],cats:[],sum:"",notes:[]},
+   {id:"s06",t:"図面(立面)から積算｜GPT-Gemini-Claude比較",tools:["ChatGPT", "Gemini", "Claude"],cats:[],sum:"",notes:[]},
+   {id:"s07",t:"設計ヒアリング音声から要件整理・打ち合わせ資料まで自動化",tools:["NotebookLM", "ChatGPT", "Claude"],cats:[],sum:"",notes:[]}
   ]},
-
- {id:"genba",pid:"ai-keiei",t:"現場",gr:"現場",gi:2,total:0,
-  d:"現場写真の整理、報告書、職人さんとのやりとり。",
-  items:[]},
-
- {id:"marke",pid:"ai-keiei",t:"マーケ",gr:"マーケ",gi:3,total:8,
-  d:"施工事例の文章化、競合調査、写真素材づくり。",
+ {id:"marke",pid:"ai-keiei",t:"マーケ",gr:"マーケ",gi:2,total:9,
+  d:"施工事例の文章化、競合調査、写真・動画の素材づくり。",
   items:[
-   {id:"m1",t:"ChatGPTで施工事例の文章作成を自動化！半日の作業が10分に短縮",
-    tools:["ChatGPT"],cats:["個人の生産性向上","業務プロセス改善"],
-    sum:"工務店のマーケ業務における施工事例の紹介文づくりは、1件あたり半日かかることもある。物件情報と写真から紹介文の下書きを生成し、10分で仕上げる事例。",
-    notes:["物件の基本情報をフォーマット化して渡す","施主のこだわりを1つ必ず入れる","そのまま出さず担当者が温度感を足す"]},
-   {id:"m2",t:"Web上の膨大な情報を5分で収集・分析！「Enhancer 4 Google」× NotebookLM 活用術",
-    tools:["NotebookLM","ChatGPT","Webスクレイピング"],cats:["業務プロセス改善"],
-    sum:"競合他社やポータルサイトの情報を人手で集めると時間がかかる。Web上の情報を一括収集し、NotebookLMで横断的に分析して自社の打ち手を出す事例。",
-    notes:["収集対象のURLを先に絞る","公開情報のみを扱う","分析結果は必ず一次情報で裏取りする"]},
-   {id:"m3",t:"AIで施工事例に人物を合成！マーケティングを加速させる最新ツール活用術",
-    tools:["Gemini","画像編集AI"],cats:["顧客体験向上"],
-    sum:"生活感のある施工事例写真を撮影するにはモデルの手配が必要でコストがかかる。完成写真にAIで人物を自然に合成し、暮らしのイメージが伝わる素材をつくる事例。",
-    notes:["合成であることを明示する運用ルールを決める","実在する施主と誤認される表現は避ける","建物側は一切加工しない"]}
+   {id:"m01",t:"ChatGPTで施工事例の文章作成を自動化！半日の作業が10分に短縮",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"m02",t:"Web上の膨大な情報を5分で収集・分析！「Enhancer 4 Google」× NotebookLM 活用術",tools:["NotebookLM", "ChatGPT", "Webスクレイピング"],cats:[],sum:"",notes:[]},
+   {id:"m03",t:"AIで施工事例に人物を合成！マーケティングを加速させる最新ツール活用術",tools:["Gemini", "画像編集AI"],cats:[],sum:"",notes:[]},
+   {id:"m04",t:"コラム/ブログの自動生成Botの活用術（外注費144万円→ほぼ0円）",tools:["ChatGPT", "Gemini", "DeepResearch"],cats:[],sum:"",notes:[]},
+   {id:"m05",t:"AIで施工写真を動画化！SNS広告で勝てるタイムラプス作成術",tools:["ChatGPT", "Gemini"],cats:[],sum:"",notes:[]},
+   {id:"m06",t:"Geminiで建築写真をプロ級に編集（外構・天候・色提案を即時シミュレーション）",tools:["Gemini"],cats:[],sum:"",notes:[]},
+   {id:"m07",t:"chatGPTの画像生成（外観パース・SNSバナー 画像生成）",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"m08",t:"チャットワーク内のやり取りを即チラシ化",tools:["ChatGPT", "Claude", "Gemini", "Chatwork"],cats:[],sum:"",notes:[]},
+   {id:"m09",t:"【AI活用事例】アンケート分析で経営改善！ChatGPTで2000件を15分でインフォグラフィック化",tools:["ChatGPT", "Googleフォーム", "スプレッドシート"],cats:[],sum:"",notes:[]}
   ]},
-
- {id:"kyotsu",pid:"ai-keiei",t:"共通",gr:"共通",gi:4,total:8,
-  d:"社内の情報検索、ニュース収集、画像編集など職種を問わない事例。",
+ {id:"kyotsu",pid:"ai-keiei",t:"共通",gr:"共通",gi:3,total:9,
+  d:"社内の情報検索、音声入力、プロンプト作成など職種を問わない事例。",
   items:[
-   {id:"k1",t:"NotebookLMで仕様書・FAQを横断検索し属人化を解消（検索時間80%削減）",
-    tools:["NotebookLM","ChatGPT","Google Workspace"],cats:["業務プロセス改善","コスト削減"],
-    sum:"工法・部材・社内ルールなどがベテランに属人化し、若手が都度聞きに行く状態になっている。仕様書やFAQをNotebookLMに集約し、横断検索できるようにして検索時間を8割削減する事例。",
-    notes:["元資料の置き場をGoogleドライブに一本化する","回答には必ず出典ファイル名を出させる","更新のたびにノートを差し替える運用を決める"]},
-   {id:"k2",t:"Geminiで情報収集を自動化！建築・不動産実務に役立つ最新ニュース定期配信設定術",
-    tools:["Gemini"],cats:["個人の生産性向上"],
-    sum:"建築・不動産業界の法改正、AI・新技術、市場動向を追い続けるのは負担が大きい。条件を決めて定期的にニュースを収集・要約し、自動で配信する仕組みをつくる事例。",
-    notes:["拾いたいキーワードを業務単位で決める","要約は3行までに制限する","法改正は必ず一次情報を確認する"]},
-   {id:"k3",t:"【神アップデート】ChatGPTで建築パースを直接編集！Adobe提携でPhotoshop機能が無料開放",
-    tools:["ChatGPT","画像編集AI"],cats:["個人の生産性向上"],
-    sum:"AIで建築パースは作れるようになったが、細部の修正には画像編集ソフトが必要だった。ChatGPT上でPhotoshop相当の編集ができるようになり、生成から修正までを1か所で完結させる事例。",
-    notes:["修正指示は部位を限定して出す","元画像は必ず別で保管する","提案用と社内検討用でファイルを分ける"]}
+   {id:"k01",t:"NotebookLMで仕様書・FAQを横断検索し属人化を解消（検索時間80%削減）",tools:["NotebookLM", "ChatGPT", "Google Workspace"],cats:[],sum:"",notes:[]},
+   {id:"k02",t:"Geminiで情報収集を自動化！建築・不動産実務に役立つ最新ニュース定期配信設定術",tools:["Gemini"],cats:[],sum:"",notes:[]},
+   {id:"k03",t:"【神アップデート】ChatGPTで建築パースを直接編集！Adobe提携でPhotoshop機能が無料開放",tools:["ChatGPT", "画像編集AI"],cats:[],sum:"",notes:[]},
+   {id:"k04",t:"決定図PDFをNotebookLMに集約！図面・仕様検索を“数秒”にするプロジェクト専属AIアシスタント",tools:["NotebookLM"],cats:[],sum:"",notes:[]},
+   {id:"k05",t:"【Aqua Voice活用】タイピングの150年に終止符を。AI搭載・次世代音声入力で業務スピードを5倍にする方法",tools:["AquaVoice"],cats:[],sum:"",notes:[]},
+   {id:"k06",t:"【Gemini活用】プロンプトエンジニアリング不要！最強のプロンプト生成ボット「Lyra（ライラ）」の作り方",tools:["Gemini"],cats:[],sum:"",notes:[]},
+   {id:"k07",t:"AIブラウザでChatwork/CRMのデータ分析を自動化（レポート作成を10時間→1時間）",tools:["Genspark"],cats:[],sum:"",notes:[]},
+   {id:"k08",t:"小口レシート・領収書の自動OCR処理システム構築",tools:["スプレッドシート", "Claude", "Google Drive"],cats:[],sum:"",notes:[]},
+   {id:"k09",t:"土地探し全部自動化（動画版）",tools:["Claude"],cats:[],sum:"",notes:[]}
   ]},
-
- {id:"reform",pid:"ai-keiei",t:"リフォーム",gr:"リフォーム",gi:5,total:3,
+ {id:"reform",pid:"ai-keiei",t:"リフォーム",gr:"リフォーム",gi:4,total:3,
   d:"間取り図の3D化、リノベ提案のビジュアライズ。",
   items:[
-   {id:"r1",t:"間取り図を瞬時に3D化！Geminiで実現する店舗リノベ・マンション提案の最速ビジュアライズ術",
-    tools:["Gemini"],cats:["顧客体験向上","業務プロセス改善"],
-    sum:"初期提案での3Dパース作成はモデリングに時間がかかり、提案までのリードタイムが長くなる。間取り図から直接3Dイメージを生成し、初回提案のスピードを上げる事例。",
-    notes:["初期提案用と実施設計用を明確に分ける","寸法の正確性は担保されないと施主に伝える","雰囲気の合意形成に用途を限定する"]},
-   {id:"r2",t:"Geminiで変わる！建築・リノベ提案の未来：AI画像生成で理想の空間を即座に可視化",
-    tools:["Gemini"],cats:["顧客体験向上"],
-    sum:"従来のリノベ提案では3DCGパース作成に時間がかかり、施主のイメージとのズレが後工程で発覚しやすい。その場で複数案を可視化し、方向性のすり合わせを前倒しする事例。",
-    notes:["1案ではなく3案出して選んでもらう","好みの写真を先にもらうと精度が上がる","確定図面ではないことを毎回明示する"]},
-   {id:"r3",t:"【店舗リノベ】Geminiで即日提案！スマホ1台で完結する画像生成術",
-    tools:["Gemini"],cats:["顧客体験向上","個人の生産性向上"],
-    sum:"店舗リノベのイメージ共有は従来パース作成を外注する必要があり、提案までに日数がかかっていた。現地でスマホ撮影した写真から即日提案のイメージをつくる事例。",
-    notes:["現地写真は明るい時間に正対して撮る","什器・サインの入れ替えに絞ると精度が高い","見積根拠には使わない"]}
+   {id:"r01",t:"間取り図を瞬時に3D化！Geminiで実現する店舗リノベ・マンション提案の最速ビジュアライズ術",tools:["Gemini"],cats:[],sum:"",notes:[]},
+   {id:"r02",t:"Geminiで変わる！建築・リノベ提案の未来：AI画像生成で理想の空間を即座に可視化",tools:["Gemini"],cats:[],sum:"",notes:[]},
+   {id:"r03",t:"【店舗リノベ】Geminiで即日提案！スマホ1台で完結する画像生成術",tools:["Gemini"],cats:[],sum:"",notes:[]}
   ]},
-
- {id:"fudosan",pid:"ai-keiei",t:"不動産",gr:"不動産",gi:0,total:2,
+ {id:"fudosan",pid:"ai-keiei",t:"不動産",gr:"不動産",gi:5,total:2,
   d:"契約書・重要事項説明のチェック、土地仕入れの実務。",
   items:[
-   {id:"f1",t:"契約書・重説チェックをAIに任せる！見落としゼロの最強実務術",
-    tools:["Gemini","ChatGPT"],cats:["業務プロセス改善","コスト削減"],
-    sum:"モデルハウス建設用の土地購入では、契約書や重要事項説明書の確認に専門知識と時間を要する。AIに条項を読み込ませてリスク箇所を洗い出し、確認漏れを防ぐ事例。",
-    notes:["確認したい観点をチェックリスト化して渡す","指摘は必ず条項番号つきで出させる","最終判断は宅建士・弁護士が行う"]},
-   {id:"f2",t:"換気1種vs3種の比較スライドをChatGPT×Gensparkで数十分作成",
-    tools:["ChatGPT","Genspark"],cats:["個人の生産性向上"],
-    sum:"営業分野と共通の事例。設備仕様の比較を施主目線の資料に落とし込む。",
-    notes:["営業ジャンルにも同じ事例を掲載している"]}
-  ]}
-,
+   {id:"f01",t:"契約書・重説チェックをAIに任せる！見落としゼロの最強実務術",tools:["Gemini", "ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"f02",t:"換気1種vs3種の比較スライドをChatGPT×Gensparkで数十分作成",tools:["ChatGPT", "Genspark"],cats:[],sum:"",notes:[]}
+  ]},
+ {id:"genba",pid:"ai-keiei",t:"現場",gr:"現場",gi:0,total:3,
+  d:"現場写真の整理、相見積もりの比較、新人監督の支援。",
+  items:[
+   {id:"g01",t:"claudecoworkで現場写真の自動整理",tools:["Claude"],cats:[],sum:"",notes:[]},
+   {id:"g02",t:"相見積もりの比較・分析をAIで自動化！Gemini/ChatGPT/NotebookLMの使い分け術",tools:["Gemini", "ChatGPT", "NotebookLM"],cats:[],sum:"",notes:[]},
+   {id:"g03",t:"新人現場監督がベテラン監督に相談できるAI活用",tools:["Claude"],cats:[],sum:"",notes:[]}
+  ]},
+ {id:"qa",pid:"ai-keiei",t:"研究会受け答えシリーズ",gr:"研究会 Q&A",gi:1,total:7,
+  d:"研究会でいただいたご質問に、社長がその場で答えたシリーズ。",
+  items:[
+   {id:"q01",t:"AI研究会のQ＆A(1) CODEXを使った物件在庫の定点観測",tools:["Codex"],cats:[],sum:"",notes:[]},
+   {id:"q02",t:"AI研究会のQ＆A(2) ChatGPT Codexによる施工管理ツール「ANDPAD」の自動ログインと情報収集",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"q03",t:"AI研究会のQ＆A(3) AIアンバサダー制度による社内AI推進と経営者のコミットメント",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"q04",t:"AI研究会のQ＆A(4) AIエージェントの構築と育成による経営業務の効率化",tools:["ChatGPT"],cats:[],sum:"",notes:[]},
+   {id:"q05",t:"AI研究会のQ＆A(5) ChatGPTからClaude等へのAIメモリー（学習・記憶ログ）の移行・引き継ぎ方法",tools:["ChatGPT", "Claude", "Cursor"],cats:[],sum:"",notes:[]},
+   {id:"q06",t:"AI研究会のQ＆A(6) AI経営の実践Q&A：コンテキスト管理、外部連携、業務フローの整理方法",tools:["Cursor", "Claude", "Chatwork"],cats:[],sum:"",notes:[]},
+   {id:"q07",t:"AI研究会のQ＆A(7) 建設・住宅業務におけるAI活用Q&A：見積もり自動化・現場監督の支援から通話録音まで",tools:["Notta", "PLAUD", "ChatGPT"],cats:[],sum:"",notes:[]}
+  ]},
+ {id:"mori",pid:"ai-keiei",t:"外部講師（森様）",gr:"外部講師 森様",gi:2,total:3,
+  d:"森様にご登壇いただいた、工務店経営のAI活用事例。",
+  items:[
+   {id:"mo1",t:"【AI秘書】GoogleカレンダーとChatworkをAPI連携した自動日報収集・分析システム",tools:["Chatwork", "Claude", "Gemini"],cats:[],sum:"",notes:[]},
+   {id:"mo2",t:"Chatworkと複数AI（Manus・Gemini・Claude Code）のAPI連携による工務店経営の業務効率化",tools:["Chatwork", "Gemini", "Manus", "Claude"],cats:[],sum:"",notes:[]},
+   {id:"mo3",t:"工務店社長が実演！AIを活用した販促チラシとホームページの迅速デザイン手法",tools:["Claude", "ChatGPT"],cats:[],sum:"",notes:[]}
+  ]},
+ {id:"fukawa",pid:"ai-keiei",t:"外部講師（府川様）",gr:"外部講師 府川様",gi:3,total:4,
+  d:"府川様にご登壇いただいた、設計・デザイン領域のAI活用事例。",
+  items:[
+   {id:"fu1",t:"AIを活用したリノベーションデザイン提案 - リバースエンジニアリング思考術",tools:["Matterport", "Pinterest"],cats:[],sum:"",notes:[]},
+   {id:"fu2",t:"マテリアル指示を統一した外観パターン出力 設計意図のダイアグラム化",tools:["ChatGPT", "Nano Banana"],cats:[],sum:"",notes:[]},
+   {id:"fu3",t:"「立面図でいいじゃん」─ 1枚の立面図で高精度パースを量産する実務術",tools:["Jw_cad", "Threads"],cats:[],sum:"",notes:[]},
+   {id:"fu4",t:"「AIを活用したコンセプトメイキング実践」- AI同士でブレストから提案作りまで",tools:["ChatGPT", "Gemini", "Canva", "PowerPoint"],cats:[],sum:"",notes:[]}
+  ]},
 
- /* ---- スタートアップ支援 ---- */
+ /* ---- 他プロダクト ---- */
  {id:"su-junbi",pid:"startup",t:"導入準備",gr:"導入準備",gi:1,total:0,d:"現状の棚卸しと、移行計画の立て方。",items:[]},
  {id:"su-ikou",pid:"startup",t:"データ移行",gr:"データ移行",gi:2,total:0,d:"社内サーバー・他社クラウドからの移行手順。",items:[]},
  {id:"su-teichaku",pid:"startup",t:"運用定着",gr:"運用定着",gi:3,total:0,d:"共有ドライブ・権限設計と、社内ルールの決め方。",items:[]},
-
- /* ---- AI顧問 ---- */
  {id:"km-tanaoroshi",pid:"komon",t:"業務の棚卸し",gr:"業務の棚卸し",gi:0,total:0,d:"どの業務から手をつけるかの優先順位づけ。",items:[]},
  {id:"km-jissou",pid:"komon",t:"仕組みの実装",gr:"仕組みの実装",gi:4,total:0,d:"プロンプトと自動化の組み立て。",items:[]},
-
- /* ---- AI研修 ---- */
  {id:"ks-kiso",pid:"kenshu",t:"全社共通",gr:"全社共通",gi:5,total:0,d:"職種を問わず全員が受ける基礎回。",items:[]},
  {id:"ks-shokushu",pid:"kenshu",t:"職種別",gr:"職種別",gi:2,total:0,d:"営業・設計・現場・事務それぞれの演習。",items:[]}
 ];
 
-/* オリエンテーションは動画ジャンルとは別建て */
 var ORIENT={
   intro:"建築AI経営研究会にご入会いただきありがとうございます。研究会の進み方と、この会員サイトの使い方をまとめています。まずはこちらからご覧ください。",
   groups:[
