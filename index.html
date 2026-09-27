@@ -905,7 +905,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
   <div id="a-member" hidden>
     <p class="cintro" style="margin-top:0;margin-bottom:18px">選択中のプロダクトの会員名簿を編集します。掲載可否は会員ご本人に確認のうえ反映してください。</p>
     <div class="awrap"><table class="atable">
-      <thead><tr><th style="width:140px">会社名</th><th style="width:100px">氏名</th><th style="width:120px">エリア</th><th style="width:90px">入会<br><span style="font-weight:400">YYYY-MM</span></th><th style="width:140px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>施工範囲 / 手がけた工事 / ひとこと / 自由記述</th><th style="width:150px">メール</th><th style="width:70px">写真</th><th style="width:56px"></th></tr></thead>
+      <thead><tr><th style="width:140px">会社名</th><th style="width:100px">氏名</th><th style="width:110px">役職</th><th style="width:120px">エリア</th><th style="width:90px">入会<br><span style="font-weight:400">YYYY-MM</span></th><th style="width:140px">得意分野<br><span style="font-weight:400">カンマ区切り</span></th><th>得意分野(原文) / 施工範囲 / 手がけた工事 / ひとこと / 自由記述</th><th style="width:150px">メール</th><th style="width:70px">写真</th><th style="width:56px"></th></tr></thead>
       <tbody id="a-member-rows"></tbody>
     </table></div>
     <p class="ascroll-note">← → 表を横にスクロールできます。入力しやすいのはパソコンです。</p>
@@ -946,6 +946,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
         <div class="bd">
           <div class="field"><label for="pf-co">会社名</label><input id="pf-co" data-pf="co" type="text" placeholder="株式会社〇〇"></div>
           <div class="field"><label for="pf-nm">お名前</label><input id="pf-nm" data-pf="nm" type="text" placeholder="山田 太郎"></div>
+          <div class="field"><label for="pf-title">役職</label><input id="pf-title" data-pf="title" type="text" placeholder="代表取締役"></div>
           <div class="field"><label for="pf-area">エリア</label><input id="pf-area" data-pf="area" type="text" placeholder="静岡県浜松市"></div>
           <div class="field"><label for="pf-joined">入会年月</label><input id="pf-joined" data-pf="joined" type="text" placeholder="2026-05"></div>
           <div class="field"><label for="pf-mail">メールアドレス</label><input id="pf-mail" data-pf="mail" type="email" placeholder="you@example.co.jp"></div>
@@ -956,6 +957,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
         <h3>お仕事について</h3>
         <div class="bd">
           <div class="field"><label for="pf-skills">得意分野<span style="font-weight:400;color:var(--tx-mu)">（カンマ区切り）</span></label><input id="pf-skills" data-pf="skills" type="text" placeholder="新築, 現場管理"></div>
+          <div class="field"><label for="pf-strength">得意分野（ご自身の言葉で）</label><textarea id="pf-strength" data-pf="strength" placeholder="例）耐震性能に優れた注文住宅の設計施工"></textarea></div>
           <div class="field"><label for="pf-scope">施工範囲</label><textarea id="pf-scope" data-pf="scope" placeholder="どこまでの工事を請けられるかをお書きください"></textarea></div>
           <div class="field"><label for="pf-works">手がけた工事</label><textarea id="pf-works" data-pf="works" placeholder="年間の棟数や、得意な工法など"></textarea></div>
           <div class="field"><label for="pf-msg">ひとこと</label><textarea id="pf-msg" data-pf="msg" placeholder="いま取り組んでいることや、話してみたいこと"></textarea></div>
@@ -1046,9 +1048,10 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     </div>
     <div class="modal-bd">
       <dl>
+        <dt>役職</dt><dd id="md-title"></dd>
         <dt>エリア</dt><dd id="md-area"></dd>
         <dt>入会</dt><dd id="md-joined"></dd>
-        <dt>得意分野</dt><dd id="md-skill"></dd>
+        <dt>得意分野</dt><dd id="md-strength"></dd>
         <dt>施工範囲</dt><dd id="md-scope"></dd>
         <dt>手がけた工事</dt><dd id="md-works"></dd>
         <dt>ひとこと</dt><dd id="md-msg"></dd>
@@ -1240,7 +1243,7 @@ var ORIENT={
 };
 
 
-var SKILLS=["新築","リフォーム","設計","不動産","積算・見積","現場管理","集客・広報","採用"];
+var SKILLS=["新築","リフォーム","設計","不動産","屋根・外壁","塗装・防水","電気・太陽光","店舗内装","ビジュアライゼーション"];
 var MEMBERS=[
  {pid:"ai-keiei",co:"サンプル工務店",nm:"山田 太郎",area:"静岡県浜松市",joined:"2026-05",
   skills:["新築","現場管理"],scope:"新築（木造在来）／外構まで自社施工。RC造は協力会社と。",
@@ -1439,6 +1442,7 @@ function memberCard(m){
   return '<button class="mcard" data-member="'+MEMBERS.indexOf(m)+'">'
    +memberAva(m,"ava")
    +'<div class="bd"><div class="co">'+esc(m.co)+'</div><div class="nm">'+esc(m.nm)+'</div>'
+   +(m.title?'<div class="ar">'+esc(m.title)+'</div>':'')
    +'<div class="ar">'+esc(m.area||"")+(m.joined?' ・ '+esc(joinedLabel(m.joined)):'')+'</div>'
    +'<div class="tags">'+(m.skills||[]).map(function(x){return '<span class="tag">'+esc(x)+'</span>'}).join("")+'</div>'
    +'</div></button>';
@@ -1625,7 +1629,7 @@ function renderMembers(){
   var list=inProd(MEMBERS).filter(function(m){
     if(actSkill && (m.skills||[]).indexOf(actSkill)<0) return false;
     if(!q) return true;
-    return (m.co+m.nm+m.area+(m.skills||[]).join("")+(m.works||"")+(m.scope||"")+(m.free||"")).toLowerCase().indexOf(q)>=0;
+    return (m.co+m.nm+(m.title||"")+m.area+(m.skills||[]).join("")+(m.strength||"")+(m.works||"")+(m.scope||"")+(m.msg||"")+(m.free||"")).toLowerCase().indexOf(q)>=0;
   });
   $("#m-empty").hidden=list.length>0;
   $("#members").innerHTML=list.map(memberCard).join("");
@@ -1706,7 +1710,7 @@ function renderFaq(){
 /* ====== マイプロフィール ====== */
 var MYMAIL="";
 var PROF=null;
-var PF_FIELDS=["co","nm","area","joined","mail","skills","scope","works","msg","free"];
+var PF_FIELDS=["co","nm","title","area","joined","mail","skills","strength","scope","works","msg","free"];
 
 function profKey(){ return "lf_profile:"+(MYMAIL||"anon") }
 function loadProf(){
@@ -1890,14 +1894,25 @@ function openMember(m){
   $("#md-co").textContent=m.co;
   $("#md-nm").textContent=m.nm;
   $("#md-tags").innerHTML=m.skills.map(function(s){return '<span class="tag">'+esc(s)+'</span>'}).join("");
+  $("#md-title").textContent=m.title||"—";
+  $("#md-title").parentNode.hidden=false;
   $("#md-area").textContent=m.area||"—";
   $("#md-joined").textContent=m.joined?joinedLabel(m.joined):"—";
-  $("#md-skill").textContent=(m.skills||[]).join(" / ")||"—";
+  $("#md-strength").textContent=m.strength||(m.skills||[]).join(" / ")||"—";
   $("#md-scope").textContent=m.scope||"—";
   $("#md-works").textContent=m.works||"—";
   $("#md-msg").textContent=m.msg||"—";
   $("#md-free").textContent=m.free||"—";
   $("#md-contact").textContent=m.mail||"—";
+  // 値が空（—）の行は隠す
+  var dl=$("#modal").querySelector("dl");
+  var kids=dl.children;
+  for(var q=0;q<kids.length;q+=2){
+    var dd=kids[q+1];
+    var empty = !dd || dd.textContent==="—" || dd.textContent==="";
+    kids[q].style.display = empty ? "none" : "";
+    if(dd) dd.style.display = empty ? "none" : "";
+  }
   $("#modal").hidden=false;
 }
 
@@ -2107,10 +2122,12 @@ function renderAdminMember(){
     return '<tr data-mi="'+i+'">'
      +'<td><input data-mf="co" value="'+esc(m.co||"")+'"></td>'
      +'<td><input data-mf="nm" value="'+esc(m.nm||"")+'"></td>'
+     +'<td><input data-mf="title" value="'+esc(m.title||"")+'"></td>'
      +'<td><input data-mf="area" value="'+esc(m.area||"")+'"></td>'
      +'<td><input data-mf="joined" value="'+esc(m.joined||"")+'" placeholder="2026-05"></td>'
      +'<td><input data-mf="skills" value="'+esc((m.skills||[]).join(", "))+'"></td>'
-     +'<td><textarea data-mf="scope" placeholder="施工範囲（どこまで工事が行えるか）">'+esc(m.scope||"")+'</textarea>'
+     +'<td><textarea data-mf="strength" placeholder="得意分野（原文）">'+esc(m.strength||"")+'</textarea>'
+     +'<textarea data-mf="scope" placeholder="施工範囲（どこまで工事が行えるか）" style="margin-top:6px">'+esc(m.scope||"")+'</textarea>'
      +'<textarea data-mf="works" placeholder="手がけた工事" style="margin-top:6px">'+esc(m.works||"")+'</textarea>'
      +'<textarea data-mf="msg" placeholder="ひとこと" style="margin-top:6px">'+esc(m.msg||"")+'</textarea>'
      +'<textarea data-mf="free" placeholder="自由記述" style="margin-top:6px">'+esc(m.free||"")+'</textarea></td>'
