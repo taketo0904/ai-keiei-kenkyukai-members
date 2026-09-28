@@ -544,6 +544,48 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     <div class="photos" id="home-photos"></div>
   </div>
 
+  <!-- 壁打ち会CTA -->
+  <div class="cta">
+    <div>
+      <b>AI無料壁打ち会、受付中です</b>
+      <p>何から手をつければいいか分からない段階で大丈夫です。その場で全部解決しなくても構いません。参考になる動画や資料もご案内します。</p>
+    </div>
+    <button class="btn" data-go="talk">壁打ち会を予約する →</button>
+  </div>
+
+  <div class="notice">
+    <b>お知らせ</b>
+    研究会の料金は<b>入会金100,000円＋月額10,000円</b>です（いずれも税別）。あわせて「無料AI顧問」は「AI無料壁打ち会」に名称変更し、運営からご案内する定例面談の形になります。
+  </div>
+
+  <!-- ① オリエンテーション -->
+  <div class="sec" id="sec-orient">
+    <div class="sec-hd">
+      <h2>はじめての方へ</h2>
+      <button class="more" data-go="orient">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <div id="home-orient"></div>
+  </div>
+
+  <!-- ② 事例動画 -->
+  <div class="sec">
+    <div class="sec-hd">
+      <h2>事例動画（分野から探す）</h2>
+      <button class="more" data-go="courses">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="cgrid" id="home-courses"></div>
+  </div>
+
+  <!-- ③ 事例インタビュー -->
+  <div class="sec">
+    <div class="sec-hd">
+      <h2>事例インタビュー</h2>
+      <button class="more" data-go="cases">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <p class="mk-sub" style="margin:0 0 16px">入会して、実際に何がどう変わったか。動画と記事の両方でご覧いただけます。</p>
+    <div class="cgrid" id="home-cases"></div>
+  </div>
+
   <!-- サービス体系図 -->
   <div class="sysmap" id="sysmap">
     <div class="sysmap-hd">
@@ -584,48 +626,6 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     </div>
   </div>
 
-  <!-- 壁打ち会CTA -->
-  <div class="cta">
-    <div>
-      <b>AI無料壁打ち会、受付中です</b>
-      <p>何から手をつければいいか分からない段階で大丈夫です。その場で全部解決しなくても構いません。参考になる動画や資料もご案内します。</p>
-    </div>
-    <button class="btn" data-go="talk">壁打ち会を予約する →</button>
-  </div>
-
-  <div class="notice">
-    <b>お知らせ</b>
-    研究会の料金は<b>入会金100,000円＋月額10,000円</b>です（いずれも税別）。あわせて「無料AI顧問」は「AI無料壁打ち会」に名称変更し、運営からご案内する定例面談の形になります。
-  </div>
-
-  <!-- ① オリエンテーション -->
-  <div class="sec" id="sec-orient">
-    <div class="sec-hd">
-      <h2>はじめての方へ</h2>
-      <button class="more" data-go="orient">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
-    </div>
-    <div id="home-orient"></div>
-  </div>
-
-  <!-- ② 事例インタビュー -->
-  <div class="sec">
-    <div class="sec-hd">
-      <h2>事例インタビュー</h2>
-      <button class="more" data-go="cases">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
-    </div>
-    <p class="mk-sub" style="margin:0 0 16px">入会して、実際に何がどう変わったか。動画と記事の両方でご覧いただけます。</p>
-    <div class="cgrid" id="home-cases"></div>
-  </div>
-
-  <!-- ③ 事例動画 -->
-  <div class="sec">
-    <div class="sec-hd">
-      <h2>事例動画（分野から探す）</h2>
-      <button class="more" data-go="courses">すべて見る <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
-    </div>
-    <div class="cgrid" id="home-courses"></div>
-  </div>
-
   <!-- 研究会アーカイブ -->
   <div class="sec" id="sec-archive">
     <div class="sec-hd"><h2>過去の研究会</h2></div>
@@ -633,7 +633,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     <div id="home-archive"></div>
   </div>
 
-  <!-- ④ 無料壁打ち会 -->
+  <!-- ⑤ 無料壁打ち会 -->
   <div class="sec">
     <div class="sec-hd">
       <h2>無料壁打ち会</h2>
@@ -648,7 +648,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     </div>
   </div>
 
-  <!-- ⑤ 会員名簿 -->
+  <!-- ⑥ 会員名簿 -->
   <div class="sec">
     <div class="sec-hd">
       <h2>会員名簿</h2>
