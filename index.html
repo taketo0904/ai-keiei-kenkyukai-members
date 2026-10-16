@@ -1282,44 +1282,8 @@ var MEMBERS=[
   free:"",mail:"nakamura@sample-kenchiku.example"}
 ];
 
-var CASES=[
- {id:"iv1",pid:"ai-keiei",co:"サンプル工務店 様",t:"現場写真の整理が週3時間から15分に",cat:"現場・施工",before:"3時間/週",after:"15分/週",gi:0,
-  x:"撮った写真を現場ごとに振り分けて報告書に貼る作業に、毎週3時間かかっていました。研究会で聞いたやり方をそのまま真似したら初週で終わりました。",
-  pitch:"入会2ヶ月。研究会で見た方法をそのまま試して、初週で成果が出た例。「まず1つやってみる」の典型として、ガイダンスで使いやすい。",
-  article:[
-   {h:"入会したきっかけ",b:"以前から現場の事務作業を減らしたいとは思っていましたが、AIとなると何から手をつければいいのか分かりませんでした。同業の社長から研究会の話を聞いて、建築の話が通じる場ならと思って参加しました。"},
-   {h:"何が一番きつかったか",b:"毎週の現場写真の整理です。1日に何十枚も撮るので、それを現場ごとに振り分けて、報告書に貼って、コメントを書く。金曜の夕方が毎回それで潰れていました。"},
-   {h:"どう変わったか",b:"保存のルールを決めて、振り分けを自動化しました。報告書への貼り込みまで含めて15分です。今は事務の担当者が回していて、私は最後に目を通すだけになりました。"},
-   {h:"これから試したいこと",b:"報告書の所見も自動で下書きさせたいです。まだ精度が足りないので、研究会で他社さんのやり方を聞きたいと思っています。"}
-  ]},
- {id:"iv2",pid:"ai-keiei",co:"サンプル建設 様",t:"見積作成が1件2日から半日に",cat:"営業・見積",before:"2日/件",after:"0.5日/件",gi:1,
-  x:"見積に丸2日かかっていて、提案が遅れることもありました。過去の見積を読ませる形にしてから半日で出せています。受注率も上がりました。",
-  pitch:"工数削減が受注率の改善につながった例。「早く出せる会社が勝つ」という文脈で、営業資料に使える。",
-  article:[
-   {h:"入会したきっかけ",b:"見積が遅いせいで失注していると感じていました。人を増やすしかないと思っていたところで研究会を知りました。"},
-   {h:"何が一番きつかったか",b:"1件あたり丸2日です。特に過去の似た物件を探すところに時間がかかっていました。ファイルの置き場もバラバラで、探す時間のほうが長いくらいでした。"},
-   {h:"どう変わったか",b:"過去の見積を全部1か所に集めて、項目名のゆれをそろえるところから始めました。そのうえでたたき台を出させると、半日で出せます。速く出せるようになったら、受注率も上がりました。"},
-   {h:"これから試したいこと",b:"金額の妥当性チェックまで任せられるか試しています。ここは慎重にやりたいところです。"}
-  ]},
- {id:"iv3",pid:"ai-keiei",co:"サンプル設計事務所 様",t:"プラン初期案が10時間から2時間に",cat:"設計・プラン",before:"10時間",after:"2時間",gi:2,
-  x:"初期のプラン検討で悩む時間が長かったのですが、たたき台をAIに出させて直す形に変えました。出せる案の数が増えました。",
-  pitch:"「時間が減った」ではなく「出せる案が増えた」という質の変化。設計者向けの説明に効く。",
-  article:[
-   {h:"入会したきっかけ",b:"設計の初期段階で手が止まる時間が長く、それが全体の納期を圧迫していました。"},
-   {h:"何が一番きつかったか",b:"白紙から考える時間です。要望を聞いて、それをどう形にするかで悩んでいると、あっという間に1日が終わります。"},
-   {h:"どう変わったか",b:"たたき台をAIに出させて、そこから直す形にしました。作業時間自体は2時間になりましたが、それ以上に、施主に見せられる案の数が3案に増えたのが大きいです。選んでもらう形の打ち合わせになりました。"},
-   {h:"これから試したいこと",b:"法規チェックとの組み合わせです。プランと同時に法的な引っかかりも見られるようにしたいです。"}
-  ]},
- {id:"iv4",pid:"ai-keiei",co:"サンプル住建 様",t:"議事録づくりが毎回1時間からゼロに",cat:"経営・管理",before:"1時間/回",after:"0分",gi:3,
-  x:"打ち合わせのあとに議事録を書くのが負担でした。録音して自動で要約する形にしたら、確認だけで済むようになりました。",
-  pitch:"社長自身の時間が空いた例。経営者向けの「まず自分の手元から」という訴求に使える。",
-  article:[
-   {h:"入会したきっかけ",b:"社内の情報共有が私の口頭頼みになっていて、それをどうにかしたいと思っていました。"},
-   {h:"何が一番きつかったか",b:"打ち合わせのあとの議事録です。書かないと共有できないのに、書く時間がない。結局あとまわしになって、記憶が曖昧なまま書くことになっていました。"},
-   {h:"どう変わったか",b:"録音して自動で要約と決定事項の抽出をさせています。私は確認するだけです。社内への共有が当日中にできるようになったので、次の動きが1日早くなりました。"},
-   {h:"これから試したいこと",b:"決まったタスクを、そのまま担当者に振るところまで自動化したいです。"}
-  ]}
-];
+/* 事例インタビュー。実データは interviews.json から読み込む（空なら「準備中」表示） */
+var CASES=[];
 
 var ARCHIVE=[
  {no:"VOL.04",date:"2026.08",t:"AIで見積・積算をどこまで巻き取れるか",
@@ -1412,13 +1376,13 @@ function genreCard(gn){
 }
 function caseCard(c){
   return '<button class="ccard" data-interview="'+c.id+'">'
-   +'<div class="th" style="background:'+g(c.gi)+'"><b>'+esc(c.cat)+'</b></div>'
+   +'<div class="th" style="background:'+g(c.gi||0)+'"><b>'+esc(c.cat||c.co||"")+'</b></div>'
    +'<div class="bd"><div class="cat">'+esc(c.co)+'</div>'
    +'<div class="ti">'+esc(c.t)+'</div>'
-   +'<div class="ba"><div><span class="l">BEFORE</span><span class="v en">'+esc(c.before)+'</span></div>'
-   +'<div class="ar">→</div>'
-   +'<div><span class="l">AFTER</span><span class="v en af">'+esc(c.after)+'</span></div></div>'
-   +'<div class="ds" style="-webkit-line-clamp:3">'+esc(c.x)+'</div>'
+   +((c.before&&c.after)?'<div class="ba"><div><span class="l">BEFORE</span><span class="v en">'+esc(c.before)+'</span></div>'
+     +'<div class="ar">→</div>'
+     +'<div><span class="l">AFTER</span><span class="v en af">'+esc(c.after)+'</span></div></div>':'<div style="margin:14px 0"></div>')
+   +(c.x?'<div class="ds" style="-webkit-line-clamp:3">'+esc(c.x)+'</div>':'<div class="ds"></div>')
    +'<div class="mt">'+(hasVideo(c.id)?'動画あり ・ ':'')+'記事を読む →</div></div></button>';
 }
 function serviceCard(sv){
@@ -1496,8 +1460,9 @@ function renderHome(){
    +'<span class="gpill">まずはこちら</span></button></div>';
 
   // ② 事例インタビュー
-  $("#home-cases").innerHTML=inProd(CASES).map(caseCard).join("")
-    || '<div class="pending">インタビューはまだ登録されていません。</div>';
+  var ivs=inProd(CASES);
+  $("#home-cases").innerHTML=ivs.map(caseCard).join("")
+    || '<div class="pending">会員インタビューは準備中です。<br>研究会当日に撮影した分を、順次公開していきます。</div>';
 
   // ③ サービス紹介
 
@@ -1638,7 +1603,7 @@ function renderMembers(){
 
 function renderCases(){
   $("#cases").innerHTML=inProd(CASES).map(caseCard).join("")
-    || '<div class="pending">インタビューはまだ登録されていません。</div>';
+    || '<div class="pending">会員インタビューは準備中です。<br>研究会当日に撮影した分を、順次公開していきます。</div>';
 }
 
 function renderInterview(id){
@@ -1648,8 +1613,14 @@ function renderInterview(id){
   $("#iv-title").textContent=c.t;
   $("#iv-co").textContent=c.co;
   $("#iv-cat").textContent=c.cat;
-  $("#iv-ba").innerHTML='<div><span class="l">BEFORE</span><span class="v en">'+esc(c.before)+'</span></div>'
-    +'<div class="ar">→</div><div><span class="l">AFTER</span><span class="v en af">'+esc(c.after)+'</span></div>';
+  var hasBA = !!(c.before && c.after);
+  $("#iv-ba").hidden = !hasBA;
+  $("#iv-ba").innerHTML = hasBA
+    ? '<div><span class="l">BEFORE</span><span class="v en">'+esc(c.before)+'</span></div>'
+      +'<div class="ar">→</div><div><span class="l">AFTER</span><span class="v en af">'+esc(c.after)+'</span></div>'
+    : "";
+  $("#iv-cat").hidden = !c.cat;
+  $("#iv-pitch").hidden = !c.pitch;
   var src=vimeoSrc(VIDEOS[c.id]);
   if(src){
     $("#iv-vid").outerHTML='<div class="vidbox" id="iv-vid" style="background:#000">'
@@ -1661,9 +1632,12 @@ function renderInterview(id){
       +'<div class="in"><div class="play">▶</div><b>'+esc(c.t)+'</b></div></div>';
     $("#iv-vidnote").textContent="※ インタビュー動画は撮影後に埋め込みます。";
   }
-  $("#iv-article").innerHTML=(c.article||[]).map(function(a){
+  var arts=(c.article||[]);
+  $("#iv-article").innerHTML=arts.map(function(a){
     return '<div class="qa"><h4>'+esc(a.h)+'</h4><p>'+esc(a.b)+'</p></div>';
   }).join("");
+  var ah=$("#iv-article").previousElementSibling;
+  if(ah && ah.classList.contains("h3")) ah.hidden = !arts.length;
   $("#iv-pitch").innerHTML='<b>ガイダンス・営業での使いどころ</b>'+esc(c.pitch||"");
 }
 
@@ -2176,6 +2150,22 @@ function enter(mail,role){
       if(!j) return;
       Object.keys(j).forEach(function(k){ if(k.charAt(0)!=="_") VIDEOS[k]=j[k] });
       drawAll(); fromHash();
+    }).catch(function(){});
+
+  // interviews.json（事例インタビュー）
+  fetch("interviews.json",{cache:"no-cache"})
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(j){
+      if(!j || !j.interviews) return;
+      CASES.length=0;
+      j.interviews.forEach(function(x,n){
+        if(!x.id) x.id="iv"+(n+1);
+        if(!x.pid) x.pid=PID;
+        if(x.gi===undefined) x.gi=n%6;
+        CASES.push(x);
+      });
+      renderHome(); renderCases();
+      if(ROLE==="admin") renderAdminVideo();
     }).catch(function(){});
 
   // photos.json（研究会の写真）
