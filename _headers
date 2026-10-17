@@ -1,0 +1,18 @@
+# Cloudflare Pages のレスポンスヘッダ設定。
+# 構文: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Referrer-Policy について:
+#   Vimeo の「特定のドメイン」制限は、再生時にブラウザが送る Referer を見て判定する。
+#   no-referrer にすると判定できず再生できなくなるため、strict-origin-when-cross-origin を使う。
+#   （クロスオリジンにはオリジンのみ送られ、パスやクエリは送られない）
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://player.vimeo.com; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'
+
+# データファイルはキャッシュさせない（名簿や動画一覧の更新を即反映するため）
+/*.json
+  Cache-Control: no-store

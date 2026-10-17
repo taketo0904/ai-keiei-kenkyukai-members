@@ -1,1 +1,13 @@
-.DS_Store
+# 事務局の担当者メールを含むため、コミットしない
+admins.json
+
+# Cloudflare Access に登録する会員メールの一覧（スクリプトで生成）
+infra/allowlist.txt
+infra/allowlist.tfvars
+
+# Terraform
+infra/terraform/.terraform/
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.*
+infra/terraform/terraform.tfvars
+infra/terraform/*.tfplan

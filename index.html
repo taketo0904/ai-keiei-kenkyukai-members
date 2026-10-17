@@ -459,21 +459,9 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
     </div>
     <h1 class="en">MEMBERS</h1>
     <div class="jp">会員サイト</div>
-    <p class="lead">会員限定サイトです。ご入会時にお伝えしたメールアドレスとパスワードでログインしてください。</p>
-    <form id="gate-form">
-      <label>ログインする種別</label>
-      <div class="opts" style="display:grid;grid-template-columns:1fr;gap:6px">
-        <label class="opt"><input type="radio" name="role" value="member" checked><span><span class="t" style="font-size:13px">会員</span><span class="d">閲覧のみ</span></span></label>
-        <label class="opt"><input type="radio" name="role" value="admin"><span><span class="t" style="font-size:13px">管理者</span><span class="d">動画・名簿の更新</span></span></label>
-      </div>
-      <label for="g-mail">メールアドレス</label>
-      <input type="email" id="g-mail" autocomplete="username" placeholder="you@example.co.jp" required>
-      <label for="g-pass">パスワード</label>
-      <input type="password" id="g-pass" autocomplete="current-password" required>
-      <p class="gate-err" id="gate-err">パスワードが違います。ご不明な場合は事務局までご連絡ください。</p>
-      <button class="btn btn--pri btn--w" type="submit" style="margin-top:18px">ログイン</button>
-    </form>
-    <p class="gate-note"><b>※ 開発中のデモ用ゲートです。</b>現時点の認証も管理者と会員の切り分けもフロントエンドのみの仮実装で、セキュリティ要件は満たしていません（パスワードはソースを見れば読めます）。本番のログイン認証と権限管理は杉山さんと設計のうえ実装します。<br>デモ用パスワード — 会員：<b>lifefund</b> ／ 管理者：<b>lifefund-admin</b></p>
+    <p class="lead" id="gate-lead">ログイン情報を確認しています…</p>
+    <p class="gate-err" id="gate-err"></p>
+    <p class="gate-note" id="gate-note" hidden>このサイトは Cloudflare Access で保護されています。ログインは Cloudflare の画面で行われ、このページではパスワードを扱いません。</p>
   </div>
 </div>
 
@@ -1769,7 +1757,7 @@ document.addEventListener("click",function(e){
   if(md){ memberDraft().splice(+md.dataset.mdel,1); renderAdminMember(); return; }
 
   var lo=e.target.closest("[data-logout]");
-  if(lo){ try{sessionStorage.removeItem("lf_member")}catch(x){} location.hash="#home"; location.reload(); return; }
+  if(lo){ location.href = isLocalDev() ? "./" : "/cdn-cgi/access/logout"; return; }
 
   var iv=e.target.closest("[data-interview]");
   if(iv){ go("interview",iv.dataset.interview); return; }
@@ -2101,8 +2089,9 @@ function copyText(t){
 
 /* ====== ログインゲート（デモ用・仮実装） ====== */
 var BOOK_URL="https://calendar.app.google/Ruk1PRd4BQGEWuG7A";
-var PASS="lifefund";
-var PASS_ADMIN="lifefund-admin";
+/* 管理者の判定は admins.json（Cloudflare Accessの内側に置く）で行う。
+   これは画面の出し分けであって権限の境界ではない。詳しくは infra/README.md を参照。 */
+var ADMINS=[];
 function drawAll(){
   renderHome(); renderChips(); renderCourses();
   renderMChips(); renderMembers(); renderCases(); renderServices(); renderMenu(); renderOrient(); renderFaq();
@@ -2160,21 +2149,55 @@ function enter(mail,role){
       renderPsel(); drawAll(); fromHash();
     }).catch(function(){});
 }
-$("#gate-form").addEventListener("submit",function(e){
-  e.preventDefault();
-  var role=(document.querySelector('input[name="role"]:checked')||{}).value||"member";
-  var want=(role==="admin")?PASS_ADMIN:PASS;
-  if($("#g-pass").value!==want){
-    $("#gate-err").textContent = (role==="admin")
-      ? "管理者のパスワードが違います。"
-      : "パスワードが違います。ご不明な場合は事務局までご連絡ください。";
-    $("#gate-err").classList.add("on"); return;
-  }
-  var mail=$("#g-mail").value.trim();
-  try{ sessionStorage.setItem("lf_member",mail); sessionStorage.setItem("lf_role",role) }catch(x){}
-  enter(mail,role);
-});
-try{ var sv=sessionStorage.getItem("lf_member"); if(sv) enter(sv, sessionStorage.getItem("lf_role")); }catch(x){}
+function isAdmin(mail){ return ADMINS.indexOf(String(mail||"").toLowerCase())>=0; }
+
+function gateFail(lead,detail){
+  var l=$("#gate-lead"); if(l) l.textContent=lead;
+  var e=$("#gate-err"); if(e){ e.textContent=detail||""; e.classList.add("on"); }
+  var n=$("#gate-note"); if(n) n.hidden=false;
+}
+
+/* ローカル開発時のみ、?as=メールアドレス で表示を確認できる。
+   本番は Cloudflare Access が手前で止めるため、この分岐には到達しない。 */
+function isLocalDev(){
+  var h=location.hostname;
+  return h==="localhost" || h==="127.0.0.1" || h==="[::1]" || h==="::1";
+}
+
+function bootAuth(){
+  fetch("admins.json",{cache:"no-cache"})
+    .then(function(r){ return r.ok ? r.json() : null })
+    .then(function(j){
+      if(j && j.admins) ADMINS=j.admins.map(function(x){ return String(x).toLowerCase() });
+    })
+    .catch(function(){})
+    .then(function(){
+      if(isLocalDev()){
+        var m=/[?&]as=([^&]*)/.exec(location.search);
+        if(m && m[1]){
+          var dev=decodeURIComponent(m[1]).toLowerCase();
+          enter(dev, isAdmin(dev) ? "admin" : "member");
+          return;
+        }
+      }
+      return fetch("/cdn-cgi/access/get-identity",{cache:"no-store",credentials:"same-origin"})
+        .then(function(r){
+          if(!r.ok) throw new Error("get-identity "+r.status);
+          return r.json();
+        })
+        .then(function(id){
+          var mail = id && (id.email || id.user_email);
+          if(!mail) throw new Error("identity に email がありません");
+          mail = String(mail).toLowerCase();
+          enter(mail, isAdmin(mail) ? "admin" : "member");
+        });
+    })
+    .catch(function(){
+      gateFail("ログイン情報を確認できませんでした。",
+               "ページを再読み込みしてください。解消しない場合は事務局までご連絡ください。");
+    });
+}
+bootAuth();
 })();
 </script>
 </body>

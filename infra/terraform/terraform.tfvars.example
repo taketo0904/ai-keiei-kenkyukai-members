@@ -1,0 +1,14 @@
+# このファイルを terraform.tfvars にコピーして埋める。
+# terraform.tfvars は .gitignore 済み。APIトークンはここに書かず、
+# 環境変数 CLOUDFLARE_API_TOKEN で渡すこと。
+
+account_id = "（CloudflareのアカウントID）"
+app_domain = "members.example.jp"
+
+staff_emails = [
+  "staff1@example.co.jp",
+]
+
+# member_emails は infra/scripts/gen-allowlist.sh が生成する
+# infra/allowlist.tfvars を -var-file で渡す:
+#   terraform plan -var-file=terraform.tfvars -var-file=../allowlist.tfvars

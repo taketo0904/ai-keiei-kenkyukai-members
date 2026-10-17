@@ -1,0 +1,8 @@
+{
+  "_使い方": "このファイルを admins.json という名前でコピーし、事務局の担当者のメールアドレスを入れる。admins.json はリポジトリにコミットしない（.gitignore 済み）。デプロイ時にビルド成果物へ含める。",
+  "_注意": "これは画面の出し分けであって、権限の境界ではない。詳しくは infra/README.md の「管理画面の扱い」を参照。",
+  "admins": [
+    "staff1@example.co.jp",
+    "staff2@example.co.jp"
+  ]
+}
