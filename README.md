@@ -29,7 +29,7 @@
 |---|---|
 | `index.html` | サイト本体（画面・ロジック・たたきのコンテンツ） |
 | `videos.json` | 事例IDとVimeo動画URLの対応表 |
-| `members.json` | 会員名簿の実データ |
+| `members.json` | 会員名簿の実データ（20名） |
 | `interviews.json` | 事例インタビュー（研究会当日に撮影した会員インタビュー） |
 | `photos.json` | トップに並べる研究会の写真（`photos/` に画像を置いて追記） |
 
