@@ -598,7 +598,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
 
     <div class="tier tier-core">
       <span class="tier-lbl">中核・会員制</span>
-      <h3>建築AI経営研究会<span class="fee">入会金 100,000円 ＋ 月額 10,000円</span></h3>
+      <h3>建築AI経営研究会<span class="fee">月額 10,000円</span></h3>
       <p>建築業の経営者どうしで事例を持ち寄り、自社で動かせる形にして持ち帰る会員制プログラムです。この会員サイトがその拠点になります。</p>
       <div class="core-list">
         <div><b>月1回の研究会</b><span>講座・パネルディスカッション・ワークショップ</span></div>
@@ -799,7 +799,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
           <p>こうしたご要望は、個別支援メニューでお引き受けしています。壁打ち会の中でどれが合うかもご案内します。</p>
         </div>
       </div>
-      <div class="stp"><div class="n en">01</div><div><h4>研究会当日に初回日程を予約</h4><p>会場でTimeRexから初回の日程をお取りします。参加できなかった方には個別にご案内します。</p></div></div>
+      <div class="stp"><div class="n en">01</div><div><h4>研究会当日に初回日程を予約</h4><p>会場でGoogleカレンダーから初回の日程をお取りします。参加できなかった方には個別にご案内します。</p></div></div>
       <div class="stp"><div class="n en">02</div><div><h4>初回の壁打ち会（オンライン・30分）</h4><p>いま困っていることを伺い、その場で整理してお答えします。次回までの宿題をお渡しし、あわせて次回の日程も決めます。</p></div></div>
       <div class="stp"><div class="n en">03</div><div><h4>定例化してご一緒します</h4><p>その後は定例でお時間をいただきます。ご相談が深いテーマになってきた場合は、担当を替えて別途ご提案することもあります。</p></div></div>
       <div class="stp"><div class="n en">04</div><div><h4>2〜3ヶ月に1回の振り返り</h4><p>活用状況を一緒に振り返るお時間をいただきます。うまくいっている点と詰まっている点を整理します。</p></div></div>
@@ -829,7 +829,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 20px calc(var(--nav-h) + 48px)}
             </div>
             <button class="btn btn--pri btn--w" type="submit">カレンダーを開く</button>
           </form>
-          <p style="font-size:11px;color:var(--tx-mu);margin:10px 0 0">※ TimeRexの予約URLは確定後に差し替えます。</p>
+          <p style="font-size:11px;color:var(--tx-mu);margin:10px 0 0">※ ボタンを押すとGoogleカレンダーの予約画面が別タブで開きます。上の入力内容はコピーされるので、予約時のメモ欄に貼り付けてください。</p>
         </div>
       </div>
     </div>
@@ -1614,7 +1614,7 @@ var FAQ=[
  {q:"「無料AI顧問」はなくなったのですか？",
   a:"名称を「AI無料壁打ち会」に改めました。申込制から、運営側からご案内する定例面談の形に変わっています。その場ですべてを解決する会ではなく、困りごとを一緒に整理して、見るべき動画や資料をご案内する時間としてお使いください。"},
  {q:"会費はいくらですか？",
-  a:"入会金100,000円と、月額10,000円です（いずれも税別）。月額には研究会への参加、事例動画の視聴、会員名簿の閲覧、AI無料壁打ち会のご利用がすべて含まれます。入会金は新規ご入会時に一度だけ頂戴するものです。"},
+  a:"月額10,000円です。研究会への参加、事例動画の視聴、会員名簿の閲覧、AI無料壁打ち会のご利用がすべて含まれます。"},
  {q:"研究会に参加できない月があっても大丈夫ですか？",
   a:"問題ありません。当日の講座とパネルディスカッションはすべて録画し、この会員サイトの「過去の研究会」から後日ご覧いただけます。登壇資料やワークショップの課題も同じ場所に置いています。"},
  {q:"スタートアップ支援・AI顧問・AI研修は会費に含まれますか？",
@@ -1958,7 +1958,17 @@ $("#globalsearch").addEventListener("keydown",function(e){
     $$("[data-tab]").forEach(function(b){b.classList.toggle("on",b.dataset.tab==="find")});
     renderChips(); renderCourses(); go("courses"); }
 });
-$("#talk-form").addEventListener("submit",function(e){e.preventDefault();toast("TimeRexの予約URLは確定後に接続します")});
+$("#talk-form").addEventListener("submit",function(e){
+  e.preventDefault();
+  var tp=$("#t-topic").value, dt=$("#t-detail").value.trim();
+  var memo=[tp?"相談したいこと："+tp:"", dt?"いま困っていること："+dt:""].filter(Boolean).join("\n");
+  if(memo && navigator.clipboard){
+    navigator.clipboard.writeText(memo).then(function(){
+      toast("入力内容をコピーしました。予約画面のメモ欄に貼り付けてください");
+    },function(){});
+  }
+  window.open(BOOK_URL,"_blank","noopener");
+});
 window.addEventListener("hashchange",function(){ if(!$("#app").hidden) fromHash() });
 
 /* ====== プロダクト切替 ====== */
@@ -2090,6 +2100,7 @@ function copyText(t){
 }
 
 /* ====== ログインゲート（デモ用・仮実装） ====== */
+var BOOK_URL="https://calendar.app.google/Ruk1PRd4BQGEWuG7A";
 var PASS="lifefund";
 var PASS_ADMIN="lifefund-admin";
 function drawAll(){
